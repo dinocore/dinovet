@@ -45,6 +45,7 @@ module Dinovet
     config.filter_parameters += [:password]
 
     config.generators do |g|
+      g.template_engine :haml
       g.orm :mongo_mapper
       g.test_framework :rspec
     end
