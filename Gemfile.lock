@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    ZenTest (4.3.3)
     abstract (1.0.0)
     actionmailer (3.0.0.rc2)
       actionpack (= 3.0.0.rc2)
@@ -30,6 +31,9 @@ GEM
     activesupport (3.0.0.rc2)
     arel (1.0.0.rc1)
       activesupport (>= 3.0.0.beta)
+    autotest (4.3.2)
+    autotest-rails (4.1.0)
+      ZenTest
     bson (1.0.7)
     bson_ext (1.0.7)
     builder (2.1.2)
@@ -128,6 +132,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autotest
+  autotest-rails
   bson_ext
   capybara
   cucumber (= 0.8.5)

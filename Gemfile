@@ -16,4 +16,6 @@ group :development, :test, :cucumber do
   gem 'cucumber', '0.8.5'
   gem 'spork'
   gem 'launchy'
+  gem 'autotest-rails'
+  gem 'autotest'
 end
