@@ -10,6 +10,6 @@ gem 'haml'
 #  gem 'webrat'
 #end
 
-group :test do
+group :development, :test do
   gem 'rspec-rails', '>= 2.0.0.beta.10'
 end
