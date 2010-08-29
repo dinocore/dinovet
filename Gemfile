@@ -18,4 +18,5 @@ group :development, :test, :cucumber do
   gem 'launchy'
   gem 'autotest-rails'
   gem 'autotest'
+  gem 'factory_girl_rails'
 end
