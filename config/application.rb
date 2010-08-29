@@ -47,7 +47,7 @@ module Dinovet
 
     config.generators do |g|
       g.template_engine :haml
-      g.orm :mongo_mapper
+      g.orm :mongoid
       g.test_framework :rspec
     end
   end
