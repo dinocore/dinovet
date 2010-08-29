@@ -36,6 +36,7 @@ GEM
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    haml (3.0.17)
     i18n (0.4.1)
     jnunemaker-validatable (1.8.4)
       activesupport (>= 2.3.4)
@@ -93,6 +94,7 @@ PLATFORMS
 
 DEPENDENCIES
   bson_ext
+  haml
   mongo_mapper
   rails (= 3.0.0.rc2)
   rails3-generators
