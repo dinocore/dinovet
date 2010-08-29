@@ -1,6 +1,9 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.0.rc2'
+gem 'rails3-generators'
+gem 'mongo_mapper'
+gem 'bson_ext'
 
 #group :development, :test do
 #  gem 'webrat'
