@@ -4,7 +4,7 @@ gem 'rails', '3.0.0'
 gem 'rails3-generators'
 gem 'mongoid', :git => 'http://github.com/mongoid/mongoid.git'
 gem 'bson_ext', '1.0.4'
-gem 'haml'
+gem 'haml', '>= 3.0.18'
 gem 'devise'
 
 group :development, :test, :cucumber do
