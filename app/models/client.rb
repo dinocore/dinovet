@@ -9,4 +9,9 @@ class Client
   field :zipcode
   field :phone
   field :email
+
+  validates_presence_of :first_name, :last_name, :address_1, :city, :state,
+                        :zipcode, :phone
+  validates_format_of :email, :allow_nil => true,
+                      :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 end

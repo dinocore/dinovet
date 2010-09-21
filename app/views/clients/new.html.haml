@@ -1,6 +1,7 @@
+= flash[:error]
 %h1 New Client
 
-= form_for :client do |f|
+= form_for @client do |f|
 
   = f.label :first_name
   = f.text_field :first_name
@@ -18,7 +19,7 @@
   = f.text_field :city
 
   = f.label :state
-  = f.select :state, ['New York']
+  = f.select :state, ['', 'New York']
 
   = f.label :zipcode
   = f.text_field :zipcode

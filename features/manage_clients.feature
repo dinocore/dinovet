@@ -16,19 +16,33 @@ Feature: Manage clients
     And I fill in "Phone" with "555-555-5555"
     And I fill in "E-mail" with "holden@dinocore.net"
     And I press "Add Client"
-    Then I should see ""
-    And I should see "last_name 1"
+    Then I should be on the clients page
+    And I should see "Client added successfully"
 
-  Scenario: Delete client
-    Given the following clients:
-      |first_name|last_name|
-      |first_name 1|last_name 1|
-      |first_name 2|last_name 2|
-      |first_name 3|last_name 3|
-      |first_name 4|last_name 4|
-    When I delete the 3rd client
-    Then I should see the following clients:
-      |First name|Last name|
-      |first_name 1|last_name 1|
-      |first_name 2|last_name 2|
-      |first_name 4|last_name 4|
+
+  Scenario Outline: Invalid client data entered
+    Given I am on the new client page
+    And  I am an employee
+    When I fill in "First name" with "<first_name>"
+    And I fill in "Last name" with "<last_name>"
+    And I fill in "Address 1" with "<address_1>"
+    And I fill in "Address 2" with "<address_2>"
+    And I fill in "City" with "<city>"
+    And I select "<state>" from "State"
+    And I fill in "Zipcode" with "<zipcode>"
+    And I fill in "Phone" with "<phone>"
+    And I fill in "E-mail" with "<email>"
+    And I press "Add Client"
+    Then I should be on the clients page
+	And I should see "Failed to create client"
+
+  Examples:
+    |first_name|last_name|address_1|  city  |  state |zipcode|     phone    |       email       |
+    |          |Caulfield|1 Fake St|New York|New York| 10001 |(555) 555-1234|holden@dinocore.net|
+    |  Holden  |         |1 Fake St|New York|New York| 10001 |(555) 555-1234|holden@dinocore.net|
+    |  Holden  |Caulfield|         |New York|New York| 10001 |(555) 555-1234|holden@dinocore.net|
+    |  Holden  |Caulfield|1 Fake St|        |New York| 10001 |(555) 555-1234|holden@dinocore.net|
+    |  Holden  |Caulfield|1 Fake St|New York|        | 10001 |(555) 555-1234|holden@dinocore.net|
+    |  Holden  |Caulfield|1 Fake St|New York|New York|       |(555) 555-1234|holden@dinocore.net|
+    |  Holden  |Caulfield|1 Fake St|New York|New York| 10001 |              |holden@dinocore.net|
+    |  Holden  |Caulfield|1 Fake St|New York|New York| 10001 |(555) 555-1234|       fail        |
