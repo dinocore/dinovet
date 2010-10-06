@@ -9,6 +9,7 @@ gem 'devise'
 
 group :development, :test, :cucumber do
   gem 'rspec-rails', '>= 2.0.0.beta.10'
+  gem 'escape_utils'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails'
