@@ -1,6 +1,14 @@
 Given /^I am an employee$/ do
 end
 
+Given /^I have added a client named "\w+"$/ do
+  @client = Factory.create(:client)
+end
+
+And /^I am editing the client$/ do
+  visit edit_client_path(@client)
+end
+
 Given /^the following clients:$/ do |clients|
   Client.create!(clients.hashes)
 end

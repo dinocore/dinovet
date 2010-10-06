@@ -1,10 +1,28 @@
 class ClientsController < ApplicationController
 
   def index
+    @clients = Client.all
+  end
+
+  def show
+    @client = Client.find(params[:id])
   end
 
   def new
     @client = Client.new
+  end
+
+  def edit
+    @client = Client.find(params[:id])
+  end
+
+  def update
+    @client = Client.find(params[:id])
+    if @client.update_attributes(params[:client])
+      redirect_to client_path(@client)
+    else
+      render 'edit'
+    end
   end
 
   def create

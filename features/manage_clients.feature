@@ -19,6 +19,20 @@ Feature: Manage clients
     Then I should be on the clients page
     And I should see "Client added successfully"
 
+  Scenario: View a list of all clients
+    Given I am an employee
+    And I have added a client named "Holden"
+    And I am on the clients page
+    Then I should see "Holden"
+
+  Scenario: Edit an existing client
+    Given I am an employee
+    And I have added a client named "Holden"
+    And I am editing the client
+    When I fill in "First name" with "Phoebe"
+    And I press "Save Client"
+    Then I should be on Phoebe's page
+    And I should see "Phoebe"
 
   Scenario Outline: Invalid client data entered
     Given I am on the new client page
@@ -34,7 +48,7 @@ Feature: Manage clients
     And I fill in "E-mail" with "<email>"
     And I press "Add Client"
     Then I should be on the clients page
-	And I should see "Failed to create client"
+    And I should see "Failed to create client"
 
   Examples:
     |first_name|last_name|address_1|  city  |  state |zipcode|     phone    |       email       |

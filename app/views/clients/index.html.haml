@@ -1,1 +1,4 @@
 = flash[:notice]
+%ul
+  - @clients.each do |client|
+    %li=h "#{client.id} - #{client.first_name}"
