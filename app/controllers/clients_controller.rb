@@ -1,7 +1,7 @@
 class ClientsController < ApplicationController
 
   def index
-    @clients = Client.all
+    @clients = Client.search(/.*#{params[:search]}.*/)
   end
 
   def show

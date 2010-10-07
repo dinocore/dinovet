@@ -1,8 +1,8 @@
 Given /^I am an employee$/ do
 end
 
-Given /^I have added a client named "\w+"$/ do
-  @client = Factory.create(:client)
+Given /^I have added a client named "(.*)"$/ do |name|
+  @client = Factory.create(:client, {:first_name => name})
 end
 
 And /^I am editing the client$/ do
@@ -10,7 +10,9 @@ And /^I am editing the client$/ do
 end
 
 Given /^the following clients:$/ do |clients|
-  Client.create!(clients.hashes)
+  clients.hashes.each do |client|
+    Client.create!(Factory.attributes_for(:client).merge(client))
+  end
 end
 
 When /^I delete the (\d+)(?:st|nd|rd|th) client$/ do |pos|

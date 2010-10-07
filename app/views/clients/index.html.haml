@@ -1,4 +1,14 @@
 = flash[:notice]
-%ul
-  - @clients.each do |client|
-    %li=h "#{client.id} - #{client.first_name}"
+= render 'search_form'
+%table
+  %thead
+    %tr
+      %th Last Name
+      %th First Name
+  %tbody
+    - @clients.each do |client|
+      %tr
+        %td
+          %a{:href => client_path(client)}=h client.last_name
+        %td
+          %a{:href => client_path(client)}=h client.first_name

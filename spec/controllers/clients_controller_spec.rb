@@ -134,7 +134,7 @@ describe ClientsController do
 
   describe "GET 'index'" do
     before(:each) do
-      Client.stub!(:all).and_return([mock_client])
+      Client.stub!(:search).and_return([mock_client])
     end
 
     it "is successful" do
@@ -144,7 +144,12 @@ describe ClientsController do
 
     it "assigns a list of clients to @clients" do
       get :index
-      assigns[:clients].should == [mock_client]
+      assigns[:clients].should_not be_nil
+    end
+
+    it "renders index template" do
+      get :index
+      response.should render_template(:index)
     end
   end
 

@@ -43,6 +43,47 @@ describe Client do
     create_client(:email => nil).should be_valid
   end
 
+  describe "#search" do
+    before(:each) do
+      5.times { create_client.save! }
+    end
+
+    it "finds clients by last name" do
+      last_name = "Smith"
+      client = create_client(:last_name => last_name)
+      client.save!
+      Client.search(last_name).inject([]) { |a, c| a << c }.should == [client]
+    end
+
+    it "finds clients by first name" do
+      first_name = "Holden"
+      client = create_client(:first_name => first_name)
+      client.save!
+      Client.search(first_name).inject([]) { |a, c| a << c }.should == [client]
+    end
+
+    it "finds clients by street address" do
+      address_1 = "1 Fake St."
+      client = create_client(:address_1 => address_1)
+      client.save!
+      Client.search(address_1).inject([]) { |a, c| a << c }.should == [client]
+    end
+
+    it "finds clients by phone number" do
+      phone = "555-555-5555"
+      client = create_client(:phone => phone)
+      client.save!
+      Client.search(phone).inject([]) { |a, c| a << c }.should == [client]
+    end
+
+    it "finds clients by e-mail address" do
+      email = "crocodile@dinocore.net"
+      client = create_client(:email => email)
+      client.save!
+      Client.search(email).inject([]) { |a, c| a << c }.should == [client]
+    end
+  end
+
 end
 
 def create_client(parameters = {})
