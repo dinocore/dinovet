@@ -31,7 +31,7 @@ describe Client do
   end
 
   it "requires a phone number" do
-    create_client(:phone => nil).should_not be_valid
+    create_client(:phone_numbers => nil).should_not be_valid
   end
 
   it "requires e-mail address to be of a valid format" do
@@ -41,6 +41,12 @@ describe Client do
 
   it "does not require an e-mail address" do
     create_client(:email => nil).should be_valid
+  end
+
+  it "embeds many phone numbers" do
+    association = Client.associations['phone_numbers']
+    association.klass.should == (PhoneNumber)
+    association.association.should == (Mongoid::Associations::EmbedsMany)
   end
 
   describe "#search" do
@@ -70,10 +76,13 @@ describe Client do
     end
 
     it "finds clients by phone number" do
-      phone = "555-555-5555"
-      client = create_client(:phone => phone)
+      pending
+      number = "555-555-5555"
+      phone = PhoneNumber.from_string(number)
+      client = create_client(:phone_numbers => [phone])
       client.save!
-      Client.search(phone).inject([]) { |a, c| a << c }.should == [client]
+      Client.search(number).inject([]) { |a, c| 
+        a << c }.should == [client]
     end
 
     it "finds clients by e-mail address" do

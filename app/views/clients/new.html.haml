@@ -1,6 +1,3 @@
-= flash[:error]
 %h1 New Client
-
-= form_for @client do |f|
-  = render 'form', :f => f
-  = f.submit 'Add Client'
+= flash[:error]
+= render "form", :client => @client, :phone_numbers => @phone_numbers

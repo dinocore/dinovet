@@ -6,9 +6,16 @@ describe ClientsController do
     @mock_client ||= mock_model(Client, stubs)
   end
 
+  def mock_phone_number(stubs={})
+    @mock_phone_Number ||= mock_model(PhoneNumber, stubs)
+  end
+
   describe "GET 'new'" do
     before(:each) do
       Client.stub!(:new).and_return(mock_client(:save => true))
+      PhoneNumber.stub!(:new).and_return(mock_phone_number)
+      mock_phone_number.stub!(:<<).and_return([mock_phone_number])
+      mock_client.stub!(:phone_numbers).and_return(mock_phone_number)
     end
 
     it "is successful" do
@@ -21,12 +28,19 @@ describe ClientsController do
       get :new
       assigns[:client].should equal(mock_client)
     end
+
+    it "sets @phone_numbers" do
+      PhoneNumber.should_receive(:new).and_return(mock_phone_number)
+      get :new
+      assigns[:phone_numbers].should == [mock_phone_number]
+    end
   end
 
 
   describe "GET 'edit'" do
     before(:each) do
       Client.stub!(:find).with(1).and_return(mock_client)
+      mock_client.stub!(:phone_numbers).and_return(mock_phone_number)
     end
 
     it "is successful" do
@@ -39,12 +53,19 @@ describe ClientsController do
       get :edit, :id => 1
       assigns[:client].should == mock_client
     end
+
+    it "sets @phone_numbers" do
+      mock_client.should_receive(:phone_numbers).and_return([mock_phone_number])
+      get :edit, :id => 1
+      assigns[:phone_numbers].should == [mock_phone_number]
+    end
   end
 
 
   describe "PUT 'update'" do
     before(:each) do
       Client.stub!(:find).with(1).and_return(mock_client)
+      mock_client.stub!(:phone_numbers).and_return(mock_phone_number)
     end
 
     describe "with valid attributes" do
@@ -60,6 +81,12 @@ describe ClientsController do
       it "sets @client" do
         put :update, :id => 1, :client => {}
         assigns[:client].should == mock_client
+      end
+
+      it "sets @phone_numbers" do
+        mock_client.should_receive(:phone_numbers).and_return([mock_phone_number])
+        put :update, :id => 1, :client => {}
+        assigns[:phone_numbers].should == [mock_phone_number]
       end
     end
 
@@ -93,6 +120,13 @@ describe ClientsController do
   describe "POST 'create'" do
     before(:each) do
       Client.stub!(:new).and_return(mock_client(:save => true))
+      mock_client.stub!(:phone_numbers).and_return(mock_phone_number)
+    end
+
+    it "sets @phone_numbers" do
+      mock_client.should_receive(:phone_numbers).and_return([mock_phone_number])
+      post :create, :client => mock_client
+      assigns[:phone_numbers].should == [mock_phone_number]
     end
 
     describe "with valid attributes" do

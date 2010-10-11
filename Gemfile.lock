@@ -1,11 +1,10 @@
 GIT
   remote: http://github.com/mongoid/mongoid.git
-  revision: f38e3ef
+  revision: 17f9a110590fd37383e799c437725a76f05648ff
   specs:
-    mongoid (2.0.0.beta.16)
-      activemodel (~> 3.0.0)
-      bson (= 1.0.4)
-      mongo (= 1.0.7)
+    mongoid (2.0.0.beta.19)
+      activemodel (~> 3.0)
+      mongo (~> 1.1)
       tzinfo (~> 0.3.22)
       will_paginate (~> 3.0.pre)
 
@@ -46,8 +45,8 @@ GEM
     autotest-rails (4.1.0)
       ZenTest
     bcrypt-ruby (2.1.2)
-    bson (1.0.4)
-    bson_ext (1.0.4)
+    bson (1.1)
+    bson_ext (1.1)
     builder (2.1.2)
     capybara (0.3.9)
       culerity (>= 0.2.4)
@@ -93,8 +92,12 @@ GEM
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
-    mongo (1.0.7)
-      bson (>= 1.0.4)
+    mongo (1.1)
+      bson (>= 1.0.5)
+    mongoid-rspec (1.2.1)
+      bson_ext (>= 1.0.4)
+      mongoid (>= 2.0.0.beta.15)
+      rspec (>= 2.0.0.beta.19)
     nokogiri (1.4.3.1)
     polyglot (0.3.1)
     rack (1.2.1)
@@ -151,7 +154,7 @@ PLATFORMS
 DEPENDENCIES
   autotest
   autotest-rails
-  bson_ext (= 1.0.4)
+  bson_ext
   capybara
   cucumber (= 0.8.5)
   cucumber-rails
@@ -162,6 +165,7 @@ DEPENDENCIES
   haml (>= 3.0.18)
   launchy
   mongoid!
+  mongoid-rspec
   rails (= 3.0.0)
   rails3-generators
   rspec-rails (>= 2.0.0.beta.10)

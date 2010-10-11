@@ -1,26 +1,29 @@
-= f.label :first_name
-= f.text_field :first_name
+= form_for client do |f|
 
-= f.label :last_name
-= f.text_field :last_name
+  = f.label :first_name
+  = f.text_field :first_name
+  
+  = f.label :last_name
+  = f.text_field :last_name
+  
+  = f.label :address_1
+  = f.text_field :address_1
+  
+  = f.label :address_2
+  = f.text_field :address_2
+  
+  = f.label :city
+  = f.text_field :city
+  
+  = f.label :state
+  = f.select :state, ['', 'New York']
+  
+  = f.label :zipcode
+  = f.text_field :zipcode
+  
+  = f.label :email, 'E-mail'
+  = f.text_field :email
+  
+  = render phone_numbers
 
-= f.label :address_1
-= f.text_field :address_1
-
-= f.label :address_2
-= f.text_field :address_2
-
-= f.label :city
-= f.text_field :city
-
-= f.label :state
-= f.select :state, ['', 'New York']
-
-= f.label :zipcode
-= f.text_field :zipcode
-
-= f.label :phone
-= f.text_field :phone
-
-= f.label :email, 'E-mail'
-= f.text_field :email
+  = f.submit
