@@ -178,7 +178,12 @@ describe ClientsController do
 
     it "assigns a list of clients to @clients" do
       get :index
-      assigns[:clients].should_not be_nil
+      assigns[:clients].should == [mock_client]
+    end
+
+    it "assigns current search term to @search" do
+      get :index, :search => "test"
+      assigns[:search].should == "test"
     end
 
     it "renders index template" do

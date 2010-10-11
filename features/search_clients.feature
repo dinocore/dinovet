@@ -19,6 +19,7 @@ Feature: Search clients
       | Last Name |First Name|
       | Caulfield |  Holden  |
       | Caulfield |  Phoebe  |
+    And the "search" field should contain "Caulfield"
 
   Scenario: Search for first name
     Given I am on the clients page
@@ -35,6 +36,7 @@ Feature: Search clients
     And I should see the following clients:
       | Last Name |First Name|
       | Caulfield |  Holden  |
+    And the "search" field should contain "Holden"
 
   Scenario: Search for address
     Given I am on the clients page
@@ -51,6 +53,7 @@ Feature: Search clients
     And I should see the following clients:
       | Last Name |First Name|
       | Smith     | Winston  |
+    And the "search" field should contain "3 First St"
 
 #  Scenario: Search for phone number
 #    Given I am on the clients page
@@ -83,3 +86,5 @@ Feature: Search clients
     And I should see the following clients:
       | Last Name  |First Name|
       | Caulfield  | Phoebe   |
+    And the "search" field should contain "phoebe.caulfield@dinocore.net"
+
