@@ -1,0 +1,80 @@
+!!! 5
+%html{html_attrs} 
+ 
+  %head 
+    %title Dinovet &rsaquo;
+    = stylesheet_link_tag :all
+    = javascript_include_tag :defaults
+    %link{:href => 'stylesheets/style.css', :rel => 'stylesheet'}
+    %script{:type => 'text/javascript', :src => 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'}
+    = csrf_meta_tag
+
+  %body 
+ 
+    #header 
+      %ul 
+        %li 
+          %a{:href => '#'} Reports 
+        %li 
+          %a{:href => '#'} Schedule 
+        %li
+          %a{:href => '#'} Clients
+        %li
+          %a{:href => '#'} Configure
+
+    #client-navigation
+      %h2 
+        %a{:class=> 'select', :href => '#'} Client - Caulfield, Holden
+      %ul
+        %li
+          %a{:href => '#'} Client
+        %li
+          %a{:href => '#'} Details
+
+    #client-select-dialog
+
+    :javascript
+      $(document).ready(function() {
+        $('#client-navigation a.select').mousedown(function(event) {
+          $(this).css('position', 'relative');
+          $(this).css('z-index', '10');
+          $(this).addClass('open');
+          $('#client-select-dialog').show('slow');
+        });
+      });
+
+    #client-view
+      %p Client information here
+
+    -#
+      #left-navigation
+        %h2 Client
+        %select.client
+          %option{:value => 1} Caulfield, Holden
+        #client
+          %p Name: Caulfield, Holden
+        %h2 Patient
+        %select.patient
+          %option{:value => 1} Crocodile
+        #patient
+          %p Name: Crocodile
+
+
+    #patient-navigation
+      %h2
+        %a{:class => 'select', :href => '#'} Patient - Crocodile
+      %ul
+        %li
+          %a{:href => '#'} History
+        %li
+          %a{:href => '#'} Diagnosis
+        %li
+          %a{:href => '#'} Treatment Plan
+        %li
+          %a{:href => '#'} Schedule
+
+    #patient-view
+      %p Patient information here
+
+    #content
+      = yield

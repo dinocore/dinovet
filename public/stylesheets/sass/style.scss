@@ -1,0 +1,160 @@
+$green: #b2c0ab;
+$green-border: darken($green, 20%);
+$tan: #e7e1d8;
+$tan-border: darken($tan, 20%);
+$tab-background: gray;
+
+@mixin select {
+  h2 {
+    text-align: right;
+    display: block;
+    float: left;
+    margin: 0.25em 1em 0 1em;
+    color: lighten($tab-background, 20%);
+    z-index: 100;
+
+    a.select {
+      padding: 0.1em 1em 0.1em 1.4em;
+      background: url(../images/down.png) no-repeat 0.3em 0.5em;
+      color: lighten($tab-background, 20%);
+      border: 1px solid lighten($tab-background, 20%);
+  
+      &:hover {
+        border: 1px solid lighten($tab-background, 40%);
+        color: lighten($tab-background, 40%);
+      }
+    }
+  }
+}
+
+@mixin tab-navigation {
+  @include select;
+
+  ul {
+    clear: right;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background: $tab-background;
+    height: 2.6em;
+
+    li {
+      display: block;
+      float: right;
+      margin: 0.85em 0.5em 0 0;
+      background-color: $tan;
+      border: 1px solid $tan-border;
+      border-bottom: none;
+
+      select {
+        border: 1 px solid $tan;
+      }
+
+      a {
+        display: block;
+        padding: 0.25em 1em;
+
+        &:hover {
+          background-color: $tan-border;
+        }
+      }
+
+      &:after {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+        content: " ";
+        clear: both;
+        height: 0;
+      }
+    }
+  }
+}
+
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: darken($green-border, 20%);
+}
+
+#header {
+  background-color: $green;
+  border-bottom: 2px solid $green-border;
+  height: 3em;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+
+    li {
+      display: block;
+      float: right;
+      margin: 0.75em 1em 0.9em 1em;
+
+      a {
+        font-size: 1.2em;
+      }
+    }
+  }
+}
+
+#client {
+  background-color: $tan;
+
+  p {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+#left-navigation {
+  float: left;
+  width: 250px;
+  padding: 1em 0 0 1em;
+  margin: 0 1em 0 0;
+  background-color: $tan;
+  border-right: 2px solid $tan-border;
+
+  h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+  }
+}
+
+#client-select-dialog {
+  display: none;
+  background: $green-border;
+  position: absolute;
+  border: 2px solid gray;
+  top: 2.75em;
+  left: 0.9em;
+  width: 40em;
+  height: 35em;
+  -moz-border-radius: 10px 10px 10px 10px;
+
+  @include select;
+
+  h2 {
+    margin-left: 0.1em;
+  }
+
+  h3 {
+    color: $green;
+    margin: 0.5em 2em 0 0;
+    float: right;
+    font-size: 1em;
+  }
+}
+
+#client-navigation, #patient-navigation {
+  @include tab-navigation;
+}
