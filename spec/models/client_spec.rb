@@ -58,41 +58,38 @@ describe Client do
       last_name = "Smith"
       client = create_client(:last_name => last_name)
       client.save!
-      Client.search(last_name).inject([]) { |a, c| a << c }.should == [client]
+      Client.search(last_name).to_a.should == [client]
     end
 
     it "finds clients by first name" do
       first_name = "Holden"
       client = create_client(:first_name => first_name)
       client.save!
-      Client.search(first_name).inject([]) { |a, c| a << c }.should == [client]
+      Client.search(first_name).to_a.should == [client]
     end
 
     it "finds clients by street address" do
       address_1 = "1 Fake St."
       client = create_client(:address_1 => address_1)
       client.save!
-      Client.search(address_1).inject([]) { |a, c| a << c }.should == [client]
+      Client.search(address_1).to_a.should == [client]
     end
 
     it "finds clients by phone number" do
-      pending
       number = "555-555-5555"
-      phone = PhoneNumber.from_string(number)
+      phone = Factory.build(:phone_number, :number => number)
       client = create_client(:phone_numbers => [phone])
       client.save!
-      Client.search(number).inject([]) { |a, c| 
-        a << c }.should == [client]
+      Client.search(number).to_a.should == [client]
     end
 
     it "finds clients by e-mail address" do
       email = "crocodile@dinocore.net"
       client = create_client(:email => email)
       client.save!
-      Client.search(email).inject([]) { |a, c| a << c }.should == [client]
+      Client.search(email).to_a.should == [client]
     end
   end
-
 end
 
 def create_client(parameters = {})

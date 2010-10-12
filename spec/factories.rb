@@ -11,10 +11,6 @@ Factory.define :client do |c|
 end
 
 Factory.define :phone_number do |p|
-  p.sequence(:type)         { |n| "type#{n}"      }
-  p.sequence(:country_code) { |n| n.to_s          }
-  p.sequence(:area_code)    { |n| "%03d" % n.to_s }
-  p.sequence(:prefix)       { |n| "%03d" % n.to_s }
-  p.sequence(:suffix)       { |n| "%04d" % n.to_s }
-  p.sequence(:extension)    { |n| n.to_s          }
+  p.sequence(:type)         { |n| "type#{n}"       }
+  p.sequence(:number)       { |n| "%010d" % n.to_s }
 end

@@ -20,9 +20,15 @@ class Client
                       :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 
   def self.search(query)
-    any_of({ :first_name => query },
-           { :last_name  => query },
-           { :address_1  => query },
-           { :email      => query })
+    
+    if query.blank?
+      return find :all
+    end
+
+    any_of({ :first_name             => /.*#{query}.*/ },
+           { :last_name              => /.*#{query}.*/ },
+           { :address_1              => /.*#{query}.*/ },
+           { :email                  => /.*#{query}.*/ },
+           { "phone_numbers.number"  => /.*#{query}.*/ })
   end
 end

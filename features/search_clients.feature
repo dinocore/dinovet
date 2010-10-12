@@ -55,21 +55,22 @@ Feature: Search clients
       | Smith     | Winston  |
     And the "search" field should contain "3 First St"
 
-#  Scenario: Search for phone number
-#    Given I am on the clients page
-#    And I am an employee
-#    And the following clients:
-#      |first_name| last_name | phone |
-#      |  Holden  | Caulfield |555-555-5555|
-#      |  Phoebe  | Caulfield |123-456-7890|
-#      |  Winston |   Smith   |222-123-4323|
-#      |  Hiro    |Protagonist|234-127-1483|
-#    When I fill in "search" with "234-127-1483"
-#    And I press "Search"
-#    Then I should be on the clients page
-#    And I should see the following clients:
-#      | Last Name  |First Name|
-#      | Protagonist| Hiro     |
+  Scenario: Search for phone number
+    Given I am on the clients page
+    And I am an employee
+    And the following clients:
+      |first_name| last_name |phone_number|
+      |  Holden  | Caulfield |555-555-5555| 
+      |  Phoebe  | Caulfield |123-456-7890| 
+      |  Winston |   Smith   |222-123-4323| 
+      |  Hiro    |Protagonist|234-127-1483| 
+    When I fill in "search" with "234-127-1483"
+    And I press "Search"
+    Then I should be on the clients page
+    And I should see the following clients:
+      | Last Name  |First Name|
+      | Protagonist| Hiro     |
+    And the "search" field should contain "234-127-1483"
 
   Scenario: Search for e-mail address
     Given I am on the clients page

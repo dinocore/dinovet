@@ -10,8 +10,15 @@ And /^I am editing the client$/ do
 end
 
 Given /^the following clients:$/ do |clients|
-  clients.hashes.each do |client|
-    Client.create!(Factory.attributes_for(:client).merge(client))
+  clients.hashes.each do |client_hash|
+    client = Client.new(Factory.attributes_for(:client).merge(client_hash))
+    if client_hash.key? 'phone_number'
+      client.phone_numbers << PhoneNumber.new(
+        :number => client_hash[:phone_number],
+        :type   => "Home"
+      )
+    end
+    client.save!
   end
 end
 
