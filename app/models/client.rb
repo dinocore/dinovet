@@ -1,5 +1,6 @@
 class Client
   include Mongoid::Document
+  include Mongoid::Timestamps
   field :first_name
   field :last_name
   field :address_1
