@@ -6,7 +6,7 @@
 
 #client-navigation
   %h2 
-    %a{:class=> 'select'}!= "Client &rarr; #{h client.last_name}, #{h client.first_name}"
+    %a{:class=> 'select'}!= "Client &rarr; #{h name_last_first(client)}"
   %ul
     %li
       %a{:href => '#'} Client
