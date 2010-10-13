@@ -1,4 +1,4 @@
-%fieldset{:id => "phone-number-#{phone_number_counter}"}
+%fieldset{:id => "phone-number-#{phone_number_counter}", :class => "phone-number"}
   = fields_for 'client[phone_numbers]', phone_number, |
     :index => phone_number_counter  do |f|
 

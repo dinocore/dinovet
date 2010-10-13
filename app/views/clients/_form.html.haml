@@ -1,29 +1,42 @@
 = form_for client do |f|
 
-  = f.label :first_name
-  = f.text_field :first_name
-  
-  = f.label :last_name
-  = f.text_field :last_name
-  
-  = f.label :address_1
-  = f.text_field :address_1
-  
-  = f.label :address_2
-  = f.text_field :address_2
-  
-  = f.label :city
-  = f.text_field :city
-  
-  = f.label :state
-  = f.select :state, ['', 'New York']
-  
-  = f.label :zipcode
-  = f.text_field :zipcode
-  
-  = f.label :email, 'E-mail'
-  = f.text_field :email
-  
-  = render phone_numbers
+  %fieldset
+    %legend Name
+    %ol
+      %li
+        = f.label :first_name
+        = f.text_field :first_name
+      %li
+        = f.label :last_name
+        = f.text_field :last_name
 
-  = f.submit
+  %fieldset
+    %legend Address
+    %ol
+      %li
+        = f.label :address_1, "Address"
+        = f.text_field :address_1
+      %li
+        = f.label :address_2, "Apt."
+        = f.text_field :address_2
+      %li
+        = f.label :city
+        = f.text_field :city
+      %li
+        = f.label :state
+        = f.select :state, ['', 'New York']
+      %li
+        = f.label :zipcode
+        = f.text_field :zipcode
+      
+  %fieldset
+    %legend Contact
+    %ol
+      %li
+        = render phone_numbers
+      %li
+        = f.label :email, 'E-mail'
+        = f.text_field :email
+
+  %fieldset{:class => "submit"}
+    = f.submit

@@ -1,2 +1,4 @@
-%h1 Edit Client
-= render "form", :client => @client, :phone_numbers => @phone_numbers
+= render 'navigation', :client => @client
+
+#client-view
+  = render "form", :client => @client, :phone_numbers => @phone_numbers

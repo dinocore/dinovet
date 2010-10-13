@@ -1,0 +1,29 @@
+#client-select-dialog
+  %fieldset
+    %input 
+    %button{:class => 'first'} New
+    %button Search
+
+#client-navigation
+  %h2 
+    %a{:class=> 'select'}!= "Client &rarr; #{h client.last_name}, #{h client.first_name}"
+  %ul
+    %li
+      %a{:href => '#'} Client
+    %li
+      %a{:href => '#'} Details
+
+:javascript
+  $(document).ready(function() {
+    $('#client-navigation a.select').mousedown(function(event) {
+      if($('#client-select-dialog').hasClass('open')) {
+        $('#client-select-dialog').slideUp('slow');
+        $('#client-select-dialog').removeClass('open');
+      } else {
+        $('#client-select-dialog').slideDown('slow', function() {
+            $('#client-select-dialog :input:first').focus();
+          });
+        $('#client-select-dialog').addClass('open');
+      }
+    });
+  });
