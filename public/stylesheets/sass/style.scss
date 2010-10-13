@@ -1,7 +1,8 @@
 $green: #b2c0ab;
 $green-border: darken($green, 20%);
-$tan: #e7e1d8;
-$tan-border: darken($tan, 20%);
+$tab: #234;
+$tab-selected: #f8f8f8;
+$tab-border: darken($tab, 20%);
 $tab-background: gray;
 
 @mixin select {
@@ -39,20 +40,26 @@ $tab-background: gray;
       display: block;
       float: right;
       margin: 0.85em 0.5em 0 0;
-      background-color: $tan;
-      border: 1px solid $tan-border;
+      background-color: $tab;
+      border: 1px solid $tab-border;
       border-bottom: none;
 
       select {
-        border: 1 px solid $tan;
+        border: 1 px solid $tab;
       }
 
       a {
         display: block;
         padding: 0.25em 1em;
+        color: #bbb;
 
         &:hover {
-          background-color: $tan-border;
+          background-color: lighten($tab, 10%);
+        }
+
+        &.selected {
+          background-color: $tab-selected;
+          color: $green-border;
         }
       }
 
@@ -106,7 +113,7 @@ a {
 }
 
 #client {
-  background-color: $tan;
+  background-color: $tab;
 
   p {
     padding: 0;
@@ -119,8 +126,8 @@ a {
   width: 250px;
   padding: 1em 0 0 1em;
   margin: 0 1em 0 0;
-  background-color: $tan;
-  border-right: 2px solid $tan-border;
+  background-color: $tab;
+  border-right: 2px solid $tab-border;
 
   h2 {
     margin: 0;
@@ -191,7 +198,7 @@ a {
 }
 
 #client-view {
-  background-color: white;
+  background-color: #f8f8f8;
   padding: 0.3em;
 
 
@@ -200,7 +207,6 @@ a {
     padding: 0.5em 0;
     border: 1px solid $tab-background;
     width: 55em;
-    background-color: white;
 
     &.submit {
       border: none;
@@ -265,6 +271,14 @@ a {
           padding: 0.2em;
           width: 20em;
           background-color: lighten($tab-background, 40%);
+        }
+
+        div.field_with_errors {
+          display: inline;
+
+          input {
+            background-color: mix(lighten($tab-background, 40%), #E4D2D3);
+          }
         }
   
         input {
