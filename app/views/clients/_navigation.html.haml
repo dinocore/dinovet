@@ -1,8 +1,4 @@
-#client-select-dialog
-  %fieldset
-    %input 
-    %button{:class => 'first'} New
-    %button Search
+= render 'search_bar'
 
 #client-navigation
   %h2 
@@ -16,14 +12,14 @@
 :javascript
   $(document).ready(function() {
     $('#client-navigation a.select').mousedown(function(event) {
-      if($('#client-select-dialog').hasClass('open')) {
-        $('#client-select-dialog').slideUp('slow');
-        $('#client-select-dialog').removeClass('open');
+      if($('#client-search-bar').hasClass('open')) {
+        $('#client-search-bar').slideUp('slow');
+        $('#client-search-bar').removeClass('open');
       } else {
-        $('#client-select-dialog').slideDown('slow', function() {
-            $('#client-select-dialog :input:first').focus();
+        $('#client-search-bar').slideDown('slow', function() {
+            $('#client-search-bar :input:first').focus();
           });
-        $('#client-select-dialog').addClass('open');
+        $('#client-search-bar').addClass('open');
       }
     });
   });

@@ -8,8 +8,8 @@ Feature: Manage clients
     And I am an employee
     When I fill in "First name" with "Holden"
     And I fill in "Last name" with "Caulfield"
-    And I fill in "Address 1" with "1234 1st Street"
-    And I fill in "Address 2" with "Apt. 23"
+    And I fill in "Address" with "1234 1st Street"
+    And I fill in "Apt." with "Apt. 23"
     And I fill in "City" with "New York"
     And I select "New York" from "State"
     And I fill in "Zipcode" with "10001"
@@ -40,7 +40,7 @@ Feature: Manage clients
     And I am an employee
     When I fill in "First name" with "<first_name>"
     And I fill in "Last name" with "<last_name>"
-    And I fill in "Address 1" with "<address_1>"
+    And I fill in "Address" with "<address_1>"
     And I fill in "City" with "<city>"
     And I select "<state>" from "State"
     And I fill in "Zipcode" with "<zipcode>"

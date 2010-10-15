@@ -1,14 +1,10 @@
-= flash[:notice]
-= render 'search_form'
-%table
-  %thead
-    %tr
-      %th Last Name
-      %th First Name
-  %tbody
-    - @clients.each do |client|
+= render 'search_bar'
+
+#search-results
+  %table{:id => 'clients'}
+    %thead
       %tr
-        %td
-          %a{:href => client_path(client)}=h client.last_name
-        %td
-          %a{:href => client_path(client)}=h client.first_name
+        %th Last Name
+        %th First Name
+    %tbody
+      = render @clients
