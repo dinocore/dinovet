@@ -1,93 +1,60 @@
 require 'spec_helper'
 
 describe Client do
+  let(:client) { create_client }
 
-  it "creates a new client given valid input" do
-    create_client.should be_valid
-  end
+  subject { client }
 
-  it "requires a first name" do
-    create_client(:first_name => nil).should_not be_valid
-  end
+  it { should be_valid }
 
-  it "requires a last name" do
-    create_client(:last_name => nil).should_not be_valid
-  end
+  it { should embed_many :phone_numbers }
 
-  it "requires an address" do
-    create_client(:address_1 => nil).should_not be_valid
-  end
+  it { should validate_presence_of(:first_name) }
+  it { should validate_presence_of(:last_name) }
+  it { should validate_presence_of(:address_1) }
+  it { should validate_presence_of(:city) }
+  it { should validate_presence_of(:state) }
+  it { should validate_presence_of(:zipcode) }
+  it { should validate_presence_of(:phone_numbers) }
+  it { should validate_format_of(:email).
+          to_allow("valid@dinocore.net").
+          not_to_allow("invlaid[AT]dinocore.net") }
+  it { should_not validate_presence_of(:email) }
 
-  it "requires a city" do
-    create_client(:city => nil).should_not be_valid
-  end
 
-  it "requires a state" do
-    create_client(:state => nil).should_not be_valid
-  end
-
-  it "requires a zip code" do
-    create_client(:zipcode => nil).should_not be_valid
-  end
-
-  it "requires a phone number" do
-    create_client(:phone_numbers => nil).should_not be_valid
-  end
-
-  it "requires e-mail address to be of a valid format" do
-    create_client(
-      :email => 'invalid.address[AT]dinocore.net').should_not be_valid
-  end
-
-  it "does not require an e-mail address" do
-    create_client(:email => nil).should be_valid
-  end
-
-  it "embeds many phone numbers" do
-    association = Client.associations['phone_numbers']
-    association.klass.should == (PhoneNumber)
-    association.association.should == (Mongoid::Associations::EmbedsMany)
-  end
-
-  describe "#search" do
-    before(:each) do
-      5.times { create_client.save! }
-    end
-
-    it "finds clients by last name" do
+  describe "::search" do
+    before { 5.times { create_client.save! } }
+    
+    it "should find clients by last name" do
       last_name = "Smith"
       client = create_client(:last_name => last_name)
       client.save!
-      Client.search(last_name).to_a.should == [client]
+      Client.search(last_name).should include client
     end
 
-    it "finds clients by first name" do
+    it "should find clients by first name" do
       first_name = "Holden"
-      client = create_client(:first_name => first_name)
-      client.save!
-      Client.search(first_name).to_a.should == [client]
+      (client = create_client(:first_name => first_name)).save!
+      Client.search(first_name).should include client
     end
 
-    it "finds clients by street address" do
+    it "should find clients by street address" do
       address_1 = "1 Fake St."
-      client = create_client(:address_1 => address_1)
-      client.save!
-      Client.search(address_1).to_a.should == [client]
+      (client = create_client(:address_1 => address_1)).save!
+      Client.search(address_1).should include client
     end
 
-    it "finds clients by phone number" do
+    it "should find clients by phone number" do
       number = "555-555-5555"
       phone = Factory.build(:phone_number, :number => number)
-      client = create_client(:phone_numbers => [phone])
-      client.save!
-      Client.search(number).to_a.should == [client]
+      (client = create_client(:phone_numbers => [phone])).save!
+      Client.search(number).should include client
     end
 
-    it "finds clients by e-mail address" do
+    it "should find clients by e-mail address" do
       email = "crocodile@dinocore.net"
-      client = create_client(:email => email)
-      client.save!
-      Client.search(email).to_a.should == [client]
+      (client = create_client(:email => email)).save!
+      Client.search(email).should include client
     end
   end
 end
