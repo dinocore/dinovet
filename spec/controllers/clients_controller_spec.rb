@@ -58,6 +58,10 @@ describe ClientsController do
         put :update, :id => 1, :client => mock_client
       end
 
+      it "should set a success message" do
+        flash[:notice].should == "Client updated successfully"
+      end
+
       it { response.should redirect_to(client_path(mock_client)) }
 
       it "should set @client" do
@@ -73,6 +77,10 @@ describe ClientsController do
       before(:each) do
         mock_client.should_receive(:update_attributes).and_return(false)
         put :update, :id => 1, :client => mock_client
+      end
+
+      it "should set an error message" do
+        flash[:error].should == "Failed to update client"
       end
 
       it { response.should render_template('edit') }

@@ -34,6 +34,15 @@ Feature: Manage clients
     And I press "Update Client"
     Then I should be on Phoebe's page
     And I should see "Phoebe"
+    And I should see "Client updated successfully"
+
+  Scenario: Enter invalid data for an existing client
+    Given I am an employee
+    And I have added a client named "Holden"
+    And I am editing the client
+    When I fill in "First name" with ""
+    And I press "Update Client"
+    Then I should see "Failed to update client"
 
   Scenario Outline: Invalid client data entered
     Given I am on the new client page
