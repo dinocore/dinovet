@@ -16,6 +16,10 @@ module NavigationHelpers
       new_client_patient_path(@client)
     when /^the patients page$/
       client_patients_path(@client)
+    when /^the edit patient page$/
+      edit_client_patient_path(@client, @patient)
+    when /^the show patient page$/
+      client_patient_path(@client, @patient)
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

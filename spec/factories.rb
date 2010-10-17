@@ -11,6 +11,10 @@ Factory.define :client do |c|
 end
 
 Factory.define :phone_number do |p|
-  p.sequence(:type)         { |n| "type#{n}"       }
-  p.sequence(:number)       { |n| "%010d" % n.to_s }
+  p.sequence(:type)       { |n| "type#{n}"       }
+  p.sequence(:number)     { |n| "%010d" % n.to_s }
+end
+
+Factory.define :patient do |p|
+  p.sequence(:name)       { |n| "name#{n}" }
 end

@@ -20,3 +20,13 @@ Feature: Manage patients
     And I press "Create Patient"
     Then I should be on the patients page
     And I should see "Patient created successfully"
+
+  Scenario: Edit an existing patient
+    Given I have added a client
+    And I have added a patient
+    And I am on the edit patient page
+    And I am an employee
+    When I fill in "Name" with "Crocodile"
+    And I press "Update Patient"
+    Then I should be on the show patient page
+    And I should see "Patient updated successfully"
