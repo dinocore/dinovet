@@ -1,4 +1,10 @@
 Dinovet::Application.routes.draw do
+
+  resources :clients do
+    resources :patients
+  end
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -12,8 +18,6 @@ Dinovet::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-
-  resources :clients
 
   # Sample resource route with options:
   #   resources :products do

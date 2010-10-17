@@ -11,7 +11,11 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
     when /([^']*)'s page/
-      client_path(Client.where(:first_name => $1).first.id)
+      client_path(@client)
+    when /^the new patient page$/
+      new_client_patient_path(@client)
+    when /^the patients page$/
+      client_patients_path(@client)
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

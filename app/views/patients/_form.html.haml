@@ -1,0 +1,11 @@
+= form_for [client, patient] do |f|
+
+  %fieldset
+    %legend Name
+    %ol
+      %li
+        = f.label :name
+        = f.text_field :name, :autocomplete => :off
+
+  %fieldset{:class => "submit"}
+    = f.submit

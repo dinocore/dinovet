@@ -1,6 +1,10 @@
 Given /^I am an employee$/ do
 end
 
+Given /^I have added a client$/ do
+  @client = Factory.create(:client)
+end
+
 Given /^I have added a client named "(.*)"$/ do |name|
   @client = Factory.create(:client, {:first_name => name})
 end
@@ -31,4 +35,12 @@ end
 
 Then /^I should see the following clients:$/ do |expected_clients_table|
   expected_clients_table.diff!(tableish('table tr', 'td,th'))
+end
+
+Then /^I should see the edit client form$/ do
+  page.should have_css("form.edit_client")
+end
+
+Then /^I should see the new patient form$/ do
+  page.should have_css("form.new_patient")
 end
