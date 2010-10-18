@@ -1,0 +1,30 @@
+#patient-navigation
+  %h2
+    %a Patient
+  %h3
+    - unless patient.blank?
+      %a= patient.name
+    - else
+      %a{:href => new_client_patient_path(client)} Create New Patient
+  %ul
+    %li
+      %a{:href => '#'} Details
+
+:javascript
+  $(document).ready(function() {
+    $('#patient-navigation').click(function(event) {
+      if($('#patient-view').css('display') == 'none') {
+        $('#patient-navigation h2').removeClass('closed')
+        $('#patient-view').slideToggle();
+        $('#patient-navigation ul li').fadeIn();
+      } else {
+        $('#patient-navigation h2').addClass('closed')
+        $('#patient-view').slideToggle();
+        $('#patient-navigation ul li').fadeOut();
+      }
+    });
+
+    $('#patient-navigation ul li a').mousedown(function(event) {
+      return false;
+    });
+  });

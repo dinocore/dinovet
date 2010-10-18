@@ -3,5 +3,7 @@
 #client-view
   = render "clients/form", :client => @client, :phone_numbers => @phone_numbers
 
+= render "patients/navigation", :client => @client, :patient => @patient
+
 #patient-view
   = render "patients/form", :client => @client, :patient => @patient

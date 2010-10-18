@@ -5,29 +5,43 @@ $tab-selected: #f8f8f8;
 $tab-border: darken($tab, 20%);
 $tab-background: gray;
 
-@mixin select {
+@mixin tab-navigation-header {
   h2 {
-    text-align: right;
-    display: block;
     float: left;
-    margin: 0.25em 1em 0 1em;
-    color: lighten($tab-background, 20%);
-    z-index: 100;
+    font-size: 2em;
+    padding: 0;
+    margin: 0 0.5em 0 0.5em;
 
-    a.select {
-      padding: 0.1em 1em 0.1em 0.2em;
+    a {
+      background: url(../images/down.png) no-repeat 0 0.4em;
+      padding-left: 0.8em;
+      color: lighten($tab-background, 10%);
+
+    }
+  }
+
+  h2.closed {
+    a {
+      background: url(../images/right.png) no-repeat 0 0.3em;
+    }
+  }
+
+  h3 {
+    float: left;
+    padding: 0;
+    margin: 0 0.5em 0 0.5em;
+    padding-top: 0.5em;
+
+    a {
       color: lighten($tab-background, 20%);
-  
-      &:hover {
-        color: lighten($tab-background, 40%);
-      }
     }
   }
 }
 
 @mixin tab-navigation {
-  @include select;
-
+  @include tab-navigation-header;
+  height: 2.6em;
+  
   ul {
     clear: right;
     margin: 0;
@@ -43,10 +57,6 @@ $tab-background: gray;
       background-color: $tab;
       border: 1px solid $tab-border;
       border-bottom: none;
-
-      select {
-        border: 1 px solid $tab;
-      }
 
       a {
         display: block;
@@ -76,131 +86,7 @@ $tab-background: gray;
 }
 
 
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  background-color: $tab-background;
-  min-width: 900px;
-}
-
-a {
-  text-decoration: none;
-  color: darken($green-border, 20%);
-}
-
-#header {
-  background-color: $green;
-  border-bottom: 2px solid $green-border;
-  height: 3em;
-
-  ul {
-    margin: 0;
-    padding: 0;
-    text-align: right;
-
-    li {
-      display: block;
-      float: right;
-      margin: 0.75em 1em 0.9em 1em;
-
-      a {
-        font-size: 1.2em;
-      }
-    }
-  }
-}
-
-#client {
-  background-color: $tab;
-
-  p {
-    padding: 0;
-    margin: 0;
-  }
-}
-
-#left-navigation {
-  float: left;
-  width: 250px;
-  padding: 1em 0 0 1em;
-  margin: 0 1em 0 0;
-  background-color: $tab;
-  border-right: 2px solid $tab-border;
-
-  h2 {
-    margin: 0;
-    padding: 0;
-    font-size: 1.2em;
-  }
-}
-
-#client-search-bar {
-  //display: none;
-  background: $green-border;
-  position: relative;
-  border-top: 2px solid gray;
-  border-bottom: 2px solid gray;
-  width: 100%;
-
-  fieldset {
-    border: none;
-    margin: 0;
-    padding: 0.2em 0;
-    display: block;
-    background-color: lighten($tab-background, 40%);
-
-    input {
-      width: 85%;
-      display: block;
-      border: none;
-      padding-left: 1.2em;
-      float: left;
-      background: url(../images/search.png) no-repeat 0.3em 0.3em 
-        lighten($tab-background, 40%);
-      font-size: 1.5em;
-    }
-
-    input.submit {
-      font-size: 1.3em;
-      width: 5%;
-      color: $green-border;
-      background-image: none;
-      background-color: lighten($tab-background, 40%);
-      border: 1px solid lighten($tab-background, 40%);
-      border-left: 1px solid lighten($tab-background, 20%);
-      display: block;
-      float: right;
-      margin: 0;
-      width: auto;
-      padding: 0 0.5em;
-
-      &.first {
-        border-right: 1px solid lighten($tab-background, 20%);
-        margin-right: 0.5em;
-      }
-    }
-
-  }
-
-  h2 {
-    margin-left: 0.1em;
-  }
-
-  h3 {
-    color: $green;
-    margin: 0.5em 2em 0 0;
-    float: right;
-    font-size: 1em;
-  }
-}
-
-#client-navigation, #patient-navigation {
-  @include tab-navigation;
-}
-
-#client-view {
+@mixin form {
   background-color: #f8f8f8;
   padding: 0.3em;
 
@@ -295,6 +181,110 @@ a {
       }
     }
   }
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: $tab-background;
+  min-width: 900px;
+}
+
+a {
+  text-decoration: none;
+  color: darken($green-border, 20%);
+}
+
+#header {
+  background-color: $green;
+  border-bottom: 2px solid $green-border;
+  height: 3em;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+
+    li {
+      display: block;
+      float: right;
+      margin: 0.75em 1em 0.9em 1em;
+
+      a {
+        font-size: 1.2em;
+      }
+    }
+  }
+}
+
+#client-search-bar {
+  //display: none;
+  background: $green-border;
+  position: relative;
+  border-top: 2px solid gray;
+  border-bottom: 2px solid gray;
+  width: 100%;
+
+  fieldset {
+    border: none;
+    margin: 0;
+    padding: 0.2em 0;
+    display: block;
+    background-color: lighten($tab-background, 40%);
+
+    input {
+      width: 85%;
+      display: block;
+      border: none;
+      padding-left: 1.2em;
+      float: left;
+      background: url(../images/search.png) no-repeat 0.3em 0.3em 
+        lighten($tab-background, 40%);
+      font-size: 1.5em;
+    }
+
+    input.submit {
+      font-size: 1.3em;
+      width: 5%;
+      color: $green-border;
+      background-image: none;
+      background-color: lighten($tab-background, 40%);
+      border: 1px solid lighten($tab-background, 40%);
+      border-left: 1px solid lighten($tab-background, 20%);
+      display: block;
+      float: right;
+      margin: 0;
+      width: auto;
+      padding: 0 0.5em;
+
+      &.first {
+        border-right: 1px solid lighten($tab-background, 20%);
+        margin-right: 0.5em;
+      }
+    }
+
+  }
+
+  h2 {
+    margin-left: 0.1em;
+  }
+
+  h3 {
+    color: $green;
+    margin: 0.5em 2em 0 0;
+    float: right;
+    font-size: 1em;
+  }
+}
+
+#client-navigation, #patient-navigation {
+  @include tab-navigation;
+}
+
+#client-view, #patient-view {
+  @include form;
 }
 
 

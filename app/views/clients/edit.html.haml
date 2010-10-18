@@ -3,4 +3,4 @@
 #client-view
   = render "form", :client => @client, :phone_numbers => @phone_numbers
 
-%a{:href => new_client_patient_path(@client)} New Patient
+= render 'patients/navigation', :client => @client, :patient => @patient

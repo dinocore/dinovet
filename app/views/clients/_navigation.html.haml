@@ -2,7 +2,9 @@
 
 #client-navigation
   %h2 
-    %a{:class=> 'select'}!= "Client &rarr; #{h name_last_first(client)}"
+    %a Client
+  %h3
+    %a= "#{h name_last_first(client)}"
   %ul
     %li
       %a{:href => '#', :class => 'selected'} Client
@@ -11,15 +13,19 @@
 
 :javascript
   $(document).ready(function() {
-    $('#client-navigation a.select').mousedown(function(event) {
-      if($('#client-search-bar').hasClass('open')) {
-        $('#client-search-bar').slideUp('slow');
-        $('#client-search-bar').removeClass('open');
+    $('#client-navigation').click(function(event) {
+      if($('#client-view').css('display') == 'none') {
+        $('#client-navigation h2').removeClass('closed')
+        $('#client-view').slideToggle();
+        $('#client-navigation ul li').fadeIn();
       } else {
-        $('#client-search-bar').slideDown('slow', function() {
-            $('#client-search-bar :input:first').focus();
-          });
-        $('#client-search-bar').addClass('open');
+        $('#client-navigation h2').addClass('closed')
+        $('#client-view').slideToggle();
+        $('#client-navigation ul li').fadeOut();
       }
+    });
+
+    $('#client-navigation ul li a').mousedown(function(event) {
+      return false;
     });
   });
