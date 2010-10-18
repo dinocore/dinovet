@@ -21,6 +21,19 @@ Feature: Manage patients
     Then I should be on the patients page
     And I should see "Patient created successfully"
 
+  Scenario Outline: Invalid patient data entered
+    Given I have added a client
+    And I am on the new patient page
+    And I am an employee
+    When I fill in "Name" with "<name>"
+    And I press "Create Patient"
+    Then I should be on the patients page
+    And I should see "Failed to create patient"
+
+  Examples:
+    |    name    |
+    |            |
+
   Scenario: Edit an existing patient
     Given I have added a client
     And I have added a patient
@@ -30,3 +43,13 @@ Feature: Manage patients
     And I press "Update Patient"
     Then I should be on the show patient page
     And I should see "Patient updated successfully"
+  
+  Scenario: Enter invalid data for an existing patient
+    Given I have added a client
+    And I have added a patient
+    And I am on the edit patient page
+    And I am an employee
+    When I fill in "Name" with ""
+    And I press "Update Patient"
+    Then I should be on the show patient page
+    And I should see "Failed to update patient"
