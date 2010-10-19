@@ -29,8 +29,7 @@ $tab-background: gray;
   h3 {
     float: left;
     padding: 0;
-    margin: 0 0.5em 0 0.5em;
-    padding-top: 0.5em;
+    margin: 0.45em 0 0 1em;
 
     a {
       color: lighten($tab-background, 20%);
@@ -42,7 +41,7 @@ $tab-background: gray;
   @include tab-navigation-header;
   height: 2.6em;
   
-  ul {
+  ul.tabs {
     clear: right;
     margin: 0;
     padding: 0;
@@ -280,10 +279,59 @@ a {
 }
 
 #client-navigation, #patient-navigation {
+  clear: both;
   @include tab-navigation;
 }
 
+#patient-select {
+  border: 1px solid transparent;
+  float: left;
+  width: 20em;
+  margin: 0.4em 0 0 0;
+
+  h3 {
+    background: url(../images/down.png) right center no-repeat;
+    color: lighten($tab-background, 20%);
+    padding: 0 1.4em 0 0;
+    margin: 0.1em 0 0 1em;
+  }
+
+  ul {
+    display: none;
+    background-color: #234;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0 0 0.5em 0;
+    position: inherit;
+
+    li {
+      list-style: none;
+      padding: 0.5em 1em 0 1em;
+    }
+  }
+}
+
+#patient-select:hover {
+  border: 1px solid lighten($tab-background, 10%);
+  background: url(../images/down.png) 18.5em 0.3em no-repeat;
+  position: relative;
+
+  h3 {
+    background: none;
+  }
+  ul {
+  border: 1px solid lighten($tab-background, 10%);
+    position: absolute;
+    top: 1.5em;
+    width: 20em;
+    left: -0.05em;
+    float: left;
+    display: block;
+  }
+}
+
 #client-view, #patient-view {
+  clear: both;
   @include form;
 }
 

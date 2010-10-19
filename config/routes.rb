@@ -4,7 +4,6 @@ Dinovet::Application.routes.draw do
     resources :patients
   end
 
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

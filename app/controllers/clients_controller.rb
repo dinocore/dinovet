@@ -24,7 +24,7 @@ class ClientsController < ApplicationController
     @phone_numbers = @client.phone_numbers
 
     if @client.update_attributes(params[:client])
-      redirect_to client_path(@client), :notice => "Client updated successfully"
+      redirect_to :back, :notice => "Client updated successfully"
     else
       flash[:error] = "Failed to update client"
       render "edit"

@@ -32,7 +32,7 @@ Feature: Manage clients
     And I am editing the client
     When I fill in "First name" with "Phoebe"
     And I press "Update Client"
-    Then I should be on Phoebe's page
+    Then I should be on the edit client page for "Phoebe"
     And I should see "Phoebe"
     And I should see "Client updated successfully"
 

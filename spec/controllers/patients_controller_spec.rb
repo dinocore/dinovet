@@ -7,6 +7,7 @@ describe PatientsController do
     Patient.stub!(:new).and_return(mock_patient(:save => true))
     Patient.stub!(:all).and_return([mock_patient])
     Patient.stub!(:find).and_return(mock_patient)
+    mock_patient.stub!(:client=).and_return(mock_client)
   end
 
 
@@ -61,7 +62,8 @@ describe PatientsController do
         flash[:notice].should == "Patient created successfully"
       end
 
-      it { response.should redirect_to client_patients_path(mock_client) }
+      it { response.should redirect_to edit_client_patient_path(
+                                                    mock_client, mock_patient) }
     end
 
     describe "with invalid attributes" do
@@ -124,6 +126,11 @@ describe PatientsController do
 
 
   describe "PUT 'update'" do
+    before do
+      request.env["HTTP_REFERER"] = 
+          edit_client_patient_path(mock_client, mock_patient)
+    end
+                  
     describe "always" do
       before do
         mock_patient.should_receive(:update_attributes)
@@ -153,8 +160,8 @@ describe PatientsController do
         flash[:notice].should == "Patient updated successfully"
       end
 
-      it { response.should redirect_to(client_patient_path(mock_client,
-                                                           mock_patient)) }
+      it { response.should redirect_to(edit_client_patient_path(mock_client,
+                                                                mock_patient)) }
 
       it "should set @patient" do
         assigns[:patient].should equal(mock_patient)

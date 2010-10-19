@@ -10,14 +10,17 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
-    when /([^']*)'s page/
-      client_path(@client)
+    when /^the edit client page for "(.*)"$/
+      edit_client_path(@client)
     when /^the new patient page$/
       new_client_patient_path(@client)
     when /^the patients page$/
       client_patients_path(@client)
     when /^the edit patient page$/
       edit_client_patient_path(@client, @patient)
+    when /^the edit patient page for "(.*)"$/
+      edit_client_patient_path(@client, 
+        Patient.first(:conditions => { :name => $1 }))
     when /^the show patient page$/
       client_patient_path(@client, @patient)
 

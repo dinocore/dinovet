@@ -5,7 +5,7 @@ describe ClientsController do
 
 
   describe "GET 'new'" do
-    before(:each) do
+    before do
       Client.stub!(:new).and_return(mock_client(:save => true))
       PhoneNumber.stub!(:new).and_return(mock_phone_number)
       mock_phone_number.stub!(:<<).and_return([mock_phone_number])
@@ -27,7 +27,7 @@ describe ClientsController do
 
 
   describe "GET 'edit'" do
-    before(:each) do
+    before do
       Client.stub!(:find).with(1).and_return(mock_client)
       mock_client.stub!(:phone_numbers).and_return([mock_phone_number])
       get :edit, :id => 1
@@ -47,13 +47,15 @@ describe ClientsController do
 
 
   describe "PUT 'update'" do
-    before(:each) do
+    before do
+      request.env["HTTP_REFERER"] = 
+          edit_client_path(mock_client)
       Client.stub!(:find).with(1).and_return(mock_client)
       mock_client.stub!(:phone_numbers).and_return([mock_phone_number])
     end
 
     describe "with valid attributes" do
-      before(:each) do
+      before do
         mock_client.stub!(:update_attributes).and_return(true)
         put :update, :id => 1, :client => mock_client
       end
@@ -62,7 +64,7 @@ describe ClientsController do
         flash[:notice].should == "Client updated successfully"
       end
 
-      it { response.should redirect_to(client_path(mock_client)) }
+      it { response.should redirect_to(edit_client_path(mock_client)) }
 
       it "should set @client" do
         assigns[:client].should equal(mock_client)
@@ -74,7 +76,7 @@ describe ClientsController do
     end
 
     describe "with invalid attributes" do
-      before(:each) do
+      before do
         mock_client.should_receive(:update_attributes).and_return(false)
         put :update, :id => 1, :client => mock_client
       end
@@ -91,7 +93,7 @@ describe ClientsController do
 
 
   describe "GET 'show'" do
-    before(:each) do
+    before do
       Client.stub!(:find).with(1).and_return(mock_client)
       get :show, :id => 1
     end
@@ -106,7 +108,7 @@ describe ClientsController do
 
 
   describe "POST 'create'" do
-    before(:each) do
+    before do
       Client.stub!(:new).and_return(mock_client(:save => true))
       mock_client.stub!(:phone_numbers).and_return([mock_phone_number])
     end
@@ -117,7 +119,7 @@ describe ClientsController do
     end
 
     describe "with valid attributes" do
-      before(:each) do
+      before do
         mock_client.stub!(:save).and_return(true)
         post :create, :client => mock_client
       end
@@ -134,7 +136,7 @@ describe ClientsController do
     end
     
     describe "with invalid attributes" do
-      before(:each) do
+      before do
         mock_client.stub!(:save).and_return(false)
         post :create, :client => mock_client
       end
@@ -151,7 +153,7 @@ describe ClientsController do
 
 
   describe "GET 'index'" do
-    before(:each) do
+    before do
       Client.stub!(:search).and_return([mock_client])
       get :index, :search => "test"
     end
