@@ -96,6 +96,13 @@ $tab-background: gray;
     border: 1px solid $tab-background;
     width: 55em;
 
+    legend {
+      margin-left: 0.2em;
+      font-size: 0.7em;
+      font-weight: bold;
+      color: $green-border;
+     }
+
     &.submit {
       border: none;
       margin-top: 0.2em;
@@ -116,23 +123,19 @@ $tab-background: gray;
       }
     }
 
-    fieldset.phone-number {
-      width: 24.104em;
+    li.phone-number {
       padding: 0;
       border: none;
 
       select {
-        width: 8.4em;
-        margin: 0 0.8em;
-        margin-left: 0.8em;
+        margin: 0 0.25em 0 0.8em;
+        width: 8em;
       }
-    }
 
-    legend {
-      margin-left: 0.2em;
-      font-size: 0.7em;
-      font-weight: bold;
-      color: $green-border;
+      input {
+        margin: 0 0.3em 0 0;
+        width: 18em;
+      }
     }
 
     ol {
@@ -219,12 +222,23 @@ a {
 }
 
 #client-search-bar {
-  //display: none;
   background: $green-border;
   position: relative;
   border-top: 2px solid gray;
   border-bottom: 2px solid gray;
   width: 100%;
+
+  #search-bar-results {
+    background-color: lighten($tab-background, 40%);
+    display: none;
+    position: absolute;
+    width: 85%;
+    border-bottom: 2px solid gray;
+    border-left: 2px solid gray;
+    border-right: 2px solid gray;
+    margin-left: 2em;
+    margin-right: 5em;
+  }
 
   fieldset {
     border: none;
@@ -263,7 +277,6 @@ a {
         margin-right: 0.5em;
       }
     }
-
   }
 
   h2 {

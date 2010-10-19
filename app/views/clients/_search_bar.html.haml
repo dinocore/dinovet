@@ -4,9 +4,26 @@
       = text_field_tag :search, @search, :autocomplete => :off
       = submit_tag "Search", :class => 'submit'
 
+  #search-bar-results
+    %table
+      %thead
+        %tr
+          %th Last Name
+          %th First Name
+      %tbody
+
 :javascript
   $(document).ready(function() {
     $('#search').keyup(function(event) {
       $('#search').siblings('input[type=submit]').click();
+    });
+    $('#search').focus(function(event) {
+      $('#search').siblings('input[type=submit]').click();
+      $('#search-bar-results').show();
+    });
+    $('#search').blur(function(event) {
+      window.setTimeout(function(event) {
+        $('#search-bar-results').hide();
+      }, 200);
     });
   });

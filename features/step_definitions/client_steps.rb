@@ -34,5 +34,5 @@ When /^I delete the (\d+)(?:st|nd|rd|th) client$/ do |pos|
 end
 
 Then /^I should see the following clients:$/ do |expected_clients_table|
-  expected_clients_table.diff!(tableish('table tr', 'td,th'))
+  expected_clients_table.diff!(tableish('table#clients tr', 'td,th'))
 end
