@@ -26,6 +26,15 @@ Feature: Manage patients
     And I am on the new patient page
     And I am an employee
     When I fill in "Name" with "Moose"
+    And I select "Male" from "Sex"
+    And I select "Canine" from "Species"
+    And I select "Yorkshire Terrier" from "Breed"
+    And I fill in "Weight" with "10"
+    And I select "2005" from "patient_birth_date_1i"
+    And I select "January" from "patient_birth_date_2i"
+    And I select "11" from "patient_birth_date_3i"
+    And I fill in "Color" with "Brown"
+    And I fill in "Microchip" with "111234"
     And I press "Create Patient"
     Then I should be on the edit patient page for "Moose"
     And I should see "Patient created successfully"
