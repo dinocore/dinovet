@@ -18,4 +18,11 @@ end
 
 Factory.define :patient do |p|
   p.sequence(:name)       { |n| "name#{n}"       }
+  p.sex                         "Female"
+  p.species                     "Canine"
+  p.breed                       "Poodle"
+  p.weight                      "100000"
+  p.birth_date                  3.years.ago
+  p.color                       "Green"
+  p.microchip                   "124223"
 end
