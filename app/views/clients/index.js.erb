@@ -1,3 +1,6 @@
-$('#search-bar-results table tbody').html('<%= 
-  escape_javascript render(@clients) 
+$('#search-bar-results ul').html('<%= 
+  escape_javascript render(:partial => 'client_item', :collection => @clients)
+%>');
+$('#search-results table tbody').html('<%= 
+  escape_javascript render(:partial => 'client_row', :collection => @clients)
 %>');

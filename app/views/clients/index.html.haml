@@ -1,10 +1,9 @@
-= render 'search_bar'
+= render 'search_bar', :show_result_box => false
 
 #search-results
   %table{:id => 'clients'}
     %thead
       %tr
-        %th Last Name
-        %th First Name
+        %th Name
     %tbody
-      = render @clients
+      = render :partial => 'client_row', :collection => @clients

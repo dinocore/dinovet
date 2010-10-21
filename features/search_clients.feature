@@ -16,9 +16,9 @@ Feature: Search clients
     And I press "Search"
     Then I should be on the clients page
     And I should see the following clients:
-      | Last Name |First Name|
-      | Caulfield |  Holden  |
-      | Caulfield |  Phoebe  |
+      |       Name         |
+      | Caulfield, Holden  |
+      | Caulfield, Phoebe  |
     And the "search" field should contain "Caulfield"
 
   Scenario: Search for first name
@@ -34,8 +34,8 @@ Feature: Search clients
     And I press "Search"
     Then I should be on the clients page
     And I should see the following clients:
-      | Last Name |First Name|
-      | Caulfield |  Holden  |
+      |       Name         |
+      | Caulfield, Holden  |
     And the "search" field should contain "Holden"
 
   Scenario: Search for address
@@ -51,8 +51,8 @@ Feature: Search clients
     And I press "Search"
     Then I should be on the clients page
     And I should see the following clients:
-      | Last Name |First Name|
-      | Smith     | Winston  |
+      |      Name      |
+      | Smith, Winston |
     And the "search" field should contain "3 First St"
 
   Scenario: Search for phone number
@@ -68,8 +68,8 @@ Feature: Search clients
     And I press "Search"
     Then I should be on the clients page
     And I should see the following clients:
-      | Last Name  |First Name|
-      | Protagonist| Hiro     |
+      |        Name       |
+      | Protagonist, Hiro |
     And the "search" field should contain "234-127-1483"
 
   Scenario: Search for e-mail address
@@ -85,7 +85,7 @@ Feature: Search clients
     And I press "Search"
     Then I should be on the clients page
     And I should see the following clients:
-      | Last Name  |First Name|
-      | Caulfield  | Phoebe   |
+      |       Name        |
+      | Caulfield, Phoebe |
     And the "search" field should contain "phoebe.caulfield@dinocore.net"
 
