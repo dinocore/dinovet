@@ -25,3 +25,54 @@ Feature: Manage diagnoses
     And I press "Create Diagnosis"
     Then I should be on the diagnoses page
     And I should see "Diagnosis created successfully"
+
+  Scenario Outline: Add a new diagnosis with invalid data
+    Given I am on the new diagnosis page
+    And I am an employee
+    When I fill in "Name" with "<name>"
+    And I fill in "Code" with "<code>"
+    And I fill in "Description" with "<description>"
+    And I press "Create Diagnosis"
+    Then I should be on the diagnoses page
+    And I should see "Failed to create diagnosis"
+
+  Examples:
+    | code |    name    |
+    |      |   Rabies   |
+    | 9999 |            |
+
+  Scenario Outline: Add a new diagnosis that is not unique
+    Given the following diagnoses:
+      | code |   name   |     description     |
+      | 1234 |  Rabies  |  A viral infection  |
+    And I am on the new diagnosis page
+    And I am an employee
+    When I fill in "Name" with "<name>"
+    And I fill in "Code" with "<code>"
+    And I fill in "Description" with "<description>"
+    And I press "Create Diagnosis"
+    Then I should be on the diagnoses page
+    And I should see "Failed to create diagnosis"
+
+  Examples:
+    | code |      name      |
+    | 1234 |     Rabies     |
+    | 1234 |   Not Rabies   |
+    | 9999 |     Rabies     |
+
+
+  Scenario: Edit an existing diagnosis
+    Given the following diagnoses:
+      | code |   name   |     description     |
+      | 1234 |  Rabies  |  A viral infection  |
+    And I am on the edit diagnosis page for "Rabies"
+    And I am an employee
+    When I fill in "Code" with "1394"
+    And I fill in "Name" with "Boneitis"
+    And I fill in "Description" with "A fictional degenerative bone disease"
+    And I press "Update Diagnosis"
+    Then I should be on the diagnoses page
+    And I should see "Diagnosis updated successfully"
+    And I should see the following diagnoses:
+      | Code |    Name    |              Description                |
+      | 1394 |  Boneitis  |  A fictional degenerative bone disease  |

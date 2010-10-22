@@ -18,6 +18,8 @@ module NavigationHelpers
       client_patients_path(@client)
     when /^the edit patient page$/
       edit_client_patient_path(@client, @patient)
+    when /^the edit diagnosis page for "(.*)"$/
+      edit_diagnosis_path(Diagnosis.first(:conditions => { :name => $1 }))
     when /^the edit patient page for "(.*)"$/
       edit_client_patient_path(@client, 
         Patient.first(:conditions => { :name => $1 }))
