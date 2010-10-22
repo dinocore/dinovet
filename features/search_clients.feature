@@ -59,7 +59,7 @@ Feature: Search clients
     Given I am on the clients page
     And I am an employee
     And the following clients:
-      |first_name| last_name |phone_number|
+      |first_name| last_name |phone_numbers.number|
       |  Holden  | Caulfield |555-555-5555| 
       |  Phoebe  | Caulfield |123-456-7890| 
       |  Winston |   Smith   |222-123-4323| 

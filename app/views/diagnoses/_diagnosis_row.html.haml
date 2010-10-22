@@ -1,0 +1,5 @@
+- diagnosis = diagnosis_row
+%tr
+  %td= link_to diagnosis.code, edit_diagnosis_path(diagnosis)
+  %td= link_to diagnosis.name, edit_diagnosis_path(diagnosis)
+  %td= link_to diagnosis.description, edit_diagnosis_path(diagnosis)

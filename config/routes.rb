@@ -1,5 +1,7 @@
 Dinovet::Application.routes.draw do
 
+  resources :diagnoses
+
   resources :clients do
     resources :patients
   end

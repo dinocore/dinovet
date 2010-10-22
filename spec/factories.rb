@@ -26,3 +26,9 @@ Factory.define :patient do |p|
   p.color                       "Green"
   p.microchip                   "124223"
 end
+
+Factory.define :diagnosis do |d|
+  d.sequence(:name)        { |n| "name#{n}"        }
+  d.sequence(:code)        { |n| "code#{n}"        }
+  d.sequence(:description) { |n| "description#{n}" }
+end

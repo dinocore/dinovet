@@ -1,0 +1,9 @@
+#search-results
+  %table{:class => 'diagnoses'}
+    %thead
+      %tr
+        %th Code
+        %th Name
+        %th Description
+    %tbody
+      = render :partial => 'diagnosis_row', :collection => @diagnoses
