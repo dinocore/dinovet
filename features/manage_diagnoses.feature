@@ -5,15 +5,12 @@ Feature: Manage diagnoses
 
   Scenario: View a list of all diagnosis
     Given the following diagnoses:
-      | code |   name   |     description     |
-      | 1234 |  Rabies  |  A viral infection  |
-      | 1235 | Boneitis | A fictional disease |
+      | code |   name   |     description     | categories.name   |
+      | 1234 |  Rabies  |  A viral infection  |     Viruses       |
+      | 1235 | Boneitis | A fictional disease |Fictional Diseases |
     And I am an employee
     When I go to the diagnoses page
-    Then I should see the following diagnoses:
-      | Code |  Name  |    Description    |
-      | 1234 | Rabies | A viral infection |
-      | 1235 | Boneitis | A fictional disease |
+    Then I should see a list of diagnoses
     
 
   Scenario: Add a new diagnosis
@@ -63,8 +60,8 @@ Feature: Manage diagnoses
 
   Scenario: Edit an existing diagnosis
     Given the following diagnoses:
-      | code |   name   |     description     |
-      | 1234 |  Rabies  |  A viral infection  |
+      | code |   name   |     description     | categories.name |
+      | 1234 |  Rabies  |  A viral infection  |    Fictional    |
     And I am on the edit diagnosis page for "Rabies"
     And I am an employee
     When I fill in "Code" with "1394"
@@ -73,6 +70,4 @@ Feature: Manage diagnoses
     And I press "Update Diagnosis"
     Then I should be on the diagnoses page
     And I should see "Diagnosis updated successfully"
-    And I should see the following diagnoses:
-      | Code |    Name    |              Description                |
-      | 1394 |  Boneitis  |  A fictional degenerative bone disease  |
+    And I should see "Boneitis"

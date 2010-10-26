@@ -4,7 +4,7 @@ Then /^I should see the (.*) form$/ do |name|
 end
 
 Given /^the following (.*):$/ do |type, objects|
-  type  = type.singularize.gsub(' ', '_').downcase
+  type  = type.gsub(' ', '_').downcase.singularize
   klass = type.classify.constantize
 
   objects.hashes.each do |object_hash|

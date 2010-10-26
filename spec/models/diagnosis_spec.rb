@@ -6,6 +6,12 @@ describe Diagnosis do
 
   it { should be_valid }
 
+  it { should reference_many(:categories).stored_as(:array) }
+  it "should alias diagnosis_categories to categories" do
+    Diagnosis.instance_method(:categories).should == 
+      Diagnosis.instance_method(:diagnosis_categories)
+  end
+
   it { should have_fields(:name, :code, :description) }
 
   it { should validate_presence_of(:name) }

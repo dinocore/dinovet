@@ -20,4 +20,5 @@ group :development, :test, :cucumber do
   gem 'autotest-rails'
   gem 'autotest'
   gem 'factory_girl_rails'
+  gem 'ruby-debug19', :require => 'ruby-debug'
 end

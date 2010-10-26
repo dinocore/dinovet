@@ -3,6 +3,7 @@ require 'spec_helper'
 describe DiagnosesController do
   before do
     Diagnosis.stub!(:all).and_return([mock_diagnosis])
+    DiagnosisCategory.stub!(:all).and_return([mock_diagnosis_category])
   end
 
 
@@ -19,10 +20,6 @@ describe DiagnosesController do
     end
 
     it { response.should render_template(:new) }
-  end
-
-  def mock_diagnosis(stubs={})
-    @mock_diagnosis ||= mock_model(Diagnosis, stubs)
   end
 
 
@@ -73,6 +70,10 @@ describe DiagnosesController do
 
     it "should assign a list of diagnosis to @diagnoses" do
       assigns[:diagnoses].should include mock_diagnosis
+    end
+
+    it "should assign a list of categories to @categories" do
+      assigns[:categories].should include mock_diagnosis_category
     end
 
     it { response.should render_template(:index) }
@@ -134,4 +135,13 @@ describe DiagnosesController do
 
   end
 
+end
+
+
+def mock_diagnosis(stubs={})
+  @mock_diagnosis ||= mock_model(Diagnosis, stubs)
+end
+
+def mock_diagnosis_category(stubs={})
+  @mock_diagnosis_category ||= mock_model(DiagnosisCategory, stubs)
 end

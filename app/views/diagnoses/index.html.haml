@@ -1,9 +1,8 @@
 #search-results
-  %table{:class => 'diagnoses'}
-    %thead
-      %tr
-        %th Code
-        %th Name
-        %th Description
-    %tbody
-      = render :partial => 'diagnosis_row', :collection => @diagnoses
+  %ul{:class => 'diagnoses'}
+    - @categories.each do |category|
+      %li
+        =h category.name
+        %ul
+          - category.diagnoses.each do |diagnoses|
+            %li=h diagnoses.name

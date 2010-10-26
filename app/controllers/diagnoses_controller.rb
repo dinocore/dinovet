@@ -15,6 +15,7 @@ class DiagnosesController < ApplicationController
 
   def index
     @diagnoses = Diagnosis.all
+    @categories = DiagnosisCategory.all
   end
 
   def edit

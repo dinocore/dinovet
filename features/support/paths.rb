@@ -25,6 +25,9 @@ module NavigationHelpers
         Patient.first(:conditions => { :name => $1 }))
     when /^the show patient page$/
       client_patient_path(@client, @patient)
+    when /^the edit diagnosis category page for "(.*)"$/
+      edit_diagnosis_category_path(DiagnosisCategory.first(
+        :conditions => { :name => $1 } ))
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

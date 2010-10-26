@@ -32,3 +32,13 @@ Factory.define :diagnosis do |d|
   d.sequence(:code)        { |n| "code#{n}"        }
   d.sequence(:description) { |n| "description#{n}" }
 end
+
+Factory.define :category do |c|
+  c.sequence(:name)        { |n| "name#{n}"        }
+  c.sequence(:description) { |n| "description#{n}" }
+end
+
+Factory.define :diagnosis_category do |c|
+  c.sequence(:name)        { |n| "name#{n}"        }
+  c.sequence(:description) { |n| "description#{n}" }
+end

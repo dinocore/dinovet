@@ -1,0 +1,13 @@
+= form_for diagnosis_category do |f|
+  %fieldset
+    %legend Diagnosis Category
+    %ol
+      %li
+        = f.label :name
+        = f.text_field :name, :autocomplete => :off
+      %li
+        = f.label :description
+        = f.text_field :description, :autocomplete => :off
+
+  %fieldset{:class => "submit"}
+    = f.submit
