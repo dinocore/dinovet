@@ -5,6 +5,38 @@ $tab-selected: #f8f8f8;
 $tab-border: darken($tab, 20%);
 $tab-background: gray;
 
+@mixin category-navigation {
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  width: 55em;
+  
+  li.category {
+    strong {
+      display: block;
+      padding: 0.5em 1em;
+      border: 1px solid gray;
+      background-color: $tab-selected;
+      background-color: lighten($tab-background, 40%);
+    }
+    ul {
+      list-style: none;
+      background-color: $tab-selected;
+      margin: 0;
+      padding: 0;
+
+      li {
+        padding: 0.3em 1.5em;
+      }
+    }
+  }
+}
+
+ul.diagnoses {
+  @include category-navigation
+}
+
 @mixin tab-navigation-header {
   h2 {
     float: left;

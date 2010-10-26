@@ -1,8 +1,8 @@
 #search-results
   %ul{:class => 'diagnoses'}
     - @categories.each do |category|
-      %li
-        =h category.name
+      %li{:class => 'category'}
+        %strong=h category.name
         %ul
           - category.diagnoses.each do |diagnoses|
             %li=h diagnoses.name
