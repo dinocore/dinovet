@@ -6,5 +6,6 @@ describe Patient do
 
   it { should be_referenced_in(:client) }
   it { should validate_presence_of(:client) }
+  it { should embed_many(:events) }
 
 end

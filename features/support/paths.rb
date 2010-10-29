@@ -28,6 +28,8 @@ module NavigationHelpers
     when /^the edit diagnosis category page for "(.*)"$/
       edit_diagnosis_category_path(DiagnosisCategory.first(
         :conditions => { :name => $1 } ))
+    when /^the patient events page$/
+      patient_events_path(@patient)
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

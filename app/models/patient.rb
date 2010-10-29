@@ -14,8 +14,9 @@ class Patient
   field :color
   field :microchip
 
-  validates_presence_of :name, :sex, :species, :breed
-
+  embeds_many :events
   referenced_in :client
+
   validates_presence_of :client
+  validates_presence_of :name, :sex, :species, :breed
 end
