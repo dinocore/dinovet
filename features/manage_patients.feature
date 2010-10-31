@@ -7,9 +7,8 @@ Feature: Manage patients
     Given I have added a client
     And I am editing the client
     And I am an employee
-    When I follow "New Patient"
+    When I follow "Create a new patient"
     Then I should be on the new patient page
-    And I should see the edit client form
     And I should see the new patient form
 
   Scenario: Go to an existing patient page
@@ -18,7 +17,6 @@ Feature: Manage patients
     And I am an employee
     When I select the patient from the patients list
     Then I should be on the edit patient page
-    And I should see the edit client form
     And I should see the edit patient form
 
   Scenario: Add a new patient
@@ -45,8 +43,7 @@ Feature: Manage patients
     And I am an employee
     When I fill in "Name" with "<name>"
     And I press "Create Patient"
-    Then I should be on the patients page
-    And I should see "Failed to create patient"
+    Then I should see "Failed to create patient"
 
   Examples:
     |    name    |
@@ -67,5 +64,4 @@ Feature: Manage patients
     And I am an employee
     When I fill in "Name" with ""
     And I press "Update Patient"
-    Then I should be on the show patient page
-    And I should see "Failed to update patient"
+    Then I should see "Failed to update patient"

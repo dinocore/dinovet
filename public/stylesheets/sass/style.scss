@@ -1,9 +1,10 @@
 $green: #b2c0ab;
 $green-border: darken($green, 20%);
-$tab: #234;
-$tab-selected: #f8f8f8;
-$tab-border: darken($tab, 20%);
+$inactive-tab: #234;
+$tab-border: darken($inactive-tab, 20%);
 $tab-background: gray;
+$view-background: #f8f8f8;
+
 
 @mixin category-navigation {
   display: block;
@@ -17,12 +18,12 @@ $tab-background: gray;
       display: block;
       padding: 0.5em 1em;
       border: 1px solid gray;
-      background-color: $tab-selected;
+      background-color: $view-background;
       background-color: lighten($tab-background, 40%);
     }
     ul {
       list-style: none;
-      background-color: $tab-selected;
+      background-color: $view-background;
       margin: 0;
       padding: 0;
 
@@ -37,24 +38,25 @@ ul.diagnoses {
   @include category-navigation
 }
 
-@mixin tab-navigation-header {
+@mixin panel-header {
+  height: 2.6em;
+  cursor: pointer;
+
   h2 {
     float: left;
     font-size: 2em;
     padding: 0;
     margin: 0 0.5em 0 0.5em;
+    background: url(../images/down.png) no-repeat 0 0.4em;
+    padding-left: 0.8em;
+    color: lighten($tab-background, 10%);
 
-    a {
-      background: url(../images/down.png) no-repeat 0 0.4em;
-      padding-left: 0.8em;
-      color: lighten($tab-background, 10%);
-
-    }
-  }
-
-  h2.closed {
-    a {
+    &.closed {
       background: url(../images/right.png) no-repeat 0 0.3em;
+    }
+
+    &::selection, &::-moz-selection, &::-webkit-selection {
+      background: transparent;
     }
   }
 
@@ -62,18 +64,18 @@ ul.diagnoses {
     float: left;
     padding: 0;
     margin: 0.45em 0 0 1em;
+    color: lighten($tab-background, 20%);
 
-    a {
-      color: lighten($tab-background, 20%);
+    &::selection, &::-moz-selection, &::-webkit-selection {
+      background: transparent;
     }
   }
 }
 
 @mixin tab-navigation {
-  @include tab-navigation-header;
   height: 2.6em;
   
-  ul.tabs {
+  ul {
     clear: right;
     margin: 0;
     padding: 0;
@@ -85,7 +87,7 @@ ul.diagnoses {
       display: block;
       float: right;
       margin: 0.85em 0.5em 0 0;
-      background-color: $tab;
+      background-color: $inactive-tab;
       border: 1px solid $tab-border;
       border-bottom: none;
 
@@ -95,11 +97,11 @@ ul.diagnoses {
         color: #bbb;
 
         &:hover {
-          background-color: lighten($tab, 10%);
+          background-color: lighten($inactive-tab, 10%);
         }
 
         &.selected {
-          background-color: $tab-selected;
+          background-color: $view-background;
           color: $green-border;
         }
       }
@@ -121,6 +123,37 @@ ul.diagnoses {
   background-color: #f8f8f8;
   padding: 0.3em;
 
+  fieldset.patients {
+    text-align: center;
+    
+    span.or {
+      margin: 1em 1em 0.2em 1em;
+      display: block;
+      color: $green-border;
+    }
+    ul {
+      list-style: none;
+      text-align: center;
+      padding: 0;
+      margin: 0.5em;
+
+      li {
+        margin: 0;
+        display: inline;
+
+        a {
+          margin: 0 0.3em;
+          padding: 0.5em 1em;
+          background-color: lighten($tab-background, 40%);
+          border: 1px solid $tab-background;
+
+          &:hover {
+            background-color: darken($view-background, 20%);
+          }
+        }
+      }
+    }
+  }
 
   fieldset {
     margin: 0 auto;
@@ -323,9 +356,17 @@ a {
   }
 }
 
-#client-navigation, #patient-navigation {
+.panel {
   clear: both;
-  @include tab-navigation;
+
+  .header {
+    @include panel-header;
+    @include tab-navigation;
+   }
+  .view {
+    clear: both;
+    @include form;
+  }
 }
 
 #patient-select {
@@ -374,12 +415,6 @@ a {
     display: block;
   }
 }
-
-#client-view, #patient-view {
-  clear: both;
-  @include form;
-}
-
 
 #search-results {
   background-color: #f8f8f8;

@@ -5,10 +5,10 @@ Dinovet::Application.routes.draw do
   resources :diagnoses
 
   resources :clients do
-    resources :patients
+    resources :patients, :only => [:new, :create]
   end
 
-  resources :patients, :only => [] do
+  resources :patients, :only => [:edit, :update] do
     resources :events
   end
 

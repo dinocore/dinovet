@@ -62,8 +62,8 @@ describe PatientsController do
         flash[:notice].should == "Patient created successfully"
       end
 
-      it { response.should redirect_to edit_client_patient_path(
-                                                    mock_client, mock_patient) }
+      it { response.should redirect_to edit_patient_path(mock_patient) }
+                                                    
     end
 
     describe "with invalid attributes" do
@@ -82,41 +82,11 @@ describe PatientsController do
 
 
 
-  describe "GET 'index'" do
-    before { get :index, :client_id => mock_client.id }
-
-    it { response.should be_success }
-
-    it "should set @client" do
-      assigns[:client].should equal(mock_client)
-    end
-  
-    it "should set @phone_numbers" do
-      assigns[:phone_numbers].should include mock_phone_number
-    end
-
-    it "should assign a list of patients to @patients" do
-      assigns[:patients].should include mock_patient
-    end
-
-    it { response.should render_template(:index) }
-  end
-
-
-
 
   describe "GET 'edit'" do
-    before { get :edit, :client_id => mock_client.id, :id => mock_patient.id }
+    before { get :edit, :id => mock_patient.id }
 
     it { response.should be_success }
-
-    it "should set @client" do
-      assigns[:client].should equal(mock_client)
-    end
-
-    it "should set @phone_numbers" do
-      assigns[:phone_numbers].should include mock_phone_number
-    end
 
     it "should set @patient" do
       assigns[:patient].should equal(mock_patient)
@@ -127,41 +97,28 @@ describe PatientsController do
 
   describe "PUT 'update'" do
     before do
-      request.env["HTTP_REFERER"] = 
-          edit_client_patient_path(mock_client, mock_patient)
+      request.env["HTTP_REFERER"] = edit_patient_path(mock_patient)
     end
                   
     describe "always" do
       before do
         mock_patient.should_receive(:update_attributes)
-        put :update, :client_id => mock_client.id,
-                     :id => mock_patient.id,
-                     :patient => mock_patient
-      end
-
-      it "should set @client" do
-        assigns[:client].should equal(mock_client)
-      end
-
-      it "should set @phone_numbers" do
-        assigns[:phone_numbers].should include mock_phone_number
+        put :update, :id => mock_patient.id, :patient => mock_patient
       end
     end
 
     describe "with valid attributes" do
       before do
         mock_patient.stub!(:update_attributes).and_return(true)
-        put :update, :client_id => mock_client.id,
-                     :id => mock_patient.id,
-                     :patient => mock_patient
+        put :update, :id => mock_patient.id, :patient => mock_patient
       end
 
       it "should set a success message" do
         flash[:notice].should == "Patient updated successfully"
       end
 
-      it { response.should redirect_to(edit_client_patient_path(mock_client,
-                                                                mock_patient)) }
+      it { response.should redirect_to(edit_patient_path(mock_patient)) }
+                                                                
 
       it "should set @patient" do
         assigns[:patient].should equal(mock_patient)
@@ -171,9 +128,7 @@ describe PatientsController do
     describe "with invalid attributes" do
       before do
         mock_patient.should_receive(:update_attributes).and_return(false)
-        put :update, :client_id => mock_client.id,
-                     :id => mock_patient.id,
-                     :patient => mock_patient
+        put :update, :id => mock_patient.id, :patient => mock_patient
       end
 
       it "should set an error message" do
@@ -183,29 +138,6 @@ describe PatientsController do
       it { response.should render_template('edit') }
     end
   end
-
-
-
-  describe "GET 'show'" do
-    before do
-      get :show, :client_id => mock_client.id, :id => mock_patient.id
-    end
-
-    it { response.should be_success }
-
-    it "should set @client" do
-      assigns[:client].should equal(mock_client)
-    end
-  
-    it "should set @phone_numbers" do
-      assigns[:phone_numbers].should include mock_phone_number
-    end
-
-    it "should set @patient" do
-      assigns[:patient].should equal(mock_patient)
-    end
-  end
-
 
 
 end

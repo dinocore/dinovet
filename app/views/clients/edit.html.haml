@@ -1,6 +1,3 @@
-= render 'navigation', :client => @client
-
-#client-view
+= render 'search_bar'
+= client_panel(@client) do
   = render "form", :client => @client, :phone_numbers => @phone_numbers
-
-= render 'patients/navigation', :client => @client, :patient => @patient

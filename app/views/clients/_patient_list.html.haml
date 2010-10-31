@@ -1,0 +1,6 @@
+%fieldset{:class => 'patients'}
+  %legend Patients
+  - unless client.patients.empty?
+    = patient_select_list(client)
+    %span{:class => 'or'} &mdash; or &mdash;
+  %a{:href => new_client_patient_path(client)} Create a new patient

@@ -6,4 +6,7 @@
 
   %ul{:class => 'tabs'}
     %li
-      %a{:href => '#'} Details
+      %a{:href => edit_client_patient_path(client, patient), :class => 'selected'}
+        Details
+    %li
+      %a{:href => patient_events_path(patient)} History

@@ -1,0 +1,20 @@
+- id       ||= nil
+- title    ||= nil
+- subtitle ||= nil
+- links    ||= nil
+
+.panel{:id => id}
+  .header
+    - unless title.nil?
+      %h2=h title
+    - unless subtitle.nil?
+      %h3=h subtitle
+    - unless links.nil?
+      .tab-navigation
+        %ul
+          - links.each do |name, url|
+            %li
+              = link_to h(name), url
+
+  .view
+    = yield
