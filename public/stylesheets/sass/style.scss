@@ -1,6 +1,7 @@
 $green: #b2c0ab;
 $green-border: darken($green, 20%);
 $inactive-tab: #234;
+$inactive-tab-text: #bbb;
 $tab-border: darken($inactive-tab, 20%);
 $tab-background: gray;
 $view-background: #f8f8f8;
@@ -19,7 +20,7 @@ $view-background: #f8f8f8;
       padding: 0.5em 1em;
       border: 1px solid gray;
       background-color: $view-background;
-      background-color: lighten($tab-background, 40%);
+     background-color: lighten($tab-background, 40%);
     }
     ul {
       list-style: none;
@@ -91,19 +92,22 @@ ul.diagnoses {
       border: 1px solid $tab-border;
       border-bottom: none;
 
+      &.selected {
+        a, a:hover {
+          background-color: $view-background;
+          color: $green-border;
+        }
+      }
+
       a {
         display: block;
         padding: 0.25em 1em;
-        color: #bbb;
+        color: $inactive-tab-text;
 
         &:hover {
           background-color: lighten($inactive-tab, 10%);
         }
 
-        &.selected {
-          background-color: $view-background;
-          color: $green-border;
-        }
       }
 
       &:after {
@@ -439,6 +443,42 @@ a {
     }
   }
 
+}
+
+table.events {
+  width: 55em;
+  margin: 0 auto;
+  border: 1px solid $tab-background;
+  border-collapse: collapse;
+
+  thead {
+    background-color: $inactive-tab;
+    color: gray;
+    th {
+      padding: 0.2em 1em;
+      text-align: left;
+      border-bottom: 1px solid gray;
+      color: $inactive-tab-text;
+    }
+  }
+
+  tbody {
+    tr {
+      &.even {
+        background-color: darken($view-background, 10%);
+      }
+      &.odd {
+        background-color: $view-background;
+      }
+      td {
+        padding: 0.2em 1em;
+
+        &.date {
+          width: 7em;
+        }
+      }
+    }
+  }
 }
 
 #flash-error {

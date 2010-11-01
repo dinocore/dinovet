@@ -1,4 +1,4 @@
-%tr
-  %td=l event_row.created_at, :format => :abbreviated
+%tr{:class => cycle('odd', 'even')}
+  %td{:class => 'date'}=l event_row.created_at, :format => :abbreviated
   %td= event_row._type
   %td= event_row.name

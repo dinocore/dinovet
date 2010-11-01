@@ -4,4 +4,4 @@
 en:
   time:
     formats:
-      abbreviated: "%b %d, %Y %I:%M%p
+      abbreviated: "%b %d, %Y"

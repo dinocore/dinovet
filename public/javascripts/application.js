@@ -21,6 +21,6 @@ $(document).ready(function() {
   });
 
   $('.tab-navigation ul li a').click(function(event) {
-    return false;
+    event.stopPropagation()
   });
 });
