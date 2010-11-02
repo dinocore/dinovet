@@ -8,3 +8,9 @@
 #   inflect.irregular 'person', 'people'
 #   inflect.uncountable %w( fish sheep )
 # end
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.singular('diagnosis', 'diagnosis')
+  inflect.singular('diagnosis_categories', 'diagnosis_category')
+  inflect.singular('diagnosis_events', 'diagnosis_event')
+  inflect.singular('patient_diagnosis_events', 'patient_diagnosis_event')
+end

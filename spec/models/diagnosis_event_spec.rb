@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe DiagnosisEvent do
   it { should be_a_kind_of(Event)  }
-  it { should have_fields(:name, :code, :description) }
+  it { should have_fields(:name, :code, :description, :comment) }
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:code) }
 

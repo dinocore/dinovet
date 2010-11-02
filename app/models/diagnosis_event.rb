@@ -1,6 +1,5 @@
 class DiagnosisEvent < Event
-  field :name
-  field :code
-  field :description
+  include Mongoid::DiagnosisFields
+  field :comment
   validates_presence_of :name, :code
 end

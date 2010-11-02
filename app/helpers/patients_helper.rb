@@ -2,7 +2,8 @@ module PatientsHelper
   def patient_panel(patient, &block)
     links = { 
       :Details => edit_patient_path(patient),
-      :History => patient_events_path(patient)
+      :History => patient_events_path(patient),
+      :Diagnose => new_patient_diagnosis_event_path(patient)
     } unless patient.new_record?
 
     render :layout => 'layouts/panel',

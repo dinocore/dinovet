@@ -13,7 +13,7 @@
       .tab-navigation
         %ul
           - links.each do |name, url|
-            %li{:class => request.request_uri == url ? "selected" : ""}
+            %li{:class => current_page?(url) ? "selected" : ""}
               = link_to h(name), url
 
   .view

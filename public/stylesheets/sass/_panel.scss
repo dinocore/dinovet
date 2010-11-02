@@ -1,0 +1,96 @@
+@mixin panel-header {
+  height: 2.6em;
+  cursor: pointer;
+
+  h2 {
+    float: left;
+    font-size: 2em;
+    padding: 0;
+    margin: 0 0.5em 0 0.5em;
+    background: url(../images/down.png) no-repeat 0 0.4em;
+    padding-left: 0.8em;
+    color: lighten($tab-background, 10%);
+
+    &.closed {
+      background: url(../images/right.png) no-repeat 0 0.3em;
+    }
+
+    &::selection, &::-moz-selection, &::-webkit-selection {
+      background: transparent;
+    }
+  }
+
+  h3 {
+    float: left;
+    padding: 0;
+    margin: 0.45em 0 0 1em;
+    color: lighten($tab-background, 20%);
+
+    &::selection, &::-moz-selection, &::-webkit-selection {
+      background: transparent;
+    }
+  }
+}
+
+@mixin tab-navigation {
+  height: 2.6em;
+  
+  ul {
+    clear: right;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background: $tab-background;
+    height: 2.6em;
+
+    li {
+      display: block;
+      float: right;
+      margin: 0.85em 0.5em 0 0;
+      background-color: $inactive-tab;
+      border: 1px solid $tab-border;
+      border-bottom: none;
+
+      &.selected {
+        a, a:hover {
+          background-color: $view-background;
+          color: darken($header-background, 20%);
+        }
+      }
+
+      a {
+        display: block;
+        padding: 0.25em 1em;
+        color: $inactive-tab-text;
+
+        &:hover {
+          background-color: lighten($inactive-tab, 10%);
+        }
+
+      }
+
+      &:after {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+        content: " ";
+        clear: both;
+        height: 0;
+      }
+    }
+  }
+}
+
+.panel {
+  clear: both;
+
+  .header {
+    @include panel-header;
+    @include tab-navigation;
+   }
+  .view {
+    clear: both;
+    @include standard-form;
+  }
+}
+

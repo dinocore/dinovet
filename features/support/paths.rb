@@ -28,6 +28,8 @@ module NavigationHelpers
         :conditions => { :name => $1 } ))
     when /^the patient events page$/
       patient_events_path(@patient)
+    when /^the new diagnosis event page$/
+      new_patient_diagnosis_event_path(@patient)
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

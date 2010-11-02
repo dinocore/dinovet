@@ -1,10 +1,15 @@
-$green: #b2c0ab;
-$green-border: darken($green, 20%);
+$header-background: #b2c0ab;
 $inactive-tab: #234;
 $inactive-tab-text: #bbb;
 $tab-border: darken($inactive-tab, 20%);
 $tab-background: gray;
 $view-background: #f8f8f8;
+
+
+@import "forms";
+@import "panel";
+@import "tables";
+@import "search";
 
 
 @mixin category-navigation {
@@ -39,222 +44,6 @@ ul.diagnoses {
   @include category-navigation
 }
 
-@mixin panel-header {
-  height: 2.6em;
-  cursor: pointer;
-
-  h2 {
-    float: left;
-    font-size: 2em;
-    padding: 0;
-    margin: 0 0.5em 0 0.5em;
-    background: url(../images/down.png) no-repeat 0 0.4em;
-    padding-left: 0.8em;
-    color: lighten($tab-background, 10%);
-
-    &.closed {
-      background: url(../images/right.png) no-repeat 0 0.3em;
-    }
-
-    &::selection, &::-moz-selection, &::-webkit-selection {
-      background: transparent;
-    }
-  }
-
-  h3 {
-    float: left;
-    padding: 0;
-    margin: 0.45em 0 0 1em;
-    color: lighten($tab-background, 20%);
-
-    &::selection, &::-moz-selection, &::-webkit-selection {
-      background: transparent;
-    }
-  }
-}
-
-@mixin tab-navigation {
-  height: 2.6em;
-  
-  ul {
-    clear: right;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    background: $tab-background;
-    height: 2.6em;
-
-    li {
-      display: block;
-      float: right;
-      margin: 0.85em 0.5em 0 0;
-      background-color: $inactive-tab;
-      border: 1px solid $tab-border;
-      border-bottom: none;
-
-      &.selected {
-        a, a:hover {
-          background-color: $view-background;
-          color: $green-border;
-        }
-      }
-
-      a {
-        display: block;
-        padding: 0.25em 1em;
-        color: $inactive-tab-text;
-
-        &:hover {
-          background-color: lighten($inactive-tab, 10%);
-        }
-
-      }
-
-      &:after {
-        visibility: hidden;
-        display: block;
-        font-size: 0;
-        content: " ";
-        clear: both;
-        height: 0;
-      }
-    }
-  }
-}
-
-
-@mixin form {
-  background-color: #f8f8f8;
-  padding: 0.3em;
-
-  fieldset.patients {
-    text-align: center;
-    
-    span.or {
-      margin: 1em 1em 0.2em 1em;
-      display: block;
-      color: $green-border;
-    }
-    ul {
-      list-style: none;
-      text-align: center;
-      padding: 0;
-      margin: 0.5em;
-
-      li {
-        margin: 0;
-        display: inline;
-
-        a {
-          margin: 0 0.3em;
-          padding: 0.5em 1em;
-          background-color: lighten($tab-background, 40%);
-          border: 1px solid $tab-background;
-
-          &:hover {
-            background-color: darken($view-background, 20%);
-          }
-        }
-      }
-    }
-  }
-
-  fieldset {
-    margin: 0 auto;
-    padding: 0.5em 0;
-    border: 1px solid $tab-background;
-    width: 55em;
-
-    legend {
-      margin-left: 0.2em;
-      font-size: 0.7em;
-      font-weight: bold;
-      color: $green-border;
-     }
-
-    &.submit {
-      border: none;
-      margin-top: 0.2em;
-      padding: 0;
-
-      input {
-        border: 1px solid $tab-background;
-        padding: 0.2em;
-        margin: 0.2em 0;
-        float: right;
-        color: $green-border;
-        font-weight: bold;
-
-        &:hover {
-          background-color: lighten($tab-background, 30%);
-          color: darken($green-border, 30%);
-        }
-      }
-    }
-
-    li.phone-number {
-      padding: 0;
-      border: none;
-
-      select {
-        margin: 0 0.25em 0 0.8em;
-        width: 8em;
-      }
-
-      input {
-        margin: 0 0.3em 0 0;
-        width: 18em;
-      }
-    }
-
-    ol {
-      padding: 0;
-      margin: 0;
-      list-style: none;
-  
-      li {
-        margin: 0.1em 0;
-        text-align: left;
-        float: left;
-  
-        label {
-          font-size: 0.8em;
-          float: left;
-          width: 10em;
-          margin-right: 0.8em;
-          text-align: right;
-          line-height: 2em;
-        }
-  
-        select {
-          border: none;
-          border: 1px solid $tab-background;
-          padding: 0.2em;
-          width: 20em;
-          background-color: lighten($tab-background, 40%);
-        }
-
-        div.field_with_errors {
-          display: inline;
-
-          input {
-            background-color: mix(lighten($tab-background, 40%), #E4D2D3);
-          }
-        }
-  
-        input {
-          padding: 0.2em;
-          border: none;
-          width: 18em;
-          background-color: lighten($tab-background, 40%);
-          border: 1px solid $tab-background;
-        }
-      }
-    }
-  }
-}
-
-
 body {
   margin: 0;
   padding: 0;
@@ -265,12 +54,12 @@ body {
 
 a {
   text-decoration: none;
-  color: darken($green-border, 20%);
+  color: darken($header-background, 40%);
 }
 
 #header {
-  background-color: $green;
-  border-bottom: 2px solid $green-border;
+  background-color: $header-background;
+  border-bottom: 2px solid darken($header-background, 20%);
   height: 3em;
 
   ul {
@@ -285,197 +74,6 @@ a {
 
       a {
         font-size: 1.2em;
-      }
-    }
-  }
-}
-
-#client-search-bar {
-  background: $green-border;
-  position: relative;
-  border-top: 2px solid gray;
-  border-bottom: 2px solid gray;
-  width: 100%;
-
-  #search-bar-results {
-    background-color: lighten($tab-background, 40%);
-    display: none;
-    position: absolute;
-    width: 85%;
-    border-bottom: 2px solid gray;
-    border-left: 2px solid gray;
-    border-right: 2px solid gray;
-    margin-left: 2em;
-    margin-right: 5em;
-  }
-
-  fieldset {
-    border: none;
-    margin: 0;
-    padding: 0.2em 0;
-    display: block;
-    background-color: lighten($tab-background, 40%);
-
-    input {
-      width: 85%;
-      display: block;
-      border: none;
-      padding-left: 1.2em;
-      float: left;
-      background: url(../images/search.png) no-repeat 0.3em 0.3em 
-        lighten($tab-background, 40%);
-      font-size: 1.5em;
-    }
-
-    input.submit {
-      font-size: 1.3em;
-      width: 5%;
-      color: $green-border;
-      background-image: none;
-      background-color: lighten($tab-background, 40%);
-      border: 1px solid lighten($tab-background, 40%);
-      border-left: 1px solid lighten($tab-background, 20%);
-      display: block;
-      float: right;
-      margin: 0;
-      width: auto;
-      padding: 0 0.5em;
-
-      &.first {
-        border-right: 1px solid lighten($tab-background, 20%);
-        margin-right: 0.5em;
-      }
-    }
-  }
-
-  h2 {
-    margin-left: 0.1em;
-  }
-
-  h3 {
-    color: $green;
-    margin: 0.5em 2em 0 0;
-    float: right;
-    font-size: 1em;
-  }
-}
-
-.panel {
-  clear: both;
-
-  .header {
-    @include panel-header;
-    @include tab-navigation;
-   }
-  .view {
-    clear: both;
-    @include form;
-  }
-}
-
-#patient-select {
-  border: 1px solid transparent;
-  float: left;
-  width: 20em;
-  margin: 0.4em 0 0 0;
-
-  h3 {
-    background: url(../images/down.png) right center no-repeat;
-    color: lighten($tab-background, 20%);
-    padding: 0 1.4em 0 0;
-    margin: 0.1em 0 0 1em;
-  }
-
-  ul {
-    display: none;
-    background-color: #234;
-    background-color: #f8f8f8;
-    margin: 0;
-    padding: 0 0 0.5em 0;
-    position: inherit;
-
-    li {
-      list-style: none;
-      padding: 0.5em 1em 0 1em;
-    }
-  }
-}
-
-#patient-select:hover {
-  border: 1px solid lighten($tab-background, 10%);
-  background: url(../images/down.png) 18.5em 0.3em no-repeat;
-  position: relative;
-
-  h3 {
-    background: none;
-  }
-  ul {
-  border: 1px solid lighten($tab-background, 10%);
-    position: absolute;
-    top: 1.5em;
-    width: 20em;
-    left: -0.05em;
-    float: left;
-    display: block;
-  }
-}
-
-#search-results {
-  background-color: #f8f8f8;
-
-  table {
-    width: 25em;
-    margin: 0 auto;
-
-    thead {
-      text-align: left;
-      font-size: 1.2em;
-
-      th {
-        border-bottom: 2px solid $green-border;
-      }
-    }
-
-    tbody {
-      td {
-        padding: 0.1em 1em;
-      }
-    }
-  }
-
-}
-
-table.events {
-  width: 55em;
-  margin: 0 auto;
-  border: 1px solid $tab-background;
-  border-collapse: collapse;
-
-  thead {
-    background-color: $inactive-tab;
-    color: gray;
-    th {
-      padding: 0.2em 1em;
-      text-align: left;
-      border-bottom: 1px solid gray;
-      color: $inactive-tab-text;
-    }
-  }
-
-  tbody {
-    tr {
-      &.even {
-        background-color: darken($view-background, 10%);
-      }
-      &.odd {
-        background-color: $view-background;
-      }
-      td {
-        padding: 0.2em 1em;
-
-        &.date {
-          width: 7em;
-        }
       }
     }
   }
@@ -497,8 +95,8 @@ table.events {
   color: gray;
   margin: 0;
   padding: 1em;
-  border: 2px solid $green;
-  background-color: mix(lighten($tab-background, 40%), $green);
+  border: 2px solid $header-background;
+  background-color: mix(lighten($tab-background, 40%), $header-background);
   text-align: center;
   position: fixed;
   width: 100%;

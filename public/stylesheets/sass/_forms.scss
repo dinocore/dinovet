@@ -1,0 +1,159 @@
+$field-border:      $tab-background;
+
+@mixin standard-form {
+  background-color: $view-background;
+  padding: 0.3em;
+
+  fieldset {
+    margin: 0 auto;
+    padding: 0.5em 0;
+    border: 1px solid $field-border;
+    width: 55em;
+
+    legend {
+      margin-left: 0.2em;
+      font-size: 0.7em;
+      font-weight: bold;
+      color: darken($header-background, 20%);
+     }
+
+    &.submit {
+      border: none;
+      margin-top: 0.2em;
+      padding: 0;
+
+      input {
+        border: 1px solid $field-border;
+        padding: 0.2em;
+        margin: 0.2em 0;
+        float: right;
+      color: darken($header-background, 20%);
+        font-weight: bold;
+
+        &:hover {
+          background-color: lighten($tab-background, 30%);
+          color: darken($header-background, 50%);
+        }
+      }
+    }
+
+    ol {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+  
+      li {
+        margin: 0.1em 0;
+        text-align: left;
+        float: left;
+  
+        label {
+          font-size: 0.8em;
+          float: left;
+          width: 10em;
+          margin-right: 0.8em;
+          text-align: right;
+          line-height: 2em;
+        }
+  
+        select {
+          border: none;
+          border: 1px solid $field-border;
+          padding: 0.2em;
+          width: 20em;
+          background-color: lighten($field-border, 40%);
+        }
+
+        div.field_with_errors {
+          display: inline;
+
+          input {
+            background-color: mix(lighten($field-border, 40%), #E4D2D3);
+          }
+        }
+  
+        input {
+          padding: 0.2em;
+          border: none;
+          width: 18em;
+          border: 1px solid $field-border;
+          background-color: lighten($field-border, 40%);
+        }
+      }
+    }
+  }
+}
+
+form.new_diagnosis_event {
+  fieldset {
+    ol {
+      li {
+        select {
+          min-width: 35em;
+          margin: 1em;
+          float: left;
+        }
+        label {
+          text-align: left !important;
+        }
+        textarea {
+          width: 30.5em;
+          height: 27.5em;
+          display: block;
+          float: left;
+        }
+      }
+    }
+  }
+}
+
+form.new_client, form.edit_client {
+  li.phone-number {
+    padding: 0;
+    border: none;
+
+    select {
+      margin: 0 0.25em 0 0.8em;
+      width: 8em;
+    }
+
+    input {
+      margin: 0 0.3em 0 0;
+      width: 18em;
+    }
+  }
+}
+
+form.edit_client {
+  fieldset.patients {
+    text-align: center;
+    
+    span.or {
+      margin: 1em 1em 0.2em 1em;
+      display: block;
+      color: darken($header-background, 20%);
+    }
+    ul {
+      list-style: none;
+      text-align: center;
+      padding: 0;
+      margin: 0.5em;
+
+      li {
+        margin: 0;
+        display: inline;
+
+        a {
+          margin: 0 0.3em;
+          padding: 0.5em 1em;
+          border: 1px solid $field-border;
+          background-color: lighten($field-border, 40%);
+
+          &:hover {
+            background-color: darken($view-background, 20%);
+          }
+        }
+      }
+    }
+  }
+}

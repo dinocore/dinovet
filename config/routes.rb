@@ -9,7 +9,8 @@ Dinovet::Application.routes.draw do
   end
 
   resources :patients, :only => [:edit, :update] do
-    resources :events
+    resources :events, :only => [:index]
+    resources :diagnosis_events, :only => [:new, :create]
   end
 
   # The priority is based upon order of creation:

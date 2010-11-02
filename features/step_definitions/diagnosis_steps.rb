@@ -1,6 +1,8 @@
 Given /^I have created a diagnosis$/ do
-  @diagnosis = Factory.create(:diagnosis)
-  @categories = DiagnosisCategories.all
+  @diagnosis = Factory.create(:diagnosis, :name => 'Rabies')
+  @category = Factory.create(:diagnosis_category)
+  @category.diagnoses << @diagnosis
+  @diagnosis.save!
 end
 
 Then /^I should see a list of diagnoses$/ do
