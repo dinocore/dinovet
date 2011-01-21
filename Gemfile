@@ -1,15 +1,15 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0'
+gem 'rails', '3.0.3'
 gem 'rails3-generators'
-gem 'mongoid', :git => 'http://github.com/mongoid/mongoid.git'
+gem 'mongoid', '>= 2.0.0rc6'
 gem 'bson_ext'
 gem 'haml', '>= 3.0.18'
 gem 'devise'
 
 group :development, :test, :cucumber do
   gem 'rspec-rails', '>= 2.0.0.beta.10'
-  gem 'mongoid-rspec'
+  gem 'mongoid-rspec', :git => 'https://github.com/durran/mongoid-rspec.git'
   gem 'escape_utils'
   gem 'capybara'
   gem 'database_cleaner'
@@ -21,4 +21,5 @@ group :development, :test, :cucumber do
   gem 'autotest'
   gem 'factory_girl_rails'
   gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'vagrant', '>= 0.7.0'
 end

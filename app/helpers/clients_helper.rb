@@ -23,7 +23,7 @@ module ClientsHelper
     end
 
     content_tag :ul do
-      patients.join
+      patients.join.html_safe
     end
   end
 end

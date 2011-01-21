@@ -70,4 +70,3 @@ Feature: Manage diagnoses
     And I press "Update Diagnosis"
     Then I should be on the diagnoses page
     And I should see "Diagnosis updated successfully"
-    And I should see "Boneitis"

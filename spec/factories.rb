@@ -7,8 +7,7 @@ Factory.define :client do |c|
   c.sequence(:zipcode)    { |n| "zipcode_#{n}"             }
   c.sequence(:email)      { |n| "email_#{n}@dinocore.net"  }
   c.state                       "New York"
-  c.phone_numbers         { [Factory.build(:phone_number)] }
-  c.patients              { [Factory.build(:patient)]      }
+  c.phone_numbers         { [Factory.create(:phone_number)] }
 end
 
 Factory.define :phone_number do |p|

@@ -5,7 +5,7 @@ describe DiagnosisCategory do
   subject { diagnosis_category }
   it_should_behave_like "all categories"
 
-  it { should reference_many(:diagnoses).stored_as(:array) }
+  it { should have_and_belong_to_many(:diagnoses) }
           
 end
 

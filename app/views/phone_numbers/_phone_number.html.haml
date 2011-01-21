@@ -3,5 +3,5 @@
     :index => phone_number_counter  do |f|
 
     = f.select :type, PhoneNumber::Types
-    = f.hidden_field :id
+    = f.hidden_field :id unless phone_number.new?
     = f.text_field :number, :autocomplete => :off

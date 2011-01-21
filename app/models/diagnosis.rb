@@ -18,9 +18,8 @@ class Diagnosis
   include Mongoid::Timestamps
   include Mongoid::DiagnosisFields
 
-  references_many :categories, 
-                  :class_name => 'DiagnosisCategory',
-                  :stored_as  => :array, 
-                  :inverse_of => :diagnoses
+  references_and_referenced_in_many :categories,
+                                    :class_name => 'DiagnosisCategory',
+                                    :inverse_of => :diagnoses
   alias :diagnosis_categories :categories
 end

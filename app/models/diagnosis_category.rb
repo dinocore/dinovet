@@ -1,3 +1,3 @@
 class DiagnosisCategory < Category
-  references_many :diagnoses, :stored_as  => :array, :inverse_of => :categories
+  references_and_referenced_in_many :diagnoses, :inverse_of => :categories
 end

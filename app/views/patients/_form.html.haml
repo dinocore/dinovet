@@ -20,7 +20,7 @@
         = f.text_field :weight, :autocomplete => :off
       %li
         = f.label :birth_date
-        = f.date_select :birth_date
+        = f.date_select :birth_date, :start_year => 1900, :end_year => Time.now.year
       %li
         = f.label :color
         = f.text_field :color, :autocomplete => :off
