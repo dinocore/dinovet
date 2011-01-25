@@ -60,7 +60,7 @@ $field-border:      $tab-background;
           border: none;
           border: 1px solid $field-border;
           padding: 0.2em;
-          width: 20em;
+          width: 18.5em;
           background-color: lighten($field-border, 40%);
         }
 
@@ -82,75 +82,90 @@ $field-border:      $tab-background;
       }
     }
   }
-}
 
-form.new_diagnosis_event {
-  fieldset {
-    ol {
-      li {
-        select {
-          min-width: 35em;
-          margin: 1em;
-          float: left;
-        }
-        label {
-          text-align: left !important;
-        }
-        textarea {
-          width: 30.5em;
-          height: 27.5em;
-          display: block;
-          float: left;
+  form.new_diagnosis_event {
+    fieldset {
+      ol {
+        li {
+          select {
+            min-width: 35em;
+            margin: 1em;
+            float: left;
+          }
+  
+          label {
+            text-align: left !important;
+          }
+  
+          textarea {
+            width: 30.5em;
+            height: 27.5em;
+            display: block;
+            float: left;
+          }
         }
       }
     }
   }
-}
-
-form.new_client, form.edit_client {
-  li.phone-number {
-    padding: 0;
-    border: none;
-
-    select {
-      margin: 0 0.25em 0 0.8em;
-      width: 8em;
+  
+  form.new_client, form.edit_client, form.new_employee, form.edit_employee {
+    fieldset.phone {
+      ol {
+        li.phone-number {
+          text-align: right;
+          select {
+            margin: 0 0.3em 0 0.8em;
+            width: 8em !important;
+          }
+          input {
+            margin: 0 0 0 0;
+            width: 18em;
+          }
+        }
+      }
+      a.delete {
+          position: relative;
+          float: right;
+          width: 0px;
+          height: 0px;
+          right: 1.2em;
+          top: 0.3em;
+      }
+      a.add {
+        height: 14px;
+        width: 14px;
+        position: relative;
+        top: 0.3em;
+        left: 0.3em;
+      }
     }
-
-    input {
-      margin: 0 0.3em 0 0;
-      width: 18em;
-    }
-  }
-}
-
-form.edit_client {
-  fieldset.patients {
-    text-align: center;
-    
-    span.or {
-      margin: 1em 1em 0.2em 1em;
-      display: block;
-      color: darken($header-background, 20%);
-    }
-    ul {
-      list-style: none;
+    fieldset.patients {
       text-align: center;
-      padding: 0;
-      margin: 0.5em;
-
-      li {
-        margin: 0;
-        display: inline;
-
-        a {
-          margin: 0 0.3em;
-          padding: 0.5em 1em;
-          border: 1px solid $field-border;
-          background-color: lighten($field-border, 40%);
-
-          &:hover {
-            background-color: darken($view-background, 20%);
+      
+      span.or {
+        margin: 1em 1em 0.2em 1em;
+        display: block;
+        color: darken($header-background, 20%);
+      }
+      ul {
+        list-style: none;
+        text-align: center;
+        padding: 0;
+        margin: 0.5em;
+  
+        li {
+          margin: 0;
+          display: inline;
+  
+          a {
+            margin: 0 0.3em;
+            padding: 0.5em 1em;
+            border: 1px solid $field-border;
+            background-color: lighten($field-border, 40%);
+  
+            &:hover {
+              background-color: darken($view-background, 20%);
+            }
           }
         }
       }

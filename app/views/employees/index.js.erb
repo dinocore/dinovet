@@ -1,0 +1,6 @@
+$('#search-bar-results ul').html('<%= 
+  escape_javascript render(:partial => 'employee_item', :collection => @employees)
+%>');
+$('#search-results table tbody').html('<%= 
+  escape_javascript render(:partial => 'employee_row', :collection => @employees)
+%>');

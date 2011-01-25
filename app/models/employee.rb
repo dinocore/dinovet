@@ -1,8 +1,9 @@
-class Client
+class Employee
   include Mongoid::Document
   include Mongoid::Timestamps
   field :first_name
   field :last_name
+  field :title
   field :address_1
   field :address_2
   field :city
@@ -11,13 +12,13 @@ class Client
   field :email
 
   embeds_many :phone_numbers
-  references_many :patients
 
   accepts_nested_attributes_for :phone_numbers, :allow_destroy => true
 
   validates_associated :phone_numbers
-  validates_presence_of :first_name, :last_name, :address_1, :city, :state,
-                        :zipcode, :phone_numbers
+  validates_presence_of :first_name, :last_name, :title, :address_1, :city,
+                        :state, :zipcode, :phone_numbers
+                        
   validates_format_of :email, :allow_nil => true,
                       :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 

@@ -1,0 +1,26 @@
+- show_result_box = true unless show_result_box == false
+#employee-search-bar
+  %fieldset
+    = form_tag employees_path, :method => :get, :remote => true do |f|
+      = text_field_tag :search, @search, :autocomplete => :off
+      = submit_tag "Search", :class => 'submit'
+
+  - if show_result_box
+    #search-bar-results
+      %ul
+
+:javascript
+  $(document).ready(function() {
+    $('#search').keyup(function(event) {
+      $('#search').siblings('input[type=submit]').click();
+    });
+    $('#search').focus(function(event) {
+      $('#search').siblings('input[type=submit]').click();
+      $('#search-bar-results').show();
+    });
+    $('#search').blur(function(event) {
+      window.setTimeout(function(event) {
+        $('#search-bar-results').hide();
+      }, 200);
+    });
+  });
