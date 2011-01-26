@@ -69,3 +69,26 @@ Feature: Manage clients
     |  Holden  |Caulfield|1 Fake St|New York|New York|       |holden@dinocore.net| 555-555-5555 |
     |  Holden  |Caulfield|1 Fake St|New York|New York| 10001 |       fail        | 555-555-5555 |
     |  Holden  |Caulfield|1 Fake St|New York|New York| 10001 |holden@dinocore.net|              |
+
+  @javascript
+  Scenario: Add an additional phone number
+    Given I am an employee
+    And I have added a client
+    And I am editing the client
+    When I follow "Add"
+    And I fill in "client_phone_numbers_attributes_1_number" with "444-555-5555"
+    And I press "Update Client"
+    Then the "client_phone_numbers_attributes_1_number" field should contain "444-555-5555"
+    And I should see "Client updated successfully"
+
+  @javascript
+  Scenario: Remove a phone number
+    Given I am an employee
+    And I have added a client
+    And I have added an additional client phone number
+    And I am editing the client
+    When I follow "Delete"
+    And I confirm
+    And I press "Update Client"
+    Then I should see the "client_phone_numbers_attributes_0_number" field
+    And I should not see the "client_phone_numbers_attributes_1_number" field

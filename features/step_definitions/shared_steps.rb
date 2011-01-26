@@ -32,3 +32,16 @@ Then /^I should see the following (.*):$/ do |type, expected_objects_table|
   type = type.gsub(' ', '_').downcase
   expected_objects_table.diff!(tableish("table.#{type} tr", "td,th"))
 end
+
+When /^I confirm$/ do
+  alert = page.driver.browser.switch_to.alert
+  alert.dismiss
+end
+
+Then /^I should see the "(.*)" field$/ do |field|
+  find_field(field)
+end
+
+Then /^I should not see the "(.*)" field$/ do |field|
+  page.should have_no_css("##{field}")
+end
