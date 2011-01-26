@@ -13,8 +13,8 @@ Feature: Manage clients
     And I fill in "City" with "New York"
     And I select "New York" from "State"
     And I fill in "Zipcode" with "10001"
-    And I select "Home" from "client_phone_numbers_0_type" within "#phone-number-0"
-    And I fill in "client_phone_numbers_0_number" with "1" within "#phone-number-0"
+    And I select "Home" from "client_phone_numbers_attributes_0_type"
+    And I fill in "client_phone_numbers_attributes_0_number" with "1"
     And I fill in "E-mail" with "holden@dinocore.net"
     And I press "Create Client"
     Then I should be on the clients page
@@ -53,7 +53,7 @@ Feature: Manage clients
     And I fill in "City" with "<city>"
     And I select "<state>" from "State"
     And I fill in "Zipcode" with "<zipcode>"
-    And I fill in "client_phone_numbers_0_number" with "<phone_number>" within "#phone-number-0"
+    And I fill in "client_phone_numbers_attributes_0_number" with "<phone_number>"
     And I fill in "E-mail" with "<email>"
     And I press "Create Client"
     Then I should be on the clients page
@@ -69,3 +69,26 @@ Feature: Manage clients
     |  Holden  |Caulfield|1 Fake St|New York|New York|       |holden@dinocore.net| 555-555-5555 |
     |  Holden  |Caulfield|1 Fake St|New York|New York| 10001 |       fail        | 555-555-5555 |
     |  Holden  |Caulfield|1 Fake St|New York|New York| 10001 |holden@dinocore.net|              |
+
+  @javascript
+  Scenario: Add an additional phone number
+    Given I am an employee
+    And I have added a client
+    And I am editing the client
+    When I follow "Add"
+    And I fill in "client_phone_numbers_attributes_1_number" with "444-555-5555"
+    And I press "Update Client"
+    Then the "client_phone_numbers_attributes_1_number" field should contain "444-555-5555"
+    And I should see "Client updated successfully"
+
+  @javascript
+  Scenario: Remove a phone number
+    Given I am an employee
+    And I have added a client
+    And I have added an additional client phone number
+    And I am editing the client
+    When I follow "Delete"
+    And I confirm
+    And I press "Update Client"
+    Then I should see the "client_phone_numbers_attributes_0_number" field
+    And I should not see the "client_phone_numbers_attributes_1_number" field
