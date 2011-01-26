@@ -1,0 +1,9 @@
+= render 'search_bar', :show_result_box => false
+
+#search-results
+  %table{:class => 'employees'}
+    %thead
+      %tr
+        %th Name
+    %tbody
+      = render :partial => 'employee_row', :collection => @employees
