@@ -29,14 +29,22 @@
         = f.label :zipcode
         = f.text_field :zipcode, :autocomplete => :off
       
-  %fieldset
-    %legend Contact
+  %fieldset{:class => 'phone'}
+    %legend Phone
+    %ol
+      = render phone_numbers
+      %li
+        %a{:href => '#', :class => 'add', :title => 'Add additional number'}
+          = image_tag('add.png')
+
+  %fieldset{:class => 'e-mail'}
+    %legend E-Mail
     %ol
       %li
-        = render phone_numbers
-      %li
-        = f.label :email, 'E-mail'
+        = f.label :email, 'E-mail', :class => 'test'
         = f.text_field :email, :autocomplete => :off
+
+
 
   - unless client.new_record?
     = render :partial => 'patient_list', :locals => { :client => client }

@@ -55,6 +55,10 @@ body {
 a {
   text-decoration: none;
   color: darken($header-background, 40%);
+
+  img {
+    border: none;
+  }
 }
 
 #header {
