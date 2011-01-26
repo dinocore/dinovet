@@ -12,7 +12,6 @@ class Employee
   field :email
 
   embeds_many :phone_numbers
-  references_many :patients
 
   accepts_nested_attributes_for :phone_numbers
 
