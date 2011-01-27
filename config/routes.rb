@@ -4,7 +4,6 @@ Dinovet::Application.routes.draw do
 
   resources :diagnoses
 
-  resources :employees
 
   resources :clients do
     resources :patients, :only => [:new, :create]
