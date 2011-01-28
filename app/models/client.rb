@@ -13,7 +13,7 @@ class Client
   embeds_many :phone_numbers
   references_many :patients
 
-  accepts_nested_attributes_for :phone_numbers
+  accepts_nested_attributes_for :phone_numbers, :allow_destroy => true
 
   validates_associated :phone_numbers
   validates_presence_of :first_name, :last_name, :address_1, :city, :state,
