@@ -1,0 +1,6 @@
+%li{:class => 'phone-number'}
+  = f.hidden_field :_destroy, :class => '_destroy'
+  = f.select :type, PhoneNumber::Types
+  = f.text_field :number, :autocomplete => :off
+  %a{:href => '#', :class => 'delete', :title => 'Delete this number'}
+    = image_tag('delete.png')

@@ -1,9 +1,0 @@
-%li{:id => "phone-number-#{phone_number_counter}", :class => "phone-number", 'data-count' => phone_number_counter }
-  = fields_for 'client[phone_numbers]', phone_number, |
-    :index => phone_number_counter  do |f|
-
-    = f.select :type, PhoneNumber::Types
-    = f.hidden_field :id unless phone_number.new?
-    = f.text_field :number, :autocomplete => :off
-    %a{:href => '#', :class => 'delete', :title => 'Delete this number'}
-      = image_tag('delete.png')
