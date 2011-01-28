@@ -23,7 +23,7 @@ class EmployeesController < ApplicationController
     @employee = Employee.find(params[:id])
     @phone_numbers = @employee.phone_numbers
 
-    if @employee.update_attributes(params[:client])
+    if @employee.update_attributes(params[:employee])
       redirect_to :back, :notice => "Employee updated successfully"
     else
       flash[:error] = "Failed to update employee"
@@ -32,7 +32,7 @@ class EmployeesController < ApplicationController
   end
 
   def create
-    @employee = Employee.new(params[:client])
+    @employee = Employee.new(params[:employee])
     @phone_numbers = @employee.phone_numbers
 
     if @employee.save

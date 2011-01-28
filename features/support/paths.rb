@@ -30,8 +30,16 @@ module NavigationHelpers
       patient_events_path(@patient)
     when /^the new diagnosis event page$/
       new_patient_diagnosis_event_path(@patient)
+#Employee Paths
+    when /^the edit employee page for "(.*)"$/
+      edit_employee_path(@employee)
+    when /^the new employee page$/
+      new_employee_path
+    when /^the show employee page$/
+      employee_path(@employee)
 
-    # Add more mappings here.
+
+# Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
     #   when /^(.*)'s profile page$/i

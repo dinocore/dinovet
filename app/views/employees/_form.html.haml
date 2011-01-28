@@ -32,7 +32,8 @@
   %fieldset{:class => 'phone'}
     %legend Phone
     %ol
-      = render phone_numbers
+      = f.fields_for :phone_numbers do |pf|
+        = render :partial => 'phone_numbers/form', :locals => { :f => pf }
       %li
         %a{:href => '#', :class => 'add', :title => 'Add additional number'}
           = image_tag('add.png')
