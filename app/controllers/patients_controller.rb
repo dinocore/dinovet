@@ -3,6 +3,8 @@ class PatientsController < ApplicationController
     @client = Client.find(params[:client_id])
     @phone_numbers = @client.phone_numbers
     @patient = Patient.new
+    @species = Species.list
+    @breeds  = Breed.list(@species.first)
   end
 
   def create
@@ -16,6 +18,8 @@ class PatientsController < ApplicationController
       redirect_to edit_patient_path(@patient),
           :notice => "Patient created successfully"
     else
+      @species = Species.list
+      @breeds  = Breed.list(@patient.species)
       flash[:error] = "Failed to create patient"
       render :new
     end
@@ -23,6 +27,8 @@ class PatientsController < ApplicationController
 
   def edit
     @patient = Patient.find(params[:id])
+    @species = Species.list
+    @breeds  = Breed.list(@patient.species)
   end
 
   def update
@@ -32,6 +38,8 @@ class PatientsController < ApplicationController
       redirect_to :back,
           :notice => "Patient updated successfully"
     else
+      @species = Species.list
+      @breeds  = Breed.list(@patient.species)
       flash[:error] = "Failed to update patient"
       render :edit
     end

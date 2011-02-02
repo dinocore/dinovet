@@ -7,7 +7,14 @@ describe PatientsController do
     Patient.stub!(:new).and_return(mock_patient(:save => true))
     Patient.stub!(:all).and_return([mock_patient])
     Patient.stub!(:find).and_return(mock_patient)
+    Species.stub!(:all).and_return([mock_species])
+    Species.stub!(:where).and_return([mock_species])
+    mock_breed.stub!(:name).and_return("breed name")
+    mock_species.stub!(:breeds).and_return([mock_breed])
+    mock_species.stub!(:list_breeds).and_return([mock_breed.name])
+    mock_species.stub!(:name).and_return("species name")
     mock_patient.stub!(:client=).and_return(mock_client)
+    mock_patient.stub!(:species).and_return(mock_species)
   end
 
 
@@ -27,6 +34,14 @@ describe PatientsController do
 
     it "should set @patient" do
       assigns[:patient].should equal(mock_patient)
+    end
+
+    it "should set @species" do
+      assigns[:species].should include mock_species.name
+    end
+
+    it "should set @breeds" do
+      assigns[:breeds].should include mock_breed.name
     end
   end
 
@@ -91,6 +106,7 @@ describe PatientsController do
     it "should set @patient" do
       assigns[:patient].should equal(mock_patient)
     end
+
   end
 
 
@@ -152,4 +168,12 @@ end
 
 def mock_phone_number(stubs={})
   @mock_phone_number ||= mock_model(PhoneNumber, stubs)
+end
+
+def mock_species(stubs={})
+  @mock_species ||= mock_model(Species, stubs)
+end
+
+def mock_breed(stubs={})
+  @mock_breed ||= mock_model(Breed, stubs)
 end

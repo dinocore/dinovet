@@ -62,6 +62,10 @@ $field-border:      $tab-background;
           padding: 0.2em;
           width: 18.5em;
           background-color: lighten($field-border, 40%);
+
+          &.date {
+            width: 5.94em;
+          }
         }
 
         div.field_with_errors {

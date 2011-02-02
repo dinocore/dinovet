@@ -1,9 +1,7 @@
 class Patient
   include Mongoid::Document
   include Mongoid::Timestamps
-  Sexes = ['Male', 'Female']
-  Species = ['Canine', 'Feline']
-  Breed = ['Yorkshire Terrier', 'Lab', 'Poodle']
+  Sexes  = ['Male',  'Female']
 
   field :name
   field :sex

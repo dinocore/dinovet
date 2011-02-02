@@ -11,16 +11,16 @@
         = f.select :sex, Patient::Sexes
       %li
         = f.label :species
-        = f.select :species, Patient::Species
+        = f.select :species, @species
       %li
         = f.label :breed
-        = f.select :breed, Patient::Breed
+        = f.select :breed, @breeds
       %li
         = f.label :weight
         = f.text_field :weight, :autocomplete => :off
       %li
-        = f.label :birth_date
-        = f.date_select :birth_date, :start_year => 1900, :end_year => Time.now.year
+        = f.label :birth_day
+        = birthday_select(f)
       %li
         = f.label :color
         = f.text_field :color, :autocomplete => :off

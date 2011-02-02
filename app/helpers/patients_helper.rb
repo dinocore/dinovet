@@ -14,4 +14,12 @@ module PatientsHelper
         :links => links }, 
       &block
   end
+
+  def birthday_select(form)
+    form.date_select :birth_date, {
+                        :start_year => 1900,
+                        :end_year => Time.now.year,
+                        :use_short_month => true
+                     }, {:class => 'date'}
+  end
 end

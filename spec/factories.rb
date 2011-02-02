@@ -31,8 +31,8 @@ end
 Factory.define :patient do |p|
   p.sequence(:name)       { |n| "name#{n}"       }
   p.sex                         "Female"
-  p.species                     "Canine"
-  p.breed                       "Poodle"
+  p.species                     "Dog"
+  p.breed                       "Yorkshire Terrier"
   p.weight                      "100000"
   p.birth_date                  3.years.ago
   p.color                       "Green"
@@ -62,4 +62,13 @@ Factory.define :diagnosis_event do |d|
   d.sequence(:name)        { |n| "name#{n}"        }
   d.sequence(:code)        { |n| "code#{n}"        }
   d.sequence(:description) { |n| "description#{n}" }
+end
+
+Factory.define :species do |s|
+  s.sequence(:name) { |n| "name#{n}" }
+  s.breeds          { [Factory.create(:breed, :name => "Yorkshire Terrier")] }
+end
+
+Factory.define :breed do |s|
+  s.sequence(:name)        { |n| "name#{n}"        }
 end
