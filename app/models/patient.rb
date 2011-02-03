@@ -7,7 +7,7 @@ class Patient
   field :sex
   field :species
   field :breed
-  field :weight
+  field :weight, :type => Float, :default => 0.0
   field :birth_date, :type => Date
   field :color
   field :microchip
@@ -17,4 +17,5 @@ class Patient
 
   validates_presence_of :client
   validates_presence_of :name, :sex, :species, :breed
+  validates_numericality_of :weight, :greater_than_or_equal_to => 0
 end
