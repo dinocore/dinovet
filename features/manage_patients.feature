@@ -71,3 +71,12 @@ Feature: Manage patients
     When I fill in "Name" with ""
     And I press "Update Patient"
     Then I should see "Failed to update patient"
+
+  @javascript
+  Scenario: Select a different species
+    Given I have added a client and patient
+    And I have added a species and breed
+    And I am on the new patient page
+    And I am an employee
+    When I select "Cat" from "Species"
+    Then I should see "American Longhair"

@@ -11,4 +11,6 @@ end
 Given /^I have added a species and breed$/ do
   @breed = Factory.create(:breed, :name => "Yorkshire Terrier")
   @species = Factory.create(:species, :name => "Dog", :breeds => [@breed])
+  cat_breed = Factory.create(:breed, :name => "American Longhair")
+  cat_species = Factory.create(:species, :name => "Cat", :breeds => [cat_breed])
 end

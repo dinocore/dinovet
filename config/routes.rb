@@ -1,9 +1,11 @@
 Dinovet::Application.routes.draw do
+  root :to => "clients#index"
 
   resources :diagnosis_categories
 
   resources :diagnoses
 
+  resources :species, :only => [:show]
 
   resources :clients do
     resources :patients, :only => [:new, :create]

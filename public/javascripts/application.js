@@ -54,4 +54,30 @@ $(document).ready(function() {
 
     return false;
   });
+
+  // Change species
+  $('select#patient_species').change(function(event) {
+    $.ajax({
+      url: ROOT_PATH+"species/"+$(this).val(),
+      dataType: "json",
+      type: "GET",
+      beforeSend: function() {
+        var loading =
+          "<img id='loading-breed' src='"+ROOT_PATH+"images/loading.gif' />";
+        $('#loading-breed').remove();
+        $('select#patient_breed').parent().append(loading);
+      },
+      success: function(data) {
+        var options = "";
+        var breeds = data.breeds;
+        if(breeds) {
+          $.each(data.breeds, function(index, value) {
+            options += "<option value='"+value.name+"'>"+value.name+"</option>";
+          });
+        }
+        $('select#patient_breed').empty().append(options);
+        $('#loading-breed').remove();
+      }
+    });
+  });
 });
