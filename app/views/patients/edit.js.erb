@@ -1,0 +1,4 @@
+$('#patient').replaceWith('<%= escape_javascript(render 'edit') %>')
+<%= render 'layouts/flash', :flash => flash %>
+<%= update_patient_list(@patient.client) %>
+$('#loading-overlay').remove();

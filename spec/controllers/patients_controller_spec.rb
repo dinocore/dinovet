@@ -81,6 +81,22 @@ describe PatientsController do
                                                     
     end
 
+    describe "from javascript with valid attributes" do
+      before do
+        mock_patient.stub!(:save).and_return(true)
+        put :create, :client_id => mock_client.id, :patient => mock_patient, 
+            :format => :js
+      end
+
+      it "should set a success message" do
+        flash[:notice].should == "Patient created successfully"
+      end
+
+      it { response.should redirect_to edit_patient_path(
+                                              mock_patient, :format => :js) }
+
+    end
+
     describe "with invalid attributes" do
       before do
         mock_patient.stub!(:save).and_return(false)
@@ -141,6 +157,22 @@ describe PatientsController do
       end
     end
 
+    describe "from javascript with valid attributes" do
+      before do
+        mock_patient.stub!(:update_attributes).and_return(true)
+        put :update, :id => mock_patient.id, :patient => mock_patient, 
+            :format => :js
+      end
+
+      it "should set a success message" do
+        flash[:notice].should == "Patient updated successfully"
+      end
+
+      it { response.should redirect_to edit_patient_path(
+                                              mock_patient, :format => :js) }
+
+    end
+
     describe "with invalid attributes" do
       before do
         mock_patient.should_receive(:update_attributes).and_return(false)
@@ -151,7 +183,7 @@ describe PatientsController do
         flash[:error].should == "Failed to update patient"
       end
 
-      it { response.should render_template('edit') }
+      it { response.should render_template(:edit) }
     end
   end
 

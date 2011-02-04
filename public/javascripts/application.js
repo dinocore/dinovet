@@ -1,6 +1,21 @@
 $(document).ready(function() {
 
-  $('.panel .header').click(function(event) {
+  function loading() {
+    var loadingImage = "<img src='/images/large-loading.gif' />";
+    var loadingDiv   = "<div id='loading-overlay'>"+loadingImage+"</div>"
+    $(loadingDiv).appendTo('body');
+  }
+
+  $('a[data-remote=true], form[data-remote=true] input[type=submit]').live(
+    'click', function() {
+      loading();
+  });
+
+  $('#flash-notice').delay(2000).fadeOut('slow');
+  
+  // Panel collapse
+  /*
+  $('.panel .header').live('click', function(event) {
     self = arguments.callee
     if(self.busy) { return false; }
     self.busy = true;
@@ -20,9 +35,10 @@ $(document).ready(function() {
 
   });
 
-  $('.tab-navigation ul li a').click(function(event) {
+  $('.tab-navigation ul li a').live('click', function(event) {
     event.stopPropagation()
   });
+  */
 
   // Delete a phone number
   $('fieldset.phone .delete').live('click', function(event) {
@@ -35,7 +51,7 @@ $(document).ready(function() {
   });
 
   // Add a phone number
-  $('fieldset.phone .add').click(function(event) {
+  $('fieldset.phone .add').live('click', function(event) {
     var last_entry = $(this).parents('li').siblings('li').last('li')
     var last_count = parseInt(
       last_entry.children('select').attr('id').match(/\d/))
@@ -49,6 +65,7 @@ $(document).ready(function() {
       $(this).attr('name', $(this).attr('name').replace(/\d/, count));
       $(this).val('');
     });
+    new_entry.show();
 
     new_entry.insertAfter(last_entry);
 
@@ -56,7 +73,7 @@ $(document).ready(function() {
   });
 
   // Change species
-  $('select#patient_species').change(function(event) {
+  $('select#patient_species').live('change', function(event) {
     $.ajax({
       url: ROOT_PATH+"species/"+$(this).val(),
       dataType: "json",

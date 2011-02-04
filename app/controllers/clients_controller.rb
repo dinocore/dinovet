@@ -24,10 +24,17 @@ class ClientsController < ApplicationController
     @phone_numbers = @client.phone_numbers
 
     if @client.update_attributes(params[:client])
-      redirect_to :back, :notice => "Client updated successfully"
+      flash[:notice] = "Client updated successfully"
+      respond_to do |format|
+        format.js   { redirect_to edit_client_path(@client, :format => :js) }
+        format.html { redirect_to edit_client_path(@client) }
+      end
     else
       flash[:error] = "Failed to update client"
-      render "edit"
+      respond_to do |format|
+        format.js
+        format.html { render :edit }
+      end
     end
   end
 
@@ -36,10 +43,17 @@ class ClientsController < ApplicationController
     @phone_numbers = @client.phone_numbers
 
     if @client.save
-      redirect_to clients_path, :notice => "Client added successfully"
+      flash[:notice] = "Client added successfully"
+      respond_to do |format|
+        format.js   { redirect_to edit_client_path(@client, :format => :js) }
+        format.html { redirect_to edit_client_path(@client) }
+      end
     else
       flash[:error] = "Failed to create client"
-      render :new
+      respond_to do |format|
+        format.js
+        format.html { render :new }
+      end
     end
   end
 

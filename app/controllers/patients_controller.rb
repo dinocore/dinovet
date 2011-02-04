@@ -10,18 +10,23 @@ class PatientsController < ApplicationController
   def create
     @client = Client.find(params[:client_id])
     @phone_numbers = @client.phone_numbers
-
     @patient = Patient.new(params[:patient])
     @patient.client = @client
+    @species = Species.list
+    @breeds  = Breed.list(@patient.species)
 
     if @patient.save
-      redirect_to edit_patient_path(@patient),
-          :notice => "Patient created successfully"
+      flash[:notice] = "Patient created successfully"
+      respond_to do |format|
+        format.js   { redirect_to edit_patient_path(@patient, :format => :js) }
+        format.html { redirect_to edit_patient_path(@patient) }
+      end
     else
-      @species = Species.list
-      @breeds  = Breed.list(@patient.species)
       flash[:error] = "Failed to create patient"
-      render :new
+      respond_to do |format|
+        format.js
+        format.html { render :new }
+      end
     end
   end
 
@@ -33,15 +38,21 @@ class PatientsController < ApplicationController
 
   def update
     @patient = Patient.find(params[:id])
+    @species = Species.list
+    @breeds  = Breed.list(@patient.species)
 
     if @patient.update_attributes(params[:patient])
-      redirect_to :back,
-          :notice => "Patient updated successfully"
+      flash[:notice] = "Patient updated successfully"
+      respond_to do |format|
+        format.js   { redirect_to edit_patient_path(@patient, :format => :js) }
+        format.html { redirect_to edit_patient_path(@patient) }
+      end
     else
-      @species = Species.list
-      @breeds  = Breed.list(@patient.species)
       flash[:error] = "Failed to update patient"
-      render :edit
+      respond_to do |format|
+        format.js
+        format.html { render :edit }
+      end
     end
   end
 end

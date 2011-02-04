@@ -10,8 +10,10 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
-    when /^the edit client page for "(.*)"$/
-      edit_client_path(@client)
+    when /^the edit client page(?: for "(.*)")?$/
+      client = $1.blank? ? @client : Client.first(
+          :conditions => {:first_name => $1})
+      edit_client_path(client)
     when /^the new patient page$/
       new_client_patient_path(@client)
     when /^the edit diagnosis page for "(.*)"$/

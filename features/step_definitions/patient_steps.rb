@@ -4,6 +4,11 @@ Given /^I have added a client and patient/ do
   @patient = @client.patients.first
 end
 
+Given /^I have added a patient(?: named "([^"]*)")?$/ do |name|
+  @client.patients << Factory.create(:patient, :name => name,:client => @client)
+  @patient = @client.patients.first
+end
+
 When /^I select the patient from the patients list$/ do
   click_link(@patient.name)
 end

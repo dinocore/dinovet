@@ -1,6 +1,7 @@
 Dinovet::Application.routes.draw do
   root :to => "clients#index"
 
+
   resources :diagnosis_categories
 
   resources :diagnoses
@@ -17,6 +18,7 @@ Dinovet::Application.routes.draw do
     resources :events, :only => [:index]
     resources :diagnosis_events, :only => [:new, :create]
   end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

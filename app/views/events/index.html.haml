@@ -1,8 +1,1 @@
-= patient_panel(@patient) do
-  %table{:class => :events}
-    %thead
-      %th Date
-      %th Type
-      %th Description
-    %tbody
-      = render :partial => 'event_row', :collection => @events
+= render 'index'

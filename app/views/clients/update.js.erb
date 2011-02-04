@@ -1,0 +1,3 @@
+$('#client').replaceWith('<%= escape_javascript(render :partial => 'edit') %>');
+<%= render 'layouts/flash', :flash => flash %>
+$('#loading-overlay').remove();

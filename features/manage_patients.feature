@@ -79,4 +79,79 @@ Feature: Manage patients
     And I am on the new patient page
     And I am an employee
     When I select "Cat" from "Species"
+    And I wait for the AJAX call to finish
     Then I should see "American Longhair"
+
+  @javascript
+  Scenario: Show new patient panel
+    Given I have added a client
+    And I am editing the client
+    And I am an employee
+    When I follow "Create a new patient"
+    And I wait for the AJAX call to finish
+    Then I should see "Patient" within "#patient"
+
+  @javascript
+  Scenario: Show edit patient panel
+    Given I have added a client and patient
+    And I have added a patient named "Crocodile"
+    And I am editing the client
+    And I am an employee
+    When I follow "Crocodile"
+    And I wait for the AJAX call to finish
+    Then I should see "Crocodile" within "#patient"
+
+  @javascript
+  Scenario: Update a patient
+    Given I have added a client and patient
+    And I have added a patient named "Crocodile"
+    And I am editing the client
+    And I am an employee
+    When I follow "Crocodile"
+    And I fill in "Name" with "Alligator"
+    And I press "Update Patient"
+    And I wait for the AJAX call to finish
+    Then I should see "Alligator" within "#patient .header"
+    And I should see "Patient updated successfully"
+
+  @javascript
+  Scenario: Fail to update a patient
+    Given I have added a client and patient
+    And I have added a patient named "Crocodile"
+    And I am editing the client
+    And I am an employee
+    When I follow "Crocodile"
+    And I fill in "patient_weight" with "a lot"
+    And I press "Update Patient"
+    And I wait for the AJAX call to finish
+    Then I should see "Failed to update patient"
+
+  @javascript
+  Scenario: Create a patient
+    Given I have added a client
+    And I have added a species and breed
+    And I am editing the client
+    And I am an employee
+    When I follow "Create a new patient"
+    And I fill in "Name" with "Crocodile"
+    And I select "Cat" from "Species"
+    And I wait for the AJAX call to finish
+    And I select "American Longhair" from "Breed"
+    And I fill in "patient_weight" with "100"
+    And I press "Create Patient"
+    And I wait for the AJAX call to finish
+    Then I should see "Crocodile" within "#patient .header"
+    And I should see "Patient created successfully"
+
+  @javascript
+  Scenario: Fail to create a patient
+    Given I have added a client
+    And I have added a species and breed
+    And I am editing the client
+    And I am an employee
+    When I follow "Create a new patient"
+    And I fill in "Name" with "Crocodile"
+    And I fill in "patient_weight" with "a ton"
+    And I press "Create Patient"
+    And I wait for the AJAX call to finish
+    Then I should see "Failed to create patient"

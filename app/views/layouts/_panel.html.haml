@@ -2,6 +2,7 @@
 - title    ||= nil
 - subtitle ||= nil
 - links    ||= nil
+- tab      ||= nil
 
 .panel{:id => id}
   .header
@@ -13,8 +14,8 @@
       .tab-navigation
         %ul
           - links.each do |name, url|
-            %li{:class => current_page?(url) ? "selected" : ""}
-              = link_to h(name), url
+            %li{:class => name == tab ? "selected" : ""}
+              = link_to h(name), url, :remote => true
 
   .view
     = yield

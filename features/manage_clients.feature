@@ -17,7 +17,7 @@ Feature: Manage clients
     And I fill in "client_phone_numbers_attributes_0_number" with "1"
     And I fill in "E-mail" with "holden@dinocore.net"
     And I press "Create Client"
-    Then I should be on the clients page
+    Then I should be on the edit client page for "Holden"
     And I should see "Client added successfully"
 
   Scenario: View a list of all clients
@@ -71,17 +71,6 @@ Feature: Manage clients
     |  Holden  |Caulfield|1 Fake St|New York|New York| 10001 |holden@dinocore.net|              |
 
   @javascript
-  Scenario: Add an additional phone number
-    Given I am an employee
-    And I have added a client
-    And I am editing the client
-    When I follow "Add"
-    And I fill in "client_phone_numbers_attributes_1_number" with "444-555-5555"
-    And I press "Update Client"
-    Then the "client_phone_numbers_attributes_1_number" field should contain "444-555-5555"
-    And I should see "Client updated successfully"
-
-  @javascript
   Scenario: Remove a phone number
     Given I am an employee
     And I have added a client
@@ -89,6 +78,42 @@ Feature: Manage clients
     And I am editing the client
     When I follow "Delete"
     And I confirm
+    And I wait for the AJAX call to finish
     And I press "Update Client"
+    And I wait for the AJAX call to finish
     Then I should see the "client_phone_numbers_attributes_0_number" field
     And I should not see the "client_phone_numbers_attributes_1_number" field
+
+  @javascript
+  Scenario: Add an additional phone number
+    Given I am an employee
+    And I have added a client
+    And I am editing the client
+    When I follow "Add"
+    And I wait for the AJAX call to finish
+    And I fill in "client_phone_numbers_attributes_1_number" with "444-555-5555"
+    And I press "Update Client"
+    And I wait for the AJAX call to finish
+    Then the "client_phone_numbers_attributes_1_number" field should contain "444-555-5555"
+    And I should see "Client updated successfully"
+
+  @javascript
+  Scenario: Update a client
+    Given I have added a client
+    And I am editing the client
+    And I am an employee
+    When I fill in "First name" with "Holden"
+    And I press "Update Client"
+    And I wait for the AJAX call to finish
+    Then I should see "Holden" within "#client .header"
+    And I should see "Client updated successfully"
+
+  @javascript
+  Scenario: Fail to update a client 
+    Given I have added a client
+    And I am editing the client
+    And I am an employee
+    When I fill in "First name" with ""
+    And I press "Update Client"
+    And I wait for the AJAX call to finish
+    Then I should see "Failed to update client"

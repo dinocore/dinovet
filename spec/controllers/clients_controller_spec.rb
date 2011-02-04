@@ -28,9 +28,9 @@ describe ClientsController do
 
   describe "GET 'edit'" do
     before do
-      Client.stub!(:find).with(1).and_return(mock_client)
+      Client.stub!(:find).with(mock_client.id).and_return(mock_client)
       mock_client.stub!(:phone_numbers).and_return([mock_phone_number])
-      get :edit, :id => 1
+      get :edit, :id => mock_client.id
     end
 
     it { response.should be_success }
@@ -50,14 +50,14 @@ describe ClientsController do
     before do
       request.env["HTTP_REFERER"] = 
           edit_client_path(mock_client)
-      Client.stub!(:find).with(1).and_return(mock_client)
+      Client.stub!(:find).with(mock_client.id).and_return(mock_client)
       mock_client.stub!(:phone_numbers).and_return([mock_phone_number])
     end
 
     describe "with valid attributes" do
       before do
         mock_client.stub!(:update_attributes).and_return(true)
-        put :update, :id => 1, :client => mock_client
+        put :update, :id => mock_client.id, :client => mock_client
       end
 
       it "should set a success message" do
@@ -75,10 +75,26 @@ describe ClientsController do
       end
     end
 
+    describe "from javascript with valid attributes" do
+      before do
+        mock_client.stub!(:update_attributes).and_return(true)
+        put :update, :id => mock_client.id, :client => mock_client, 
+            :format => :js
+      end
+
+      it "should set a success message" do
+        flash[:notice].should == "Client updated successfully"
+      end
+
+      it { response.should redirect_to edit_client_path(
+                                              mock_client, :format => :js) }
+
+    end
+
     describe "with invalid attributes" do
       before do
         mock_client.should_receive(:update_attributes).and_return(false)
-        put :update, :id => 1, :client => mock_client
+        put :update, :id => mock_client.id, :client => mock_client
       end
 
       it "should set an error message" do
@@ -94,8 +110,8 @@ describe ClientsController do
 
   describe "GET 'show'" do
     before do
-      Client.stub!(:find).with(1).and_return(mock_client)
-      get :show, :id => 1
+      Client.stub!(:find).with(mock_client.id).and_return(mock_client)
+      get :show, :id => mock_client.id
     end
 
     it { response.should be_success }
@@ -132,7 +148,22 @@ describe ClientsController do
         flash[:notice].should == "Client added successfully"
       end
   
-      it { response.should redirect_to clients_path }
+      it { response.should redirect_to edit_client_path(mock_client) }
+    end
+
+    describe "from javascript with valid attributes" do
+      before do
+        mock_client.stub!(:save).and_return(true)
+        put :create, :client => mock_client, :format => :js
+      end
+
+      it "should set a success message" do
+        flash[:notice].should == "Client added successfully"
+      end
+
+      it { response.should redirect_to edit_client_path(
+                                              mock_client, :format => :js) }
+
     end
     
     describe "with invalid attributes" do

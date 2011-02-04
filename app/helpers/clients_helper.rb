@@ -18,7 +18,7 @@ module ClientsHelper
   def patient_select_list(client)
     patients = client.patients.map do |p|
       content_tag :li do
-        link_to h(p.name), edit_patient_path(p)
+        link_to h(p.name), edit_patient_path(p), :remote => true
       end
     end
 

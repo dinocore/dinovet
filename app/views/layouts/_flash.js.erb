@@ -1,0 +1,7 @@
+<% unless flash[:notice].blank? %>
+  $('#flash-notice').html('<%= flash[:notice] %>').show().delay(2000).fadeOut()
+<% end %>
+
+<% unless flash[:error].blank? %>
+  $('#flash-error').html('<%= flash[:error] %>').show().delay(2000).fadeOut()
+<% end %>
