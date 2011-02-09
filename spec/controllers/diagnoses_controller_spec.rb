@@ -4,6 +4,17 @@ describe DiagnosesController do
   before do
     Diagnosis.stub!(:all).and_return([mock_diagnosis])
     DiagnosisCategory.stub!(:all).and_return([mock_diagnosis_category])
+    DiagnosisCategory.stub!(:find).and_return(mock_diagnosis_category)
+    mock_diagnosis_category.stub!(:diagnoses).and_return([mock_diagnosis])
+    mock_diagnosis.stub!(:save).and_return(true)
+    mock_diagnosis.stub!(:categories).and_return([mock_diagnosis_category])
+    mock_diagnosis_category.stub!(:name).and_return("name")
+    mock_diagnosis_category.stub!(:save).and_return(true)
+    mock_diagnosis_category.stub!(:diagnosis_ids).and_return(
+        [mock_diagnosis.id])
+    mock_diagnosis.stub!(:attributes).and_return(
+        Factory.attributes_for(:diagnosis).merge(
+        {:category_ids => [mock_diagnosis_category.id]}))
   end
 
 
@@ -19,6 +30,11 @@ describe DiagnosesController do
       assigns[:diagnosis].should equal(mock_diagnosis)
     end
 
+    it "should set @categories" do
+      assigns[:categories].should == 
+          [[mock_diagnosis_category.name, mock_diagnosis_category.id]]
+    end
+
     it { response.should render_template(:new) }
   end
 
@@ -32,7 +48,7 @@ describe DiagnosesController do
     describe "with valid attributes" do
       before do
         mock_diagnosis.stub!(:save).and_return(true)
-        post :create, :diagnosis => mock_diagnosis
+        post :create, :diagnosis => mock_diagnosis.attributes
       end
 
       it "should create a new diagnosis" do
@@ -50,6 +66,11 @@ describe DiagnosesController do
       before do
         mock_diagnosis.stub!(:save).and_return(false)
         post :create, :diagnosis => mock_diagnosis
+      end
+
+      it "should set @categories" do
+        assigns[:categories].should == 
+            [[mock_diagnosis_category.name, mock_diagnosis_category.id]]
       end
 
       it "should set an error message" do
@@ -94,6 +115,11 @@ describe DiagnosesController do
       assigns[:diagnosis].should equal(mock_diagnosis)
     end
 
+    it "should set @categories" do
+      assigns[:categories].should == 
+        [[mock_diagnosis_category.name, mock_diagnosis_category.id]]
+    end
+
   end
 
 
@@ -106,6 +132,7 @@ describe DiagnosesController do
     describe "with valid attributes" do
       before do
         mock_diagnosis.stub!(:update_attributes).and_return(true)
+        mock_diagnosis_category.stub!(:save).and_return(true)
         put :update, :id => mock_diagnosis.id, :diagnosis => mock_diagnosis
       end
 
@@ -124,6 +151,11 @@ describe DiagnosesController do
       before do
         mock_diagnosis.should_receive(:update_attributes).and_return(false)
         put :update, :id => mock_diagnosis.id, :diagnosis => mock_diagnosis
+      end
+
+      it "should set @categories" do
+        assigns[:categories].should == 
+            [[mock_diagnosis_category.name, mock_diagnosis_category.id]]
       end
 
       it "should set an error message" do

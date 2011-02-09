@@ -70,3 +70,37 @@ Feature: Manage diagnoses
     And I press "Update Diagnosis"
     Then I should be on the diagnoses page
     And I should see "Diagnosis updated successfully"
+
+  @javascript
+  Scenario: Create a diagnosis
+    Given I have created a diagnosis category named "Diseases"
+    And I am on the diagnoses page
+    And I am an employee
+    When I follow "Create a new diagnosis"
+    And I wait for the AJAX call to finish
+    And I fill in "Name" with "Boneitis"
+    And I fill in "Code" with "1337"
+    And I select "Diseases" from "Categories"
+    And I fill in "Description" with "A degenerative bone disease."
+    And I press "Create Diagnosis"
+    And I wait for the AJAX call to finish
+    Then I should see "Diseases" within "#diagnoses"
+    And I should see "Boneitis" within "#diagnoses"
+
+  @javascript
+  Scenario: Update a diagnosis
+    Given I have created a diagnosis category named "Diseases"
+    And I have created a diagnosis named "Boneitis"
+    And I am on the diagnoses page
+    And I am an employee
+    When I follow "Boneitis"
+    And I wait for the AJAX call to finish
+    And I fill in "Name" with "Snow Crash"
+    And I fill in "Code" with "31337"
+    And I select "Diseases" from "Categories"
+    And I fill in "Description" with "A neuro-linguistic virus"
+    And I press "Update Diagnosis"
+    And I wait for the AJAX call to finish
+    Then I should see "Diseases" within "#diagnoses"
+    And I should see "Snow Crash" within "#diagnoses"
+    And I should not see "Boneitis" within "#diagnoses"

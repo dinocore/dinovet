@@ -27,7 +27,7 @@ $field-border:      $tab-background;
         padding: 0.2em;
         margin: 0.2em 0;
         float: right;
-      color: darken($header-background, 20%);
+        color: darken($header-background, 20%);
         font-weight: bold;
 
         &:hover {
@@ -80,6 +80,16 @@ $field-border:      $tab-background;
           padding: 0.2em;
           border: none;
           width: 18em;
+          border: 1px solid $field-border;
+          background-color: lighten($field-border, 40%);
+        }
+
+        textarea {
+          padding: 0.2em;
+          border: none;
+          margin-left: 0.1em;
+          width: 20em;
+          height: 7em;
           border: 1px solid $field-border;
           background-color: lighten($field-border, 40%);
         }

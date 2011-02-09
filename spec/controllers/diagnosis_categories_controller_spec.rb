@@ -3,6 +3,7 @@ require 'spec_helper'
 describe DiagnosisCategoriesController do
   before do
     DiagnosisCategory.stub!(:all).and_return([mock_diagnosis_category])
+    mock_diagnosis_category.stub!(:name).and_return("name")
   end
 
 

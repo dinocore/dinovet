@@ -1,8 +1,7 @@
-#search-results
-  %ul{:class => 'diagnoses'}
-    - @categories.each do |category|
-      %li{:class => 'category'}
-        %strong=h category.name
-        %ul
-          - category.diagnoses.each do |diagnoses|
-            %li=h diagnoses.name
+#diagnosis-category
+#diagnosis
+
+= diagnoses_panel do
+  = create_diagnosis_category_link
+  = create_diagnosis_link
+  = render 'diagnoses_list'

@@ -1,5 +1,5 @@
-Given /^I have created a diagnosis$/ do
-  @diagnosis = Factory.create(:diagnosis, :name => 'Rabies')
+Given /^I have created a diagnosis(?: named "([^"]*)")?$/ do |name|
+  @diagnosis = Factory.create(:diagnosis, :name => (name || 'Rabies'))
   @category = Factory.create(:diagnosis_category)
   @category.diagnoses << @diagnosis
   @diagnosis.save!

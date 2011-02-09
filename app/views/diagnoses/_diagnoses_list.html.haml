@@ -1,0 +1,7 @@
+%ul{:class => 'diagnoses'}
+  - @categories.each do |category|
+    %li{:class => 'category'}
+      %strong= edit_diagnosis_category_link(category)
+      %ul
+        - category.diagnoses.each do |diagnosis|
+          %li= edit_diagnosis_link(diagnosis)

@@ -1,4 +1,4 @@
-= form_for diagnosis do |f|
+= form_for diagnosis, :remote => true do |f|
   %fieldset
     %legend Diagnosis
     %ol
@@ -9,8 +9,11 @@
         = f.label :code
         = f.text_field :code, :autocomplete => :off
       %li
+        = f.label :categories, "Categories"
+        = diagnosis_select
+      %li
         = f.label :description
-        = f.text_field :description, :autocomplete => :off
+        = f.text_area :description, :autocomplete => :off, :rows => 5
 
   %fieldset{:class => "submit"}
     = f.submit
