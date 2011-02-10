@@ -1,5 +1,7 @@
 Dinovet::Application.routes.draw do
 
+  devise_for :employees
+
   resources :diagnosis_categories
 
   resources :diagnoses

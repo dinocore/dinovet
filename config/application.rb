@@ -43,7 +43,8 @@ module Dinovet
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
+    # config.filter_parameters += [:password]
+    config.filter_parameters += [:password, :password_confirmation]
 
     config.generators do |g|
       g.template_engine :haml
