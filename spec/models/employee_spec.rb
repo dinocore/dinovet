@@ -19,6 +19,8 @@ describe Employee do
   it { should validate_presence_of(:state) }
   it { should validate_presence_of(:zipcode) }
   it { should validate_presence_of(:phone_numbers) }
+  it { should validate_presence_of(:username) }
+  it { should validate_uniqueness_of(:username) }
   it { should validate_format_of(:email).
           to_allow("valid@dinocore.net").
           not_to_allow("invlaid[AT]dinocore.net") }
@@ -58,6 +60,12 @@ describe Employee do
       email = "crocodile@dinocore.net"
       (employee = create_employee(:email => email)).save!
       Employee.search(email).should include employee
+    end
+
+    it "should find employees by username" do
+      username = "holden"
+      (emplyee = create_employee(:username => username)).save!
+      Employee.search(username).should include employee
     end
   end
 end

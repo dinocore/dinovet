@@ -37,7 +37,9 @@ module NavigationHelpers
       new_employee_path
     when /^the show employee page$/
       employee_path(@employee)
-
+#Login Paths
+    when /^the Login page/
+      employee_login_path
 
 # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

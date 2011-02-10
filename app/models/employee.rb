@@ -10,21 +10,15 @@ class Employee
   field :state
   field :zipcode
   field :email
-  field :username
-
-  devise :database_authenticatable, :registerable, :recoverable,
-         :rememberable, :trackable, :validatable
-
-  attr_accessible :username, :email, :password, :password_confirmation
 
   embeds_many :phone_numbers
+  embeds_one :user
 
   accepts_nested_attributes_for :phone_numbers
 
-  validates_uniqueness_of :username, :email, :case_sensitive => false
   validates_associated :phone_numbers
   validates_presence_of :first_name, :last_name, :address_1, :city, :state,
-                        :zipcode, :phone_numbers, :username
+                        :zipcode, :phone_numbers
   validates_format_of :email, :allow_nil => true,
                       :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 

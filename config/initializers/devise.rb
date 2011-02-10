@@ -3,7 +3,10 @@
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
-  config.mailer_sender = "please-change-me@config-initializers-devise.com"
+  config.mailer_sender = "support@dinocore.net"
+
+  config.authentication_keys = [ :username ]
+  config.password_length = 4..20
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
