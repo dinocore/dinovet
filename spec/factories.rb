@@ -24,7 +24,7 @@ Factory.define :employee do |c|
 end
 
 Factory.define :phone_number do |p|
-  p.sequence(:type)       { |n| "type#{n}"       }
+  p.sequence(:label)      { |n| "label#{n}"       }
   p.sequence(:number)     { |n| "%010d" % n.to_s }
 end
 

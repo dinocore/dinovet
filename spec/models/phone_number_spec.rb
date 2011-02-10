@@ -3,7 +3,7 @@ require 'spec_helper'
 describe PhoneNumber do
 
   it { should validate_presence_of(:number) }
-  it { should validate_presence_of(:type)   }
+  it { should validate_presence_of(:label)   }
 
   it { should be_embedded_in(:client).as_inverse_of(:phone_numbers) }
 
