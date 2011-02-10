@@ -2,6 +2,7 @@
 #diagnosis
 
 = diagnoses_panel do
-  = create_diagnosis_category_link
-  = create_diagnosis_link
+  .toolbar
+    = create_diagnosis_category_link
+    = create_diagnosis_link
   = render 'diagnoses_list'

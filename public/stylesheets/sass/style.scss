@@ -18,15 +18,18 @@ $view-background: #f8f8f8;
   padding: 0;
   margin: 0 auto;
   width: 25em;
+
+  a {
+    display: block;
+    padding: 0.5em 0 0.5em 1em;
+  }
   
   li.category {
-    margin-bottom: 0.5em;
+    margin-bottom: 0.25em;
     strong {
       display: block;
-      padding: 0.5em 1em;
       border: 1px solid gray;
-      background-color: $view-background;
-     background-color: lighten($tab-background, 40%);
+      background-color: lighten($tab-background, 40%);
     }
     ul {
       list-style: none;
@@ -35,7 +38,13 @@ $view-background: #f8f8f8;
       padding: 0;
 
       li {
-        padding: 0.3em 1.5em;
+        border: 1px solid gray;
+        margin: 0.25em 0;
+        background: white;
+
+        a {
+          padding-left: 1.75em;
+        }
       }
     }
   }
