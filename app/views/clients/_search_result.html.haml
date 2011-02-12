@@ -1,0 +1,12 @@
+= link_to edit_client_path(client) do
+  .label
+    = "Client"
+  %strong
+    = name_last_first(client)
+  %br
+  %small{:class => 'address'}
+    = client.address_1
+    - unless client.address_2.blank?
+      = ", #{client.address_2}"
+    %br
+    = "#{client.city}, #{client.state} #{client.zipcode}"

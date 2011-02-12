@@ -1,9 +1,8 @@
-= render 'search_bar', :show_result_box => false
+= render 'searches/search_bar'
 
-#search-results
-  %table{:class => 'clients'}
-    %thead
-      %tr
-        %th Name
-    %tbody
-      = render :partial => 'client_row', :collection => @clients
+%table{:class => 'clients'}
+  %thead
+    %tr
+      %th Name
+  %tbody
+    = render :partial => 'client_row', :collection => @clients

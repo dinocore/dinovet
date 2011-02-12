@@ -1,6 +1,13 @@
 $('#search-bar-results ul').html('<%= 
-  escape_javascript render(:partial => 'client_item', :collection => @clients)
-%>');
+  escape_javascript(render "client_item", :collection => @clients) %>');
+
 $('#search-results table tbody').html('<%= 
-  escape_javascript render(:partial => 'client_row', :collection => @clients)
-%>');
+  escape_javascript(render "client_row", :collection => @clients) %>');
+
+if($('#search-bar-results ul').html() != '') {
+  $('#search-bar-results').show();
+} else {
+  $('#search-bar-results').hide();
+}
+
+$('#search').removeClass('loading');

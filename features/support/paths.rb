@@ -10,6 +10,8 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
+    when /^the search page$/
+      search_path
     when /^the edit client page(?: for "(.*)")?$/
       client = $1.blank? ? @client : Client.first(
           :conditions => {:first_name => $1})

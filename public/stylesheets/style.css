@@ -206,29 +206,46 @@ table.events {
     table.events tbody tr td.date {
       width: 7em; }
 
-#client-search-bar, #employee-search-bar {
+#search-bar {
   background: #7d9471;
   position: relative;
   border-top: 2px solid gray;
   border-bottom: 2px solid gray;
   width: 100%; }
-  #client-search-bar #search-bar-results, #employee-search-bar #search-bar-results {
+  #search-bar #search-results {
     background-color: #e6e6e6;
     display: none;
     position: absolute;
-    width: 85%;
+    width: 100%;
     border-bottom: 2px solid gray;
-    border-left: 2px solid gray;
-    border-right: 2px solid gray;
-    margin-left: 2em;
-    margin-right: 5em; }
-  #client-search-bar fieldset, #employee-search-bar fieldset {
+    -moz-box-shadow: 0px 10px 10px #888;
+    -webkit-box-shadow: 0px 10px 5px #888;
+    box-shadow: 0px 10px 5px #888; }
+    #search-bar #search-results ul {
+      list-style: none;
+      margin: 0;
+      padding: 0; }
+      #search-bar #search-results ul li {
+        border: 2px solid #cccccc;
+        padding: 0;
+        margin: 0.2em 0.2em; }
+        #search-bar #search-results ul li:hover {
+          background-color: #cccccc;
+          border: 2px solid #b3b3b3; }
+        #search-bar #search-results ul li a {
+          padding: 0.5em 1.8em;
+          display: block; }
+        #search-bar #search-results ul li .label {
+          float: right;
+          font-size: 1.5em;
+          color: gray; }
+  #search-bar fieldset {
     border: none;
     margin: 0;
     padding: 0.2em 0;
     display: block;
     background-color: #e6e6e6; }
-    #client-search-bar fieldset input, #employee-search-bar fieldset input {
+    #search-bar fieldset input {
       width: 85%;
       display: block;
       border: none;
@@ -236,7 +253,9 @@ table.events {
       float: left;
       background: url(../images/search.png) no-repeat 0.3em 0.3em #e6e6e6;
       font-size: 1.5em; }
-    #client-search-bar fieldset input.submit, #employee-search-bar fieldset input.submit {
+    #search-bar fieldset input.loading {
+      background: url(../images/loading.gif) no-repeat 0.3em 0.3em #e6e6e6; }
+    #search-bar fieldset input.submit {
       font-size: 1.3em;
       width: 5%;
       color: #7d9471;
@@ -249,29 +268,16 @@ table.events {
       margin: 0;
       width: auto;
       padding: 0 0.5em; }
-      #client-search-bar fieldset input.submit.first, #employee-search-bar fieldset input.submit.first {
+      #search-bar fieldset input.submit.first {
         border-right: 1px solid #b3b3b3;
         margin-right: 0.5em; }
-  #client-search-bar h2, #employee-search-bar h2 {
+  #search-bar h2 {
     margin-left: 0.1em; }
-  #client-search-bar h3, #employee-search-bar h3 {
+  #search-bar h3 {
     color: #b2c0ab;
     margin: 0.5em 2em 0 0;
     float: right;
     font-size: 1em; }
-
-#search-results {
-  background-color: #f8f8f8; }
-  #search-results table {
-    width: 25em;
-    margin: 0 auto; }
-    #search-results table thead {
-      text-align: left;
-      font-size: 1.2em; }
-      #search-results table thead th {
-        border-bottom: 2px solid #7d9471; }
-    #search-results table tbody td {
-      padding: 0.1em 1em; }
 
 ul.diagnoses {
   display: block;
@@ -305,7 +311,8 @@ body {
   padding: 0;
   font-family: sans-serif;
   background-color: gray;
-  min-width: 900px; }
+  min-width: 900px;
+  overflow: hidden; }
 
 a {
   text-decoration: none;

@@ -6,6 +6,8 @@ gem 'mongoid', '>= 2.0.0rc6'
 gem 'bson_ext'
 gem 'haml', '>= 3.0.18'
 gem 'devise'
+gem 'vinova_sunspot_mongoid', :require => 'sunspot_mongoid'
+gem 'sunspot_rails', '~> 1.2.1'
 
 group :development, :test, :cucumber do
   gem 'rspec-rails', '>= 2.0.0.beta.10'

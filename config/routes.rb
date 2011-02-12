@@ -2,13 +2,13 @@ Dinovet::Application.routes.draw do
   root :to => "clients#index"
 
 
-  resources :diagnosis_categories
+  resources :diagnosis_categories, :except => [:show]
 
-  resources :diagnoses
+  resources :diagnoses, :except => [:show]
 
   resources :species, :only => [:show]
 
-  resources :clients do
+  resources :clients, :except => [:show] do
     resources :patients, :only => [:new, :create]
   end
 
@@ -19,6 +19,7 @@ Dinovet::Application.routes.draw do
     resources :diagnosis_events, :only => [:new, :create]
   end
 
+  resource :search, :only => [:show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

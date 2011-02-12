@@ -1,0 +1,11 @@
+= link_to edit_patient_path(patient) do
+  .label
+    = "Patient"
+  %strong
+    = patient.name
+  %br
+  %small
+    != "#{patient.species} &mdash; #{patient.breed} &mdash; #{patient.sex}"
+    %br
+    %em
+      = name_last_first(patient.client)

@@ -1,6 +1,7 @@
 class Patient
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Sunspot::Mongoid
   Sexes  = ['Male',  'Female']
 
   field :name
@@ -18,4 +19,12 @@ class Patient
   validates_presence_of :client
   validates_presence_of :name, :sex, :species, :breed
   validates_numericality_of :weight, :greater_than_or_equal_to => 0
+
+  searchable do
+    text :name
+    string :species
+    string :breed
+    string :microchip
+    date   :birth_date
+  end
 end

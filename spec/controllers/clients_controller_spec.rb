@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe ClientsController do
+  disconnect_sunspot
 
 
 
@@ -108,21 +109,6 @@ describe ClientsController do
 
 
 
-  describe "GET 'show'" do
-    before do
-      Client.stub!(:find).with(mock_client.id).and_return(mock_client)
-      get :show, :id => mock_client.id
-    end
-
-    it { response.should be_success }
-
-    it "should set @client" do
-      assigns[:client].should == mock_client
-    end
-  end
-
-
-
   describe "POST 'create'" do
     before do
       Client.stub!(:new).and_return(mock_client(:save => true))
@@ -185,18 +171,14 @@ describe ClientsController do
 
   describe "GET 'index'" do
     before do
-      Client.stub!(:search).and_return([mock_client])
-      get :index, :search => "test"
+      Client.stub!(:all).and_return([mock_client])
+      get :index
     end
 
     it { response.should be_success }
 
     it "should assign a list of clients to @clients" do
       assigns[:clients].should include mock_client
-    end
-
-    it "should assign current search term to @search" do
-      assigns[:search].should == "test"
     end
 
     it { response.should render_template(:index) }

@@ -13,7 +13,7 @@ Feature: Manage clients
     And I fill in "City" with "New York"
     And I select "New York" from "State"
     And I fill in "Zipcode" with "10001"
-    And I select "Home" from "client_phone_numbers_attributes_0_type"
+    And I select "Home" from "client_phone_numbers_attributes_0_label"
     And I fill in "client_phone_numbers_attributes_0_number" with "1"
     And I fill in "E-mail" with "holden@dinocore.net"
     And I press "Create Client"

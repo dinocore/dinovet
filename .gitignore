@@ -1,6 +1,8 @@
 .bundle
 db/*.sqlite3
 log/*.log
+log/*.log.lck
 tmp/**/*
 rerun.txt
 *.swp
+solr/data/*

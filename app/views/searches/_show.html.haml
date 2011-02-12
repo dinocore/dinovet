@@ -1,0 +1,5 @@
+#search-results
+  %ul
+    - unless @results.nil?
+      - @results.each do |result|
+        %li= search_result(result)

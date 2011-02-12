@@ -1,0 +1,7 @@
+#search-bar
+  %fieldset
+    = form_tag search_path, :method => :get, :remote => true do |f|
+      = text_field_tag :q, params[:q], :id => 'search', :autocomplete => :off
+      = submit_tag "Search", :class => 'submit'
+
+  = render "searches/show"
