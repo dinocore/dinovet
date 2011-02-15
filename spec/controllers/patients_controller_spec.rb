@@ -92,8 +92,7 @@ describe PatientsController do
         flash[:notice].should == "Patient created successfully"
       end
 
-      it { response.should redirect_to edit_patient_path(
-                                              mock_patient, :format => :js) }
+      it { response.should render_template(:success) }
 
     end
 

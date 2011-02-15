@@ -18,7 +18,7 @@ class PatientsController < ApplicationController
     if @patient.save
       flash[:notice] = "Patient created successfully"
       respond_to do |format|
-        format.js   { redirect_to edit_patient_path(@patient, :format => :js) }
+        format.js   { render :success }
         format.html { redirect_to edit_patient_path(@patient) }
       end
     else

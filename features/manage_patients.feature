@@ -140,7 +140,7 @@ Feature: Manage patients
     And I fill in "patient_weight" with "100"
     And I press "Create Patient"
     And I wait for the AJAX call to finish
-    Then I should see "Crocodile" within "#patient .header"
+    Then I should not see "Crocodile" within "#patient .header"
     And I should see "Patient created successfully"
 
   @javascript
