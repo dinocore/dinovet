@@ -1,8 +1,12 @@
 = render 'searches/search_bar'
 
-%table{:class => 'clients'}
-  %thead
-    %tr
-      %th Name
-  %tbody
-    = render :partial => 'client_row', :collection => @clients
+= clients_panel do
+  %table{:class => 'index'}
+    %thead
+      %tr
+        %th Name
+        %th Address
+        %th Phone
+        %th Patients
+    %tbody
+      = render :partial => 'client_row', :collection => @clients

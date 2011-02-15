@@ -15,6 +15,14 @@ module ClientsHelper
       &block
   end
 
+  def clients_panel(&block)
+    render :layout => 'layouts/panel',
+      :locals => { 
+        :id => 'clients',
+        :title => "Clients" },
+      &block
+  end
+
   def patient_select_list(client)
     patients = client.patients.map do |p|
       content_tag :li do

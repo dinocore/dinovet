@@ -184,6 +184,17 @@
     .toolbar a img {
       margin: 0 0.25em 0 0; }
 
+table.index {
+  margin: 0 auto;
+  border-collapse: collapse; }
+  table.index th {
+    text-align: left;
+    color: #223344;
+    border-bottom: 5px solid #223344; }
+  table.index td {
+    padding: 0.7em 1em 0.7em 0;
+    border-bottom: 1px solid #ccc; }
+
 table.events {
   width: 55em;
   margin: 0 auto;

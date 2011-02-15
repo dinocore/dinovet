@@ -16,14 +16,10 @@
  
     #header 
       %ul 
-        %li 
-          %a{:href => '#'} Reports 
-        %li 
-          %a{:href => '#'} Schedule 
         %li
-          %a{:href => '#'} Clients
+          = link_to "Clients", clients_path
         %li
-          %a{:href => '#'} Configure
+          = link_to "Diagnoses", diagnoses_path
 
   = yield
 
