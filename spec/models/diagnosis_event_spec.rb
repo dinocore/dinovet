@@ -5,6 +5,9 @@ describe DiagnosisEvent do
   it { should have_fields(:name, :code, :description, :comment) }
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:code) }
+  it { should validate_presence_of(:diagnosis_id) }
+  it { should_not validate_uniqueness_of(:name) }
+  it { should_not validate_uniqueness_of(:code) }
 
 end
 

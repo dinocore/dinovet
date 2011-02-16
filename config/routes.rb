@@ -1,7 +1,6 @@
 Dinovet::Application.routes.draw do
   root :to => "clients#index"
 
-
   resources :diagnosis_categories, :except => [:show]
 
   resources :diagnoses, :except => [:show]

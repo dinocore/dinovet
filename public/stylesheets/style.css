@@ -61,6 +61,7 @@
       margin: 0 auto;
       padding: 0.5em 0;
       border: 1px solid gray;
+      border: 1px solid #ccc;
       width: 55em; }
       .panel .view fieldset legend {
         margin-left: 0.2em;
@@ -106,7 +107,7 @@
               width: 5.94em; }
           .panel .view fieldset ol li div.field_with_errors {
             display: inline; }
-            .panel .view fieldset ol li div.field_with_errors input {
+            .panel .view fieldset ol li div.field_with_errors input, .panel .view fieldset ol li div.field_with_errors select {
               background-color: #e5dcdc; }
           .panel .view fieldset ol li input {
             padding: 0.2em;
@@ -123,14 +124,12 @@
             border: 1px solid gray;
             background-color: #e6e6e6; }
     .panel .view form.new_diagnosis_event fieldset ol li select {
-      min-width: 35em;
-      margin: 1em;
+      width: 20em;
+      height: 18.5em;
       float: left; }
-    .panel .view form.new_diagnosis_event fieldset ol li label {
-      text-align: left !important; }
     .panel .view form.new_diagnosis_event fieldset ol li textarea {
-      width: 30.5em;
-      height: 27.5em;
+      width: 20em;
+      height: 20em;
       display: block;
       float: left; }
     .panel .view form.new_client fieldset.phone ol li.phone-number, .panel .view form.edit_client fieldset.phone ol li.phone-number, .panel .view form.new_employee fieldset.phone ol li.phone-number, .panel .view form.edit_employee fieldset.phone ol li.phone-number {
@@ -299,28 +298,47 @@ ul.diagnoses {
   display: block;
   list-style: none;
   padding: 0;
+  margin: 0;
+  width: 100%;
+  width: 25em;
+  overflow-x: hidden;
+  overflow-y: scroll;
   margin: 0 auto;
-  width: 25em; }
-  ul.diagnoses a {
-    display: block;
-    padding: 0.5em 0 0.5em 1em; }
+  padding: 0;
+  height: 25em;
+  border: 1px solid gray; }
   ul.diagnoses li.category {
     margin-bottom: 0.25em; }
-    ul.diagnoses li.category strong {
+    ul.diagnoses li.category a {
+      padding: 0.5em 0 0.5em 1em;
       display: block;
-      border: 1px solid gray;
-      background-color: #e6e6e6; }
+      background-color: #e6e6e6;
+      color: #bbbbbb;
+      background-color: #223344; }
+      ul.diagnoses li.category a:hover {
+        background-color: #334c66; }
+        ul.diagnoses li.category a:hover a {
+          color: white; }
     ul.diagnoses li.category ul {
       list-style: none;
       background-color: #f8f8f8;
       margin: 0;
-      padding: 0; }
+      padding: 0;
+      border-bottom: 1px solid gray; }
+      ul.diagnoses li.category ul a {
+        color: black;
+        background-color: white; }
+        ul.diagnoses li.category ul a:hover {
+          background-color: #e6e6e6;
+          color: black; }
       ul.diagnoses li.category ul li {
-        border: 1px solid gray;
-        margin: 0.25em 0;
-        background: white; }
+        border-bottom: 1px solid #ccc; }
         ul.diagnoses li.category ul li a {
-          padding-left: 1.75em; }
+          padding: 0.2em 0 0.2em 1.75em; }
+        ul.diagnoses li.category ul li.last {
+          border-bottom: none; }
+  ul.diagnoses li.first strong {
+    border-top: none; }
 
 body {
   margin: 0;

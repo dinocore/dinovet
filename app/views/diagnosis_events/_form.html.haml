@@ -1,13 +1,12 @@
-= form_for [patient, diagnosis_event] do |f|
+= custom_form_for [patient, diagnosis_event], :remote => true do |f|
   %fieldset
     %legend Diagnoses
     %ol
       %li
-        = diagnosis_select diagnosis_categories, {:size => 20}
-
+        = f.label :diagnosis_id
+        = f.diagnosis_category_select(@categories)
       %li
         = f.label :comment
-        %br
         = f.text_area :comment
 
   %fieldset{:class => 'submit'}

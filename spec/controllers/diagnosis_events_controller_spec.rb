@@ -17,8 +17,8 @@ describe DiagnosisEventsController do
       assigns[:patient].should equal(mock_patient)
     end
 
-    it "should set @diagnosis_categories" do
-      assigns[:diagnosis_categories].should include mock_diagnosis_category
+    it "should set @categories" do
+      assigns[:categories].should include mock_diagnosis_category
     end
 
     it "should set @diagnosis_event" do
@@ -82,8 +82,8 @@ describe DiagnosisEventsController do
              :diagnosis_event => mock_diagnosis_event
       end
 
-      it "should set @diagnosis_categories" do
-        assigns[:diagnosis_categories].should include mock_diagnosis_category
+      it "should set @categories" do
+        assigns[:categories].should include mock_diagnosis_category
       end
 
       it "should set an error message" do

@@ -1,7 +1,9 @@
 %ul{:class => 'diagnoses'}
   - @categories.each do |category|
-    %li{:class => 'category'}
+    - if @categories.first == category then row_class = 'first'
+    %li{:class => "category #{row_class}"}
       %strong= edit_diagnosis_category_link(category)
       %ul
         - category.diagnoses.each do |diagnosis|
-          %li= edit_diagnosis_link(diagnosis)
+          - if category.diagnoses.last == diagnosis then row_class = 'last'
+          %li{:class => row_class}= edit_diagnosis_link(diagnosis)
