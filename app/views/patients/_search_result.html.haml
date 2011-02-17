@@ -5,7 +5,7 @@
     = patient.name
   %br
   %small
-    != "#{patient.species} &mdash; #{patient.breed} &mdash; #{patient.sex}"
+    !="#{h patient.species} &mdash; #{h patient.breed} &mdash; #{h patient.sex}"
     %br
     %em
-      = name_last_first(patient.client)
+      = patient.client.full_name

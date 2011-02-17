@@ -1,21 +1,13 @@
 - client = client_row
 %tr
-  %td= link_to name_last_first(client), edit_client_path(client)
+  %td= link_to client.full_name, edit_client_path(client)
   %td
     %small
-      = client.address_1
-      - unless client.address_2.blank?
-        = ", #{client.address_2}"
-      %br
-      = "#{client.city}, #{client.state} #{client.zipcode}"
+      = address_for(client)
   %td
-    - client.phone_numbers.each do |phone|
-      %small
-        %em= "#{phone.label}: "
-        = phone.number
-      %br
+    %small
+      = phone_numbers_for(client)
   %td
     - client.patients.each do |patient|
       = link_to patient.name, edit_patient_path(patient)
-      - unless patient == client.patients.last
-        != "&mdash;"
+      != "&mdash;" unless patient == client.patients.last

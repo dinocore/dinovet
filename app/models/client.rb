@@ -34,4 +34,8 @@ class Client
       client.phone_numbers.map { |phone_number| phone_number.number }
     end
   end
+
+  def full_name
+    "#{last_name}, #{first_name}"
+  end
 end

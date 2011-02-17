@@ -2,11 +2,7 @@
   .label
     = "Client"
   %strong
-    = name_last_first(client)
+    = client.full_name
   %br
   %small{:class => 'address'}
-    = client.address_1
-    - unless client.address_2.blank?
-      = ", #{client.address_2}"
-    %br
-    = "#{client.city}, #{client.state} #{client.zipcode}"
+    = address_for(client)

@@ -1,23 +1,16 @@
 module ClientsHelper
-  def name_last_first(client)
-    header = client.last_name
-    unless client.first_name.blank?
-      header += ", #{client.first_name}"
-    end
-  end
-
   def client_panel(client, &block)
     render :layout => 'layouts/panel',
-      :locals => { 
+      :locals => {
         :id => 'client',
         :title => "Client",
-        :subtitle => name_last_first(client) }, 
+        :subtitle => client.full_name },
       &block
   end
 
   def clients_panel(&block)
     render :layout => 'layouts/panel',
-      :locals => { 
+      :locals => {
         :id => 'clients',
         :title => "Clients" },
       &block
