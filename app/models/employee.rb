@@ -1,6 +1,7 @@
 class Employee
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Sunspot::Mongoid
   field :first_name
   field :last_name
   field :title
@@ -22,16 +23,21 @@ class Employee
   validates_format_of :email, :allow_nil => true,
                       :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 
-  def self.search(query)
-    
-    if query.blank?
-      return find :all
+  searchable do
+    text   :first_name
+    text   :last_name
+    text   :title
+    text   :address_1
+    text   :city
+    text   :state
+    text   :zipcode
+    text   :email
+    text   :phone_numbers do |employee|
+      employee.phone_numbers.map { |phone_number| phone_number.number }
     end
+  end
 
-    any_of({ :first_name             => /.*#{query}.*/ },
-           { :last_name              => /.*#{query}.*/ },
-           { :address_1              => /.*#{query}.*/ },
-           { :email                  => /.*#{query}.*/ },
-           { "phone_numbers.number"  => /.*#{query}.*/ })
+  def full_name
+    "#{last_name}, #{first_name}"
   end
 end

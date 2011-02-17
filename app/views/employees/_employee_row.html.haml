@@ -1,3 +1,9 @@
 - employee = employee_row
 %tr
-  %td= link_to name_last_first(employee), edit_employee_path(employee)
+  %td= link_to employee.full_name, edit_employee_path(employee)
+  %td
+    %small
+      = address_for(employee)
+  %td
+    %small
+      = phone_numbers_for(employee)

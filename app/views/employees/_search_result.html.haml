@@ -1,0 +1,8 @@
+= link_to edit_employee_path(employee) do
+  .label
+    = "Employee"
+  %strong
+    = employee.full_name
+  %br
+  %small{:class => 'address'}
+    = address_for(employee)

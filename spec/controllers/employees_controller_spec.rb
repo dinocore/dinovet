@@ -154,18 +154,14 @@ describe EmployeesController do
 
   describe "GET 'index'" do
     before do
-      Employee.stub!(:search).and_return([mock_employee])
-      get :index, :search => "test"
+      Employee.stub!(:all).and_return([mock_employee])
+      get :index
     end
 
     it { response.should be_success }
 
     it "should assign a list of employees to @employees" do
       assigns[:employees].should include mock_employee
-    end
-
-    it "should assign current search term to @search" do
-      assigns[:search].should == "test"
     end
 
     it { response.should render_template(:index) }

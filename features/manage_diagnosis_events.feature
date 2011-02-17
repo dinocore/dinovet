@@ -8,7 +8,7 @@ Feature: Manage diagnosis events
     And I have created a diagnosis
     And I am on the new diagnosis event page
     And I am an employee
-    When I select "Rabies" from "diagnosis_id"
+    When I select "Rabies" from "Diagnosis"
     And I fill in "Comment" with "This is a bizzare case of mutant Rabies"
     And I press "Make Diagnosis"
     Then I should see "Diagnosis recorded"
@@ -19,11 +19,11 @@ Feature: Manage diagnosis events
     And I have created a diagnosis
     And I am on the new diagnosis event page
     And I am an employee
-    When I select "Rabies" from "diagnosis_id"
+    When I select "Rabies" from "Diagnosis"
     And I fill in "Comment" with "This is a bizzare case of mutant Rabies"
     And I press "Make Diagnosis"
     And I go to the new diagnosis event page
-    And I select "Rabies" from "diagnosis_id"
+    And I select "Rabies" from "Diagnosis"
     And I fill in "Comment" with "This is a bizzare case of mutant Rabies"
     And I press "Make Diagnosis"
     Then I should see "Diagnosis recorded"

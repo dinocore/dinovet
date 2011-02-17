@@ -1,8 +1,7 @@
 class EmployeesController < ApplicationController
 
   def index
-    @search = params[:search]
-    @employees = Employee.search(@search)
+    @employees = Employee.all
   end
 
   def show

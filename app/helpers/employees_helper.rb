@@ -8,10 +8,18 @@ module EmployeesHelper
 
   def employee_panel(employee, &block)
     render :layout => 'layouts/panel',
-      :locals => { 
+      :locals => {
         :id => 'employee',
         :title => "Employee",
         :subtitle => name_last_first(employee) }, 
+      &block
+  end
+
+  def employees_panel(&block)
+    render :layout => 'layouts/panel',
+      :locals => {
+        :id => 'employees',
+        :title => "Employees" },
       &block
   end
  end

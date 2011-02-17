@@ -1,9 +1,11 @@
-= render 'search_bar', :show_result_box => false
+= render 'searches/search_bar'
 
-#search-results
-  %table{:class => 'employees'}
+= employees_panel do
+  %table{:class => 'index'}
     %thead
       %tr
         %th Name
+        %th Address
+        %th Phone
     %tbody
       = render :partial => 'employee_row', :collection => @employees
