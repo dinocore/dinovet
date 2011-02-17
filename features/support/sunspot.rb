@@ -64,7 +64,7 @@ Before("@search") do
   CukeSunspot.new.start
   
   # Clear all indexes from indexed models:
-  [Client, Patient].each { |model| model.remove_all_from_index! }
+  [Client, Patient, Employee].each { |model| model.remove_all_from_index! }
 end
 
 # make sure solr is stopped on exit

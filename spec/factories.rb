@@ -37,6 +37,7 @@ Factory.define :patient do |p|
   p.birth_date                  3.years.ago
   p.color                       "Green"
   p.microchip                   "124223"
+  p.client                { Factory.create(:client) }
 end
 
 Factory.define :diagnosis do |d|

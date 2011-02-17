@@ -22,9 +22,9 @@ class Patient
 
   searchable do
     text :name
-    string :species
-    string :breed
-    string :microchip
-    date   :birth_date
+    text :species
+    text :breed
+    text :microchip
+    date :birth_date
   end
 end

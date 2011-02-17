@@ -23,14 +23,14 @@ class Client
                         :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 
   searchable do
-    text   :first_name
-    text   :last_name
-    text   :address_1
-    text   :city
-    text   :state
-    text   :zipcode
-    text   :email
-    text   :phone_numbers do |client|
+    text :first_name
+    text :last_name
+    text :address_1
+    text :city
+    text :state
+    text :zipcode
+    text :email
+    text :phone_numbers do |client|
       client.phone_numbers.map { |phone_number| phone_number.number }
     end
   end

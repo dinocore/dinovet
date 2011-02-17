@@ -77,11 +77,12 @@ $view-background: #f8f8f8;
 ul.diagnoses {
   @include category-list;
   width: 25em;
+  min-height: 1em;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   margin: 0 auto;
   padding: 0;
-  height: 25em;
+  max-height: 25em;
   border: 1px solid gray;
 }
 

@@ -1,16 +1,13 @@
 Given /^I am an employee$/ do
 end
 
-Given /^I have added a client$/ do
-  @client = Factory.create(:client)
+Given /^I have added a client(?: named "([^"]*)")?$/ do |name|
+  attributes = name.blank? ? {} : {:first_name => name}
+  @client = Factory.create(:client, attributes)
 end
 
 Given /^I have added an additional client phone number$/ do
   @client.phone_numbers << Factory.create(:phone_number)
-end
-
-Given /^I have added a client named "(.*)"$/ do |name|
-  @client = Factory.create(:client, {:first_name => name})
 end
 
 And /^I am editing the client$/ do

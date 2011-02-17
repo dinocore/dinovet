@@ -24,15 +24,15 @@ class Employee
                       :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 
   searchable do
-    text   :first_name
-    text   :last_name
-    text   :title
-    text   :address_1
-    text   :city
-    text   :state
-    text   :zipcode
-    text   :email
-    text   :phone_numbers do |employee|
+    text :first_name
+    text :last_name
+    text :title
+    text :address_1
+    text :city
+    text :state
+    text :zipcode
+    text :email
+    text :phone_numbers do |employee|
       employee.phone_numbers.map { |phone_number| phone_number.number }
     end
   end

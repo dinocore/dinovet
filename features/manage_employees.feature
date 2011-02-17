@@ -23,13 +23,13 @@ Feature: Manage employees
 
   Scenario: View a list of all employees
     Given I am an employee
-    And I have added a employee named "Holden"
+    And I have added an employee named "Holden"
     And I am on the employees page
     Then I should see "Holden"
 
   Scenario: Edit an existing employee
     Given I am an employee
-    And I have added a employee named "Holden"
+    And I have added an employee named "Holden"
     And I am editing the employee
     When I fill in "First name" with "Phoebe"
     And I press "Update Employee"
@@ -39,7 +39,7 @@ Feature: Manage employees
 
   Scenario: Enter invalid data for an existing employee
     Given I am an employee
-    And I have added a employee named "Holden"
+    And I have added an employee named "Holden"
     And I am editing the employee
     When I fill in "First name" with ""
     And I press "Update Employee"
@@ -72,3 +72,30 @@ Feature: Manage employees
     |  Holden  |Caulfield|Doctor|1 Fake St|New York|New York|       |holden@dinocore.net| 555-555-5555 |
     |  Holden  |Caulfield|Doctor|1 Fake St|New York|New York| 10001 |       fail        | 555-555-5555 |
     |  Holden  |Caulfield|Doctor|1 Fake St|New York|New York| 10001 |holden@dinocore.net|              |
+
+  @javascript
+  Scenario: Remove a phone number
+    Given I am an employee
+    And I have added an employee
+    And I have added an additional employee phone number
+    And I am editing the employee
+    When I follow "Delete"
+    And I confirm
+    And I wait for the AJAX call to finish
+    And I press "Update Employee"
+    And I wait for the AJAX call to finish
+    Then I should see the "employee_phone_numbers_attributes_0_number" field
+    And I should not see the "employee_phone_numbers_attributes_1_number" field
+
+  @javascript
+  Scenario: Add an additional phone number
+    Given I am an employee
+    And I have added an employee
+    And I am editing the employee
+    When I follow "Add"
+    And I wait for the AJAX call to finish
+    And I fill in "employee_phone_numbers_attributes_1_number" with "444-555-5555"
+    And I press "Update Employee"
+    And I wait for the AJAX call to finish
+    Then the "employee_phone_numbers_attributes_1_number" field should contain "444-555-5555"
+    And I should see "Employee updated successfully"
