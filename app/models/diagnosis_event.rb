@@ -1,5 +1,5 @@
 class DiagnosisEvent < Event
-  include Mongoid::DiagnosisFields
+  include Dinovet::Fields::Diagnosis
   field :comment
 
   attr_accessor :diagnosis_id
