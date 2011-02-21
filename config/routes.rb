@@ -18,6 +18,7 @@ Dinovet::Application.routes.draw do
   resources :patients, :only => [:edit, :update] do
     resources :events, :only => [:index]
     resources :diagnosis_events, :only => [:new, :create]
+    resources :treatment_plans,  :only => [:new, :create]
   end
 
   resource :search, :only => [:show]

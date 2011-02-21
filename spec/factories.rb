@@ -83,4 +83,6 @@ end
 Factory.define :treatment_category do |c|
   c.sequence(:name)        { |n| "name#{n}"        }
   c.sequence(:description) { |n| "description#{n}" }
+
+Factory.define :treatment_plan do |t|
 end
