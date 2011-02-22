@@ -4,8 +4,8 @@ class DiagnosisEvent < Event
 
   attr_accessor :diagnosis_id
 
-  validates_presence_of :diagnosis_id
-  before_validation :copy_diagnosis
+  before_validation     :copy_diagnosis, :on => :create
+  validates_presence_of :diagnosis_id,   :on => :create
 
   protected
   def copy_diagnosis
