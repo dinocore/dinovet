@@ -1,0 +1,4 @@
+$('#treatment-category').replaceWith('<%= escape_javascript(render 'edit') %>')
+<%= render 'layouts/flash', :flash => flash %>
+<%= update_treatments_list(@categories) %>
+$('#loading-overlay').remove();

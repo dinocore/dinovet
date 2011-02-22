@@ -74,7 +74,7 @@ $view-background: #f8f8f8;
   }
 }
 
-ul.diagnoses {
+ul.diagnoses, ul.treatments {
   @include category-list;
   width: 25em;
   min-height: 1em;

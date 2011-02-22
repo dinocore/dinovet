@@ -18,8 +18,6 @@ module NavigationHelpers
       edit_client_path(client)
     when /^the new patient page$/
       new_client_patient_path(@client)
-    when /^the edit diagnosis page for "(.*)"$/
-      edit_diagnosis_path(Diagnosis.first(:conditions => { :name => $1 }))
     when /^the edit patient page$/
       edit_patient_path(@patient)
     when /^the edit patient page for "(.*)"$/
@@ -27,13 +25,24 @@ module NavigationHelpers
         Patient.first(:conditions => { :name => $1 }))
     when /^the show patient page$/
       client_patient_path(@client, @patient)
+    when /^the patient events page$/
+      patient_events_path(@patient)
+    #Diagnosis paths
     when /^the edit diagnosis category page for "(.*)"$/
       edit_diagnosis_category_path(DiagnosisCategory.first(
         :conditions => { :name => $1 } ))
-    when /^the patient events page$/
-      patient_events_path(@patient)
+    when /^the edit diagnosis page for "(.*)"$/
+      edit_diagnosis_path(Diagnosis.first(:conditions => { :name => $1 }))
     when /^the new diagnosis event page$/
       new_patient_diagnosis_event_path(@patient)
+    #Diagnosis paths
+    when /^the edit treatment category page for "(.*)"$/
+      edit_treatment_category_path(TreatmentCategory.first(
+        :conditions => { :name => $1 } ))
+    when /^the edit treatment page for "(.*)"$/
+      edit_treatment_path(Treatment.first(:conditions => { :name => $1 }))
+    when /^the new treatment event page$/
+      new_patient_treatment_event_path(@patient)
 #Employee Paths
     when /^the edit employee page for "(.*)"$/
       edit_employee_path(@employee)

@@ -294,7 +294,7 @@ table.events {
     float: right;
     font-size: 1em; }
 
-ul.diagnoses {
+ul.diagnoses, ul.treatments {
   display: block;
   list-style: none;
   padding: 0;
@@ -308,37 +308,37 @@ ul.diagnoses {
   padding: 0;
   max-height: 25em;
   border: 1px solid gray; }
-  ul.diagnoses li.category {
+  ul.diagnoses li.category, ul.treatments li.category {
     margin-bottom: 0.25em; }
-    ul.diagnoses li.category a {
+    ul.diagnoses li.category a, ul.treatments li.category a {
       padding: 0.5em 0 0.5em 1em;
       display: block;
       background-color: #e6e6e6;
       color: #bbbbbb;
       background-color: #223344; }
-      ul.diagnoses li.category a:hover {
+      ul.diagnoses li.category a:hover, ul.treatments li.category a:hover {
         background-color: #334c66; }
-        ul.diagnoses li.category a:hover a {
+        ul.diagnoses li.category a:hover a, ul.treatments li.category a:hover a {
           color: white; }
-    ul.diagnoses li.category ul {
+    ul.diagnoses li.category ul, ul.treatments li.category ul {
       list-style: none;
       background-color: #f8f8f8;
       margin: 0;
       padding: 0;
       border-bottom: 1px solid gray; }
-      ul.diagnoses li.category ul a {
+      ul.diagnoses li.category ul a, ul.treatments li.category ul a {
         color: black;
         background-color: white; }
-        ul.diagnoses li.category ul a:hover {
+        ul.diagnoses li.category ul a:hover, ul.treatments li.category ul a:hover {
           background-color: #e6e6e6;
           color: black; }
-      ul.diagnoses li.category ul li {
+      ul.diagnoses li.category ul li, ul.treatments li.category ul li {
         border-bottom: 1px solid #ccc; }
-        ul.diagnoses li.category ul li a {
+        ul.diagnoses li.category ul li a, ul.treatments li.category ul li a {
           padding: 0.2em 0 0.2em 1.75em; }
-        ul.diagnoses li.category ul li.last {
+        ul.diagnoses li.category ul li.last, ul.treatments li.category ul li.last {
           border-bottom: none; }
-  ul.diagnoses li.first strong {
+  ul.diagnoses li.first strong, ul.treatments li.first strong {
     border-top: none; }
 
 body {

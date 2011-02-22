@@ -1,0 +1,19 @@
+= form_for treatment, :remote => true do |f|
+  %fieldset
+    %legend Treatment
+    %ol
+      %li
+        = f.label :name
+        = f.text_field :name, :autocomplete => :off
+      %li
+        = f.label :code
+        = f.text_field :code, :autocomplete => :off
+      %li
+        = f.label :categories, "Categories"
+        = treatment_select
+      %li
+        = f.label :description
+        = f.text_area :description, :autocomplete => :off, :rows => 5
+
+  %fieldset{:class => "submit"}
+    = f.submit

@@ -1,0 +1,10 @@
+= form_for treatment_category do |f|
+  %ol
+    %li
+      = f.label :name
+      = f.text_field :name, :autocomplete => :off
+    %li
+      = f.label :description
+      = f.text_field :description, :autocomplete => :off
+
+  = f.submit

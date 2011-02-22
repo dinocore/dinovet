@@ -73,3 +73,14 @@ end
 Factory.define :breed do |s|
   s.sequence(:name)        { |n| "name#{n}"        }
 end
+
+Factory.define :treatment do |d|
+  d.sequence(:name)        { |n| "name#{n}"        }
+  d.sequence(:code)        { |n| "code#{n}"        }
+  d.sequence(:description) { |n| "description#{n}" }
+end
+
+Factory.define :treatment_category do |c|
+  c.sequence(:name)        { |n| "name#{n}"        }
+  c.sequence(:description) { |n| "description#{n}" }
+end

@@ -1,0 +1,5 @@
+- treatment = treatment_row
+%tr
+  %td= link_to treatment.code, edit_treatment_path(treatment)
+  %td= link_to treatment.name, edit_treatment_path(treatment)
+  %td= link_to treatment.description, edit_treatment_path(treatment)

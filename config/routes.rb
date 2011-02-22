@@ -2,8 +2,10 @@ Dinovet::Application.routes.draw do
   root :to => "clients#index"
 
   resources :diagnosis_categories, :except => [:show]
-
   resources :diagnoses, :except => [:show]
+
+  resources :treatment_categories, :except => [:show]
+  resources :treatments, :except => [:show]
 
   resources :species, :only => [:show]
 
