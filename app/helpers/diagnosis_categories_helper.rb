@@ -14,7 +14,7 @@ module DiagnosisCategoriesHelper
     render :layout => 'layouts/panel',
       :locals => { 
         :id => 'diagnosis-category',
-        :title => "Category",
+        :title => "Diagnosis Category",
         :subtitle => diagnosis_category.name }, 
       &block
   end

@@ -3,7 +3,7 @@ module TreatmentsHelper
     render :layout => 'layouts/panel',
       :locals => { 
         :id => 'treatment',
-        :title => "Diagnosis",
+        :title => "Treatment",
         :subtitle => treatment.name }, 
       &block
   end
@@ -12,7 +12,7 @@ module TreatmentsHelper
     render :layout => 'layouts/panel',
       :locals => { 
         :id => 'treatments',
-        :title => "Treatment" },
+        :title => "Treatments" },
       &block
   end
 

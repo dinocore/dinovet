@@ -14,7 +14,7 @@ module TreatmentCategoriesHelper
     render :layout => 'layouts/panel',
       :locals => { 
         :id => 'treatment-category',
-        :title => "Category",
+        :title => "Treatment Category",
         :subtitle => treatment_category.name }, 
       &block
   end
