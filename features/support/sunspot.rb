@@ -61,10 +61,15 @@ end
 
 Before("@search") do
   # start solr
-  CukeSunspot.new.start
+  #CukeSunspot.new.start
   
   # Clear all indexes from indexed models:
   [Client, Patient, Employee].each { |model| model.remove_all_from_index! }
+end
+
+Before do
+  # Starting Solr before all scenarios, starting before search causes problems
+  CukeSunspot.new.start
 end
 
 # make sure solr is stopped on exit
