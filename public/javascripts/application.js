@@ -145,4 +145,18 @@ $(document).ready(function() {
       timer = setTimeout(callback, ms);
     }
   })();
+
+  //Filter
+  $('select#filter').live('change', function(event) {
+    $(this).parent().submit();
+    var loading =
+      "<img id='loading-events' src='"+ROOT_PATH+"images/loading.gif' />";
+    $(this).parent().prepend(loading);
+  });
+
+  //Date Range Picker
+  $('.date_range_picker').live('mouseover', function(event) {
+    $('.date_range_picker').daterangepicker();
+  });
+
 });

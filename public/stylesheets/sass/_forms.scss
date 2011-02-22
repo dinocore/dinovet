@@ -6,6 +6,53 @@ $error: #e4d2d3;
   background-color: $view-background;
   padding: 0.3em;
 
+  label {
+    font-size: 0.8em;
+    float: left;
+    width: 10em;
+    margin-right: 0.8em;
+    text-align: right;
+    line-height: 2em;
+  }
+
+  select {
+    border: none;
+    border: 1px solid $field-border;
+    padding: 0.13em;
+    width: 18.5em;
+    background-color: lighten($field-border, 40%);
+
+    &.date {
+      width: 5.94em;
+    }
+  }
+
+  div.field_with_errors {
+    display: inline;
+
+    input, select {
+      background-color: mix(lighten($field-border, 40%), #E4D2D3);
+    }
+  }
+
+  input {
+    padding: 0.2em;
+    border: none;
+    width: 18em;
+    border: 1px solid $field-border;
+    background-color: lighten($field-border, 40%);
+  }
+
+  textarea {
+    padding: 0.2em;
+    border: none;
+    margin-left: 0.1em;
+    width: 20em;
+    height: 7em;
+    border: 1px solid $field-border;
+    background-color: lighten($field-border, 40%);
+  }
+
   fieldset {
     margin: 0 auto;
     padding: 0.5em 0;
@@ -201,6 +248,24 @@ $error: #e4d2d3;
           }
         }
       }
+    }
+  }
+
+  form.filter {
+    text-align: left;
+    margin: 0 auto;
+    padding: 0.5em 0;
+    width: 55em;
+
+    input.date_range_picker {
+      padding-left: 24px;
+      width: auto;
+      background: url(../images/calendar.png) no-repeat 4px 5px;
+      background-color: lighten($field-border, 40%);
+    }
+
+    select {
+      width: auto;
     }
   }
 }

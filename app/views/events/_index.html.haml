@@ -1,4 +1,7 @@
 = patient_panel(@patient, :History) do
+  = form_tag patient_events_path(@patient), :method => :get, :remote => true, :class => :filter do
+    = date_range_tag_for_filter
+    = select_tag_for_filter(Event)
   %table{:class => :events}
     %thead
       %th Date

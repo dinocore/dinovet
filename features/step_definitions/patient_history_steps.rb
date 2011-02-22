@@ -1,5 +1,6 @@
-Given /^I have made a diagnosis$/ do
-  @patient.events << @event = Factory.build(:diagnosis_event)
+Given /^I have made a diagnosis(?: named "([^"]*)")?$/ do |name|
+  attributes = name.blank? ? {} : {:name => name}
+  @patient.events << @event = Factory.build(:diagnosis_event, attributes)
   @event.save
 end
 

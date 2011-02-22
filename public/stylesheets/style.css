@@ -57,6 +57,39 @@
     clear: both;
     background-color: #f8f8f8;
     padding: 0.3em; }
+    .panel .view label {
+      font-size: 0.8em;
+      float: left;
+      width: 10em;
+      margin-right: 0.8em;
+      text-align: right;
+      line-height: 2em; }
+    .panel .view select {
+      border: none;
+      border: 1px solid #cccccc;
+      padding: 0.13em;
+      width: 18.5em;
+      background-color: white; }
+      .panel .view select.date {
+        width: 5.94em; }
+    .panel .view div.field_with_errors {
+      display: inline; }
+      .panel .view div.field_with_errors input, .panel .view div.field_with_errors select {
+        background-color: #f1e8e9; }
+    .panel .view input {
+      padding: 0.2em;
+      border: none;
+      width: 18em;
+      border: 1px solid #cccccc;
+      background-color: white; }
+    .panel .view textarea {
+      padding: 0.2em;
+      border: none;
+      margin-left: 0.1em;
+      width: 20em;
+      height: 7em;
+      border: 1px solid #cccccc;
+      background-color: white; }
     .panel .view fieldset {
       margin: 0 auto;
       padding: 0.5em 0;
@@ -189,6 +222,18 @@
               border: 1px solid #999999;
               background-color: #cccccc;
               color: #333e2e; }
+    .panel .view form.filter {
+      text-align: left;
+      margin: 0 auto;
+      padding: 0.5em 0;
+      width: 55em; }
+      .panel .view form.filter input.date_range_picker {
+        padding-left: 24px;
+        width: auto;
+        background: url(../images/calendar.png) no-repeat 4px 5px;
+        background-color: white; }
+      .panel .view form.filter select {
+        width: auto; }
 
 .toolbar {
   text-align: right;
@@ -213,7 +258,7 @@ table.index {
 
 table.events {
   width: 55em;
-  margin: 0 auto;
+  margin: 0 auto 1em auto;
   border: 1px solid gray;
   border-collapse: collapse; }
   table.events thead {
