@@ -60,7 +60,7 @@
     .panel .view fieldset {
       margin: 0 auto;
       padding: 0.5em 0;
-      border: 1px solid gray;
+      border: 1px solid #cccccc;
       border: 1px solid #ccc;
       width: 55em; }
       .panel .view fieldset legend {
@@ -73,13 +73,15 @@
         margin-top: 0.2em;
         padding: 0; }
         .panel .view fieldset.submit input {
-          border: 1px solid gray;
-          padding: 0.2em;
+          border: 1px solid #cccccc;
+          padding: 0.5em 1em;
           margin: 0.2em 0;
           float: right;
           color: #7d9471;
-          font-weight: bold; }
+          font-weight: bold;
+          background-color: #e6e6e6; }
           .panel .view fieldset.submit input:hover {
+            border: 1px solid #999999;
             background-color: #cccccc;
             color: #333e2e; }
       .panel .view fieldset ol {
@@ -99,30 +101,40 @@
             line-height: 2em; }
           .panel .view fieldset ol li select {
             border: none;
-            border: 1px solid gray;
+            border: 1px solid #cccccc;
             padding: 0.2em;
             width: 18.5em;
-            background-color: #e6e6e6; }
+            background-color: white; }
             .panel .view fieldset ol li select.date {
               width: 5.94em; }
+            .panel .view fieldset ol li select:focus {
+              border: 1px solid #999999;
+              background-color: white; }
           .panel .view fieldset ol li div.field_with_errors {
             display: inline; }
             .panel .view fieldset ol li div.field_with_errors input, .panel .view fieldset ol li div.field_with_errors select {
-              background-color: #e5dcdc; }
+              border: 1px solid #ab7276;
+              background-color: #f1e8e9; }
           .panel .view fieldset ol li input {
             padding: 0.2em;
             border: none;
             width: 18em;
-            border: 1px solid gray;
-            background-color: #e6e6e6; }
+            border: 1px solid #cccccc;
+            background-color: white; }
+            .panel .view fieldset ol li input:focus {
+              border: 1px solid #999999;
+              background-color: white; }
           .panel .view fieldset ol li textarea {
             padding: 0.2em;
             border: none;
             margin-left: 0.1em;
             width: 20em;
             height: 7em;
-            border: 1px solid gray;
-            background-color: #e6e6e6; }
+            border: 1px solid #cccccc;
+            background-color: white; }
+            .panel .view fieldset ol li textarea:focus {
+              border: 1px solid #999999;
+              background-color: white; }
     .panel .view form.new_diagnosis_event fieldset ol li select {
       width: 20em;
       height: 18.5em;
@@ -166,12 +178,17 @@
           margin: 0;
           display: inline; }
           .panel .view form.new_client fieldset.patients ul li a, .panel .view form.edit_client fieldset.patients ul li a, .panel .view form.new_employee fieldset.patients ul li a, .panel .view form.edit_employee fieldset.patients ul li a {
-            margin: 0 0.3em;
+            border: 1px solid #cccccc;
+            background-color: #e6e6e6;
+            border: 1px solid #cccccc;
             padding: 0.5em 1em;
-            border: 1px solid gray;
-            background-color: #e6e6e6; }
+            margin: 0.2em 0.2em;
+            color: #7d9471;
+            font-weight: bold; }
             .panel .view form.new_client fieldset.patients ul li a:hover, .panel .view form.edit_client fieldset.patients ul li a:hover, .panel .view form.new_employee fieldset.patients ul li a:hover, .panel .view form.edit_employee fieldset.patients ul li a:hover {
-              background-color: #c5c5c5; }
+              border: 1px solid #999999;
+              background-color: #cccccc;
+              color: #333e2e; }
 
 .toolbar {
   text-align: right;

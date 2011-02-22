@@ -1,4 +1,6 @@
-$field-border:      $tab-background;
+//$field-border:      $tab-background;
+$field-border: #ccc;
+$error: #e4d2d3;
 
 @mixin standard-form {
   background-color: $view-background;
@@ -25,13 +27,15 @@ $field-border:      $tab-background;
 
       input {
         border: 1px solid $field-border;
-        padding: 0.2em;
+        padding: 0.5em 1em;
         margin: 0.2em 0;
         float: right;
         color: darken($header-background, 20%);
         font-weight: bold;
+        background-color: lighten($field-border, 10%);
 
         &:hover {
+          border: 1px solid darken($field-border, 20%);
           background-color: lighten($tab-background, 30%);
           color: darken($header-background, 50%);
         }
@@ -62,10 +66,14 @@ $field-border:      $tab-background;
           border: 1px solid $field-border;
           padding: 0.2em;
           width: 18.5em;
-          background-color: lighten($field-border, 40%);
+          background-color: lighten($field-border, 50%);
 
           &.date {
             width: 5.94em;
+          }
+          &:focus {
+            border: 1px solid darken($field-border, 20%);
+            background-color: lighten($field-border, 50%);
           }
         }
 
@@ -73,7 +81,8 @@ $field-border:      $tab-background;
           display: inline;
 
           input, select {
-            background-color: mix(lighten($field-border, 40%), #E4D2D3);
+            border: 1px solid darken($error, 30%);
+            background-color: mix(lighten($field-border, 50%), $error);
           }
         }
   
@@ -82,7 +91,12 @@ $field-border:      $tab-background;
           border: none;
           width: 18em;
           border: 1px solid $field-border;
-          background-color: lighten($field-border, 40%);
+          background-color: lighten($field-border, 50%);
+
+          &:focus {
+            border: 1px solid darken($field-border, 20%);
+            background-color: lighten($field-border, 50%);
+          }
         }
 
         textarea {
@@ -92,7 +106,11 @@ $field-border:      $tab-background;
           width: 20em;
           height: 7em;
           border: 1px solid $field-border;
-          background-color: lighten($field-border, 40%);
+          background-color: lighten($field-border, 50%);
+          &:focus {
+            border: 1px solid darken($field-border, 20%);
+            background-color: lighten($field-border, 50%);
+          }
         }
       }
     }
@@ -167,13 +185,18 @@ $field-border:      $tab-background;
           display: inline;
   
           a {
-            margin: 0 0.3em;
-            padding: 0.5em 1em;
             border: 1px solid $field-border;
-            background-color: lighten($field-border, 40%);
-  
+            background-color: lighten($field-border, 10%);
+            border: 1px solid $field-border;
+            padding: 0.5em 1em;
+            margin: 0.2em 0.2em;
+            color: darken($header-background, 20%);
+            font-weight: bold;
+      
             &:hover {
-              background-color: darken($view-background, 20%);
+              border: 1px solid darken($field-border, 20%);
+              background-color: lighten($tab-background, 30%);
+              color: darken($header-background, 50%);
             }
           }
         }
