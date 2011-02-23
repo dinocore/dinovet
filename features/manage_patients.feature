@@ -21,6 +21,14 @@ Feature: Manage patients
     Then I should be on the edit patient page
     And I should see the edit patient form
 
+  Scenario: Go directly to a patient page
+    Given I have added a client named "Holden" and patient named "Mongo"
+    And I have added a species and breed
+    And I am on the clients page
+    When I follow "Mongo"
+    Then I should see "Holden" within "#client"
+    And I should see "Mongo" within "#patient"
+
   Scenario: Add a new patient
     Given I have added a client
     And I have added a species and breed

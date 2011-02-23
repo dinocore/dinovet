@@ -15,6 +15,7 @@ describe PatientsController do
     mock_species.stub!(:name).and_return("species name")
     mock_patient.stub!(:client=).and_return(mock_client)
     mock_patient.stub!(:species).and_return(mock_species)
+    mock_patient.stub!(:client).and_return(mock_client)
   end
 
 
@@ -118,8 +119,24 @@ describe PatientsController do
 
     it { response.should be_success }
 
+    it "should set @client" do
+      assigns[:client].should equal(mock_client)
+    end
+
+    it "should set @phone_numbers" do
+      assigns[:phone_numbers].should include mock_phone_number
+    end
+
     it "should set @patient" do
       assigns[:patient].should equal(mock_patient)
+    end
+
+    it "should set @species" do
+      assigns[:species].should include mock_species.name
+    end
+
+    it "should set @breeds" do
+      assigns[:breeds].should include mock_breed.name
     end
 
   end
@@ -130,11 +147,31 @@ describe PatientsController do
     before do
       request.env["HTTP_REFERER"] = edit_patient_path(mock_patient)
     end
-                  
+
     describe "always" do
       before do
         mock_patient.should_receive(:update_attributes)
         put :update, :id => mock_patient.id, :patient => mock_patient
+      end
+
+      it "should set @client" do
+        assigns[:client].should equal(mock_client)
+      end
+
+      it "should set @phone_numbers" do
+        assigns[:phone_numbers].should include mock_phone_number
+      end
+
+      it "should set @patient" do
+        assigns[:patient].should equal(mock_patient)
+      end
+
+      it "should set @species" do
+        assigns[:species].should include mock_species.name
+      end
+
+      it "should set @breeds" do
+        assigns[:breeds].should include mock_breed.name
       end
     end
 

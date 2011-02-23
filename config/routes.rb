@@ -10,7 +10,7 @@ Dinovet::Application.routes.draw do
   resources :species, :only => [:show]
 
   resources :clients, :except => [:show] do
-    resources :patients, :only => [:new, :create]
+    resources :patients, :only => [:new, :create, :update]
   end
 
   resources :employees

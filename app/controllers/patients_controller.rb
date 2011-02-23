@@ -34,12 +34,18 @@ class PatientsController < ApplicationController
     @patient = Patient.find(params[:id])
     @species = Species.list
     @breeds  = Breed.list(@patient.species)
+
+    @client  = @patient.client
+    @phone_numbers = @client.phone_numbers
   end
 
   def update
     @patient = Patient.find(params[:id])
     @species = Species.list
     @breeds  = Breed.list(@patient.species)
+
+    @client  = @patient.client
+    @phone_numbers = @client.phone_numbers
 
     if @patient.update_attributes(params[:patient])
       flash[:notice] = "Patient updated successfully"

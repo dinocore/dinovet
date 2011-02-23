@@ -1,6 +1,9 @@
-Given /^I have added a client and patient/ do
-  @client = Factory.create(:client)
-  @client.patients << Factory.create(:patient, :client => @client)
+Given /^I have added a client(?: named "([^"]*)")? and patient(?: named "([^"]*)")?$/ do |client, patient|
+  attributes = client.blank? ? {} : {:first_name => client}
+  @client = Factory.create(:client, attributes)
+  attributes = patient.blank? ? {} : {:name => patient}
+  @client.patients << Factory.create(:patient,
+                                      attributes.merge(:client => @client))
   @patient = @client.patients.first
 end
 

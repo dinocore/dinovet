@@ -33,7 +33,7 @@
     %legend Phone
     %ol
       = f.fields_for :phone_numbers do |pf|
-        = render :partial => 'phone_numbers/form', :locals => { :f => pf }
+        = render 'phone_numbers/form', :f => pf
       %li
         %a{:href => '#', :class => 'add', :title => 'Add additional number'}
           = image_tag('add.png')
@@ -47,7 +47,7 @@
 
 
   - unless client.new_record?
-    = render :partial => 'patient_list', :locals => { :client => client }
+    = render 'clients/patient_list', :client => client
 
   %fieldset{:class => "submit"}
     = f.submit
