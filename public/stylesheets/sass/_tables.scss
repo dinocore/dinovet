@@ -39,6 +39,7 @@ table.events {
         background-color: $view-background;
       }
       td {
+        vertical-align: top;
         padding: 0.2em 1em;
 
         &.date {

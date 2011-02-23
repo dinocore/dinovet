@@ -229,6 +229,7 @@ table.events {
   table.events tbody tr.odd {
     background-color: #f8f8f8; }
   table.events tbody tr td {
+    vertical-align: top;
     padding: 0.2em 1em; }
     table.events tbody tr td.date {
       width: 7em; }

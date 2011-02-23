@@ -7,6 +7,10 @@ describe Event do
     it { create_event.name.should == nil }
   end
 
+  describe "#type" do
+    it { create_event.type.should == "" }
+  end
+
 end
 
 def create_event(parameters = {})

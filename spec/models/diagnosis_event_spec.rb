@@ -50,6 +50,10 @@ describe DiagnosisEvent do
     end
   end
 
+  describe "#type" do
+    it { create_diagnosis_event.type.should == "Diagnosis" }
+  end
+
 end
 
 def create_diagnosis_event(parameters = {})
