@@ -1,0 +1,74 @@
+@mixin category-list {
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+ 
+  li.category {
+    margin-bottom: 0.25em;
+
+    a {
+      padding: 0.5em 0 0.5em 1em;
+      display: block;
+      background-color: lighten($tab-background, 40%);
+      color: $inactive-tab-text;
+      background-color: $inactive-tab;
+      &:hover {
+        background-color: lighten($inactive-tab, 10%);
+        a {
+          color: white;
+        }
+      }
+    }
+
+    ul {
+      list-style: none;
+      background-color: $view-background;
+      margin: 0;
+      padding: 0;
+      border-bottom: 1px solid gray;
+ 
+      a {
+        color: black;
+        background-color: white;
+ 
+        &:hover {
+          background-color: darken(white, 10%);
+          color: black;
+        }
+      }
+ 
+      li {
+        border-bottom: 1px solid #ccc;
+ 
+        a {
+          padding: 0.2em 0 0.2em 1.75em;
+        }
+ 
+        &.last {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+ 
+  li.first {
+    strong {
+      border-top: none;
+    }
+  }
+}
+
+ul.diagnoses, ul.treatments {
+  @include category-list;
+  width: 25em;
+  min-height: 1em;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0 auto;
+  padding: 0;
+  max-height: 25em;
+  border: 1px solid gray;
+}
+

@@ -136,7 +136,18 @@ $error: #e4d2d3;
       }
     }
   }
-  
+
+  form.new_treatment_plan {
+    button {
+      float: left;
+    }
+
+    ul {
+      @include category-list;
+      float: left;
+    }
+  }
+
   form.new_client, form.edit_client, form.new_employee, form.edit_employee {
     fieldset.phone {
       ol {

@@ -35,7 +35,7 @@ module NavigationHelpers
       edit_diagnosis_path(Diagnosis.first(:conditions => { :name => $1 }))
     when /^the new diagnosis event page$/
       new_patient_diagnosis_event_path(@patient)
-    #Diagnosis paths
+    #Treatment paths
     when /^the edit treatment category page for "(.*)"$/
       edit_treatment_category_path(TreatmentCategory.first(
         :conditions => { :name => $1 } ))
@@ -43,7 +43,9 @@ module NavigationHelpers
       edit_treatment_path(Treatment.first(:conditions => { :name => $1 }))
     when /^the new treatment event page$/
       new_patient_treatment_event_path(@patient)
-#Employee Paths
+    when /^the new treatment plan page$/
+      new_patient_treatment_plan_path(@patient)
+    #Employee Paths
     when /^the edit employee page for "(.*)"$/
       edit_employee_path(@employee)
     when /^the new employee page$/

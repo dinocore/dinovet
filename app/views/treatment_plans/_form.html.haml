@@ -1,0 +1,16 @@
+= form_for [@patient, @treatment_plan], :remote => true do |f|
+  %fieldset
+    %ul{:id => 'treatment-category-list'}
+      - @treatment_categories.each do |category|
+        %li{:class => 'category'}
+          = link_to category.name, '#'
+          %ul
+            - category.treatments.each do |treatment|
+              %li= link_to treatment.name, '#'
+    
+    %button= "Add"
+    
+    %ul{:id => 'treatment-plan-list'}
+      - @treatment_categories.each do |category|
+        %li{:class => 'category'}
+          = link_to category.name, '#'

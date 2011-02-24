@@ -16,6 +16,7 @@ $(document).ready(function() {
   });
 
   $('#flash-notice').delay(2000).fadeOut('slow');
+  $('#treatment-category-list').column_select();
   
   // Panel collapse
   /*

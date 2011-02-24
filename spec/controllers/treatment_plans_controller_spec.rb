@@ -3,6 +3,7 @@ require 'spec_helper'
 describe TreatmentPlansController do
   before do
     Patient.stub!(:find).and_return(mock_patient)
+    TreatmentCategory.stub!(:all).and_return([mock_treatment_category])
   end
 
   describe "GET 'new'" do
@@ -100,5 +101,5 @@ def mock_treatment_plan(stubs={})
 end
 
 def mock_treatment_category(stubs={})
-  #@mock_treatment_category ||= mock_model(TreatmentCategory, stubs)
+  @mock_treatment_category ||= mock_model(TreatmentCategory, stubs)
 end

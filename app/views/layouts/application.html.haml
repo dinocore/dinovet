@@ -6,6 +6,7 @@
     = stylesheet_link_tag :all
     = javascript_include_tag :defaults
     = javascript_include_tag 'jquery-ui-1.8.5.custom.min.js'
+    = javascript_include_tag 'selector.js'
     -if Rails.env == 'test' or Rails.env == 'cucumber' or Rails.env =='culerity'
       = javascript_include_tag 'culerity'
     = csrf_meta_tag

@@ -1,8 +1,9 @@
 module PatientsHelper
   def patient_panel(patient, tab=nil, &block)
     links = { 
-      :Details => edit_patient_path(patient),
-      :History => patient_events_path(patient),
+      :Details  => edit_patient_path(patient),
+      :History  => patient_events_path(patient),
+      :Treat    => new_patient_treatment_plan_path(patient),
       :Diagnose => new_patient_diagnosis_event_path(patient)
     } unless patient.new_record?
 
@@ -25,6 +26,7 @@ module PatientsHelper
   end
 
   def update_patient_list(client)
-    "$('fieldset.patients ul').replaceWith('#{patient_select_list(@patient.client)}');".html_safe
+    "$('fieldset.patients ul').replaceWith('#{
+                            patient_select_list(@patient.client)}');".html_safe
   end
 end

@@ -1,3 +1,50 @@
+ul.diagnoses, ul.treatments {
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  width: 25em;
+  min-height: 1em;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0 auto;
+  padding: 0;
+  max-height: 25em;
+  border: 1px solid gray; }
+  ul.diagnoses li.category, ul.treatments li.category {
+    margin-bottom: 0.25em; }
+    ul.diagnoses li.category a, ul.treatments li.category a {
+      padding: 0.5em 0 0.5em 1em;
+      display: block;
+      background-color: #e6e6e6;
+      color: #bbbbbb;
+      background-color: #223344; }
+      ul.diagnoses li.category a:hover, ul.treatments li.category a:hover {
+        background-color: #334c66; }
+        ul.diagnoses li.category a:hover a, ul.treatments li.category a:hover a {
+          color: white; }
+    ul.diagnoses li.category ul, ul.treatments li.category ul {
+      list-style: none;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 0;
+      border-bottom: 1px solid gray; }
+      ul.diagnoses li.category ul a, ul.treatments li.category ul a {
+        color: black;
+        background-color: white; }
+        ul.diagnoses li.category ul a:hover, ul.treatments li.category ul a:hover {
+          background-color: #e6e6e6;
+          color: black; }
+      ul.diagnoses li.category ul li, ul.treatments li.category ul li {
+        border-bottom: 1px solid #ccc; }
+        ul.diagnoses li.category ul li a, ul.treatments li.category ul li a {
+          padding: 0.2em 0 0.2em 1.75em; }
+        ul.diagnoses li.category ul li.last, ul.treatments li.category ul li.last {
+          border-bottom: none; }
+  ul.diagnoses li.first strong, ul.treatments li.first strong {
+    border-top: none; }
+
 .panel {
   clear: both; }
   .panel .header {
@@ -144,6 +191,47 @@
       height: 20em;
       display: block;
       float: left; }
+    .panel .view form.new_treatment_plan button {
+      float: left; }
+    .panel .view form.new_treatment_plan ul {
+      display: block;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      float: left; }
+      .panel .view form.new_treatment_plan ul li.category {
+        margin-bottom: 0.25em; }
+        .panel .view form.new_treatment_plan ul li.category a {
+          padding: 0.5em 0 0.5em 1em;
+          display: block;
+          background-color: #e6e6e6;
+          color: #bbbbbb;
+          background-color: #223344; }
+          .panel .view form.new_treatment_plan ul li.category a:hover {
+            background-color: #334c66; }
+            .panel .view form.new_treatment_plan ul li.category a:hover a {
+              color: white; }
+        .panel .view form.new_treatment_plan ul li.category ul {
+          list-style: none;
+          background-color: #f8f8f8;
+          margin: 0;
+          padding: 0;
+          border-bottom: 1px solid gray; }
+          .panel .view form.new_treatment_plan ul li.category ul a {
+            color: black;
+            background-color: white; }
+            .panel .view form.new_treatment_plan ul li.category ul a:hover {
+              background-color: #e6e6e6;
+              color: black; }
+          .panel .view form.new_treatment_plan ul li.category ul li {
+            border-bottom: 1px solid #ccc; }
+            .panel .view form.new_treatment_plan ul li.category ul li a {
+              padding: 0.2em 0 0.2em 1.75em; }
+            .panel .view form.new_treatment_plan ul li.category ul li.last {
+              border-bottom: none; }
+      .panel .view form.new_treatment_plan ul li.first strong {
+        border-top: none; }
     .panel .view form.new_client fieldset.phone ol li.phone-number, .panel .view form.edit_client fieldset.phone ol li.phone-number, .panel .view form.new_employee fieldset.phone ol li.phone-number, .panel .view form.edit_employee fieldset.phone ol li.phone-number {
       text-align: right; }
       .panel .view form.new_client fieldset.phone ol li.phone-number select, .panel .view form.edit_client fieldset.phone ol li.phone-number select, .panel .view form.new_employee fieldset.phone ol li.phone-number select, .panel .view form.edit_employee fieldset.phone ol li.phone-number select {
@@ -311,53 +399,6 @@ table.events {
     margin: 0.5em 2em 0 0;
     float: right;
     font-size: 1em; }
-
-ul.diagnoses, ul.treatments {
-  display: block;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  width: 25em;
-  min-height: 1em;
-  overflow-x: hidden;
-  overflow-y: auto;
-  margin: 0 auto;
-  padding: 0;
-  max-height: 25em;
-  border: 1px solid gray; }
-  ul.diagnoses li.category, ul.treatments li.category {
-    margin-bottom: 0.25em; }
-    ul.diagnoses li.category a, ul.treatments li.category a {
-      padding: 0.5em 0 0.5em 1em;
-      display: block;
-      background-color: #e6e6e6;
-      color: #bbbbbb;
-      background-color: #223344; }
-      ul.diagnoses li.category a:hover, ul.treatments li.category a:hover {
-        background-color: #334c66; }
-        ul.diagnoses li.category a:hover a, ul.treatments li.category a:hover a {
-          color: white; }
-    ul.diagnoses li.category ul, ul.treatments li.category ul {
-      list-style: none;
-      background-color: #f8f8f8;
-      margin: 0;
-      padding: 0;
-      border-bottom: 1px solid gray; }
-      ul.diagnoses li.category ul a, ul.treatments li.category ul a {
-        color: black;
-        background-color: white; }
-        ul.diagnoses li.category ul a:hover, ul.treatments li.category ul a:hover {
-          background-color: #e6e6e6;
-          color: black; }
-      ul.diagnoses li.category ul li, ul.treatments li.category ul li {
-        border-bottom: 1px solid #ccc; }
-        ul.diagnoses li.category ul li a, ul.treatments li.category ul li a {
-          padding: 0.2em 0 0.2em 1.75em; }
-        ul.diagnoses li.category ul li.last, ul.treatments li.category ul li.last {
-          border-bottom: none; }
-  ul.diagnoses li.first strong, ul.treatments li.first strong {
-    border-top: none; }
 
 body {
   margin: 0;
